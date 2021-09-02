@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserController {
 	
+	
+	
+	@RequestMapping("/user_signup_view")
+	public String sign_up() {
+		return "";
+	}
+	
+	
 
 
 }
