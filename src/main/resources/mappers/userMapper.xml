@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.bookcafe.user.dao.UserDAO">
+ 
+ <select id="selectTest" resultType="com.bookcafe.user.model.User">
+
+	select
+	id,
+	loginId,
+	password,
+	name,
+	email,
+	point,
+	userClass,
+	createdAt,
+	updatedAt
+	from
+	user
+	limit 1
+ 
+ 
+ 
+ </select>
+ 
+ 
+ 
+ </mapper>

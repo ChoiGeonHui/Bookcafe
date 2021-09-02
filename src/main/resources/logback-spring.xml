@@ -10,7 +10,7 @@
     </appender>
 
     <!-- Logger -->
-    <logger name="com.marondalgram" level="DEBUG" appender-ref="console" />
+    <logger name="com.bookcafe" level="DEBUG" appender-ref="console" />
 
     <!-- Root Logger -->
     <root level="info">
