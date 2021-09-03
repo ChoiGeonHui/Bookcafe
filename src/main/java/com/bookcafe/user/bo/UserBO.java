@@ -15,5 +15,15 @@ public class UserBO {
 	public User selectTest() {
 		return userDAO.selectTest();
 	}
+	
+	
+	public int selectUserByloginId(String loginId) {
+		return userDAO.selectUserByloginIdCheck(loginId);
+	}
+	
+	public int insertUser(String loginId,String password,
+			String name,String email) {
+		return userDAO.insertUser(loginId, password, name, email);
+	}
 
 }

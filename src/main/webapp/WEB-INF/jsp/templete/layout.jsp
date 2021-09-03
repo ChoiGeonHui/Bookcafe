@@ -15,17 +15,28 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
    
+   <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+   
+   
 </head>
 <body>
 
-<div class="container">
+	<div class="container">
+		<jsp:include page="../info/header.jsp" />
+		<section class="d-flex justify-content-center">
+		<jsp:include page="../${page}.jsp"/>
+		</section>
+		<jsp:include page="../info/footer.jsp" />
 
 
 
 
 
 
-</div>
+
+
+
+	</div>
 
 </body>
 </html>

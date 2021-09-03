@@ -5,7 +5,6 @@
  <mapper namespace="com.bookcafe.user.dao.UserDAO">
  
  <select id="selectTest" resultType="com.bookcafe.user.model.User">
-
 	select
 	id,
 	loginId,
@@ -19,11 +18,42 @@
 	from
 	user
 	limit 1
+ </select>
+ 
+ 
+ <select id="selectUserByloginIdCheck" parameterType="string"
+ resultType="int">
+	SELECT
+	count(1) 
+	FROM
+	`user`
+	WHERE 
+	loginId = #{loginId};
  
  
  
  </select>
  
+ 
+ 
+ <insert id="insertUser" parameterType="map">
+	INSERT INTO
+	`user`
+	(
+	loginId,
+	password,
+	name,
+	email
+	)
+	VALUES
+	(
+	#{loginId},
+	#{password},
+	#{name},
+	#{email}
+	)
+ 
+ </insert>
  
  
  </mapper>
