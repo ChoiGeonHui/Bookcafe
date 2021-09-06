@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <div>
 	<h1 class="text-center text-weight-bold">회원가입</h1>
+	
+	
 
 	<div class="d-flex">
 
@@ -62,10 +64,7 @@
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="kakao.com">kakao.com</option>
 						</select>
-							<!-- 직접입력 기능 추후 추가 -->
-							<!-- <option value="self">직접 입력</option>
-						</select> <input class="form-control emailhost input-group-append"
-							type="text" name="emailhost"> -->
+							
 					</div>
 				</td>
 
@@ -191,18 +190,6 @@ $(document).ready(function(){
 		}
 		
 		
-		
-		alert("입력 : "+id+"\n"+
-				"입력 : "+password+"\n"+
-				"입력 : "+passwordChk+"\n"+
-				"입력 : "+name+"\n"+
-				"입력 : "+eamil+"@"+emailhost);	
-		
-		email = eamil+"@"+emailhost;
-		
-		alert(email);
-		
-		
 		$.ajax({
 			method:'post',
 			url:"/user/user_sign_up",
@@ -210,7 +197,7 @@ $(document).ready(function(){
 			success:function(data){
 				if(data.result=='success'){
 					alert("가입성공");	
-					location.href = "/bookcafe/main";
+					location.href = "/user_signin_view";
 				}else{
 					alert("가입실패");			
 				}

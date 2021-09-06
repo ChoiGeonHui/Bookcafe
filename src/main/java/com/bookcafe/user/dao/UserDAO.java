@@ -11,11 +11,18 @@ public interface UserDAO {
 	public User selectTest();
 	
 	
-	
+	//아이디 중복확인
 	public int selectUserByloginIdCheck(
 			@Param("loginId") String loginId);
 	
+	//로그인
+	public User selectUserLogin(
+			@Param("loginId") String loginId,
+			@Param("password") String password);
 	
+	
+	
+	//회원가입
 	public int insertUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password,

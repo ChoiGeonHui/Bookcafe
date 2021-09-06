@@ -23,7 +23,7 @@
 
 	<div class="container">
 		<jsp:include page="../info/header.jsp" />
-		<section class="d-flex justify-content-center">
+		<section class="d-flex justify-content-center my-2">
 		<jsp:include page="../${page}.jsp"/>
 		</section>
 		<jsp:include page="../info/footer.jsp" />

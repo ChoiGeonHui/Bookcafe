@@ -35,6 +35,37 @@
  </select>
  
  
+ <select id="selectUserLogin" parameterType="map" 
+ resultType="com.bookcafe.user.model.User">
+
+	SELECT
+	id,
+	loginId,
+	password,
+	name,
+	email,
+	point,
+	userClass,
+	createdAt,
+	updatedAt
+	FROM
+	user
+	WHERE
+	loginId = #{loginId}
+	AND
+	password = #{password}
+ 
+ 
+ 
+ 
+ 
+ </select>
+ 
+ 
+ 
+ 
+ 
+ 
  
  <insert id="insertUser" parameterType="map">
 	INSERT INTO
