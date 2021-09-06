@@ -14,7 +14,11 @@
 
 <div class="mr-3 mt-2 d-flex justify-content-end">
 
-<div class="col-9"></div>
+<div class="col-9">
+
+<img alt="책사진" src="/static/images/book4.jpg" class="w-100" height="120px">
+
+</div>
 
 
 	<div class="col-3">
@@ -22,7 +26,7 @@
 			<div class="col-12">
 				<span><a href="#">${userName}</a> 회원님 안녕하세요~</span>
 				<div class="d-flex mt-2">
-					<b class="col-6">${userPoint} point</b> <a href="#"
+					<b class="col-6">${userPoint} point</b> <a href="/user/user_point_view"
 						class="btn btn-primary">충전</a>
 				</div>
 				<div class="d-flex mt-2">

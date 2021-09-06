@@ -38,13 +38,20 @@ public class UserController {
 		session.removeAttribute("userLoginId");
 		session.removeAttribute("userName");
 		session.removeAttribute("userEmail");
-		session.removeAttribute("point");
-		
-		
+		session.removeAttribute("point");	
 		
 		return "redirect:/user/user_signin_view";
 	
 	}
+	
+	
+	//포인트 충전
+	@RequestMapping("/user_point_view")
+	public String point(Model model) {
+		model.addAttribute("page", "point/point");
+		return "templete/layout";
+	}
+	
 	
 
 
