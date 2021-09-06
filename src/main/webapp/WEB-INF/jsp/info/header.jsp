@@ -38,7 +38,11 @@
 
 		<c:if test="${empty userId}">
 
-			<a href="/user/user_signin_view">로그인</a>
+			<div class="col-12">
+				<a href="/user/user_signin_view">
+				<img alt="로그인" src="/static/images/login.jpg" class="w-100" height="120px">
+				</a>
+			</div>
 		</c:if>
 	</div>
 </div>

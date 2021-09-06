@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <div class="col-6">
-    <img alt="책사진" src="/static/images/book3.jpg" class="h-100">
+    <img id="imageControl" alt="책사진" src="/static/images/book3.jpg" class="w-100" height="330px">
     
     </div>
     
@@ -19,12 +19,12 @@
 			<tr>
 				<td>아이디</td>
 				<td><input type="text" id="id" name="id"
-					placeholder="아이디를 입력하세요" class="form-control"></td>
+					placeholder="Login ID" class="form-control"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" id="password" class="form-control"
-					placeholder="비밀번호를 입력하세요"></td>
+					placeholder="Password"></td>
 			</tr>
 		</table>
 
@@ -45,6 +45,19 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	
+	let bannerSrcArr = ['/static/images/book1.jpg', '/static/images/book2.jpg',
+		 '/static/images/book3.jpg'];
+           var currentIndex = 0;
+           setInterval(function() {
+               $('#imageControl').attr('src', bannerSrcArr[currentIndex]);
+               currentIndex++;
+
+               if (currentIndex >= bannerSrcArr.length) {
+                   currentIndex = 0;
+               }
+           }, 3000); 
 	
 	
 	$('#loginBtn').on('click', function(e) {
@@ -83,6 +96,9 @@ $(document).ready(function(){
 			});
 
 		});
+	
+	
+
 
 	});
 </script>
