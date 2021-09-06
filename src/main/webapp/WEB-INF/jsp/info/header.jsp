@@ -14,20 +14,27 @@
 
 <div class="mr-3 mt-2 d-flex justify-content-end">
 
+<div class="col-9"></div>
 
 
-	<c:if test="${not empty userId}">
-	<div>
-		<span>${userName} 회원님 안녕하세요~</span>
-		<div class="d-flex">
-		<a href="">로그아웃</a>
-		<a href="/user/user/log_out" class="btn btn-secondary">로그아웃</a>
-		</div>
+	<div class="col-3">
+		<c:if test="${not empty userId}">
+			<div class="col-12">
+				<span><a href="#">${userName}</a> 회원님 안녕하세요~</span>
+				<div class="d-flex mt-2">
+					<b class="col-6">${userPoint} point</b> <a href="#"
+						class="btn btn-primary">충전</a>
+				</div>
+				<div class="d-flex mt-2">
+					<a href="#" class="btn btn-success mx-2">글쓰기</a> <a
+						href="/user/user/log_out" class="btn btn-secondary mx-2">로그아웃</a>
+				</div>
+			</div>
+		</c:if>
+
+		<c:if test="${empty userId}">
+
+			<a href="/user/user_signin_view">로그인</a>
+		</c:if>
 	</div>
-	</c:if>
-
-	<c:if test="${empty userId}">
-	
-		<a href="/user/user_signin_view">로그인</a>
-	</c:if>
 </div>
