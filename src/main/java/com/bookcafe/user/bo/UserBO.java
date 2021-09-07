@@ -15,6 +15,9 @@ public class UserBO {
 	public User selectTest() {
 		return userDAO.selectTest();
 	}
+	public User selectUser(int userId) {
+		return userDAO.selectUser(userId);
+	}
 	
 	
 	public int selectUserByloginId(String loginId) {
@@ -29,6 +32,14 @@ public class UserBO {
 	public int insertUser(String loginId,String password,
 			String name,String email) {
 		return userDAO.insertUser(loginId, password, name, email);
+	}
+	
+	public int plusPointByUserId(int userId, int point) {
+		return userDAO.updatePlusPointByUserId(userId, point);
+	}
+	
+	public int updateUserByColumns(int userId, String password,String name,String email) {
+		return userDAO.updateUserByColumns(userId, password, name, email);
 	}
 
 }

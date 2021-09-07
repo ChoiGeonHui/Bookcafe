@@ -93,6 +93,7 @@ public class UserRestController {
 			session.setAttribute("userName", user.getName());
 			session.setAttribute("userEmail", user.getEmail());
 			session.setAttribute("userPoint", user.getPoint());
+			session.setAttribute("userClass", user.getUserClass());
 			
 		}else {
 			result.put("result", "fail");
@@ -101,5 +102,64 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	
+	/**
+	 * 포인트 충전
+	 * @param point
+	 * @param request
+	 * @return
+	 */
+	@PostMapping("/point_put")
+	public Map<String, String> insertPoint(
+			@RequestParam("point") int point,
+			HttpServletRequest request){
+		Integer userId =null;
+		HttpSession session = request.getSession();
+		userId = (Integer) session.getAttribute("userId");
+		Map<String, String> result = new HashMap<String, String>();
+		
+		if(userId ==null) {
+			result.put("result", "fail");
+			return result;		
+		}
+		
+		
+		int row = userBO.plusPointByUserId(userId, point);
+		
+		if(row>0) {
+			result.put("result", "success");
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping("/user_update")
+	public Map<String, String> userUpdate(
+			@RequestParam(value = "password", required = false) String password,
+			@RequestParam(value = "name",required = false) String name,
+			@RequestParam(value = "email",required = false) String email,
+			HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		int userId = (int) session.getAttribute("userId");
+		
+		String encrytpassword = "";
+		
+		if(!password.equals("")) {
+			encrytpassword = EncryptUtils.md5(password);
+		}
+		int row = userBO.updateUserByColumns(userId, encrytpassword, name, email);	
+		Map<String, String> result = new HashMap<String, String>();
+		
+		if(row >0) {
+			result.put("result", "success");
+		}
+		
+		return result;
+	}
+	
+	
+	
 
 }

@@ -137,7 +137,7 @@ $(document).ready(function(){
 		let password= $('#password').val().trim();
 		let passwordChk= $('#passwordChk').val().trim();
 		let name= $('#name').val().trim();
-		let eamil= $('#email').val().trim();
+		let email= $('#email').val().trim();
 		let emailhost= $('#emailhost').val().trim();
 		
 		
@@ -178,16 +178,17 @@ $(document).ready(function(){
 		}
 		
 		
-		
-		
 		if(name==''){
 			alert('이름을 입력하세요.');
 			return;
 		}
+		
 		if(email==''){
 			alert('이메일을 입력하세요.');
 			return;
 		}
+		
+		email = email+"@"+emailhost;
 		
 		
 		$.ajax({
@@ -197,7 +198,7 @@ $(document).ready(function(){
 			success:function(data){
 				if(data.result=='success'){
 					alert("가입성공");	
-					location.href = "/user_signin_view";
+					location.href = "/user/user_signin_view";
 				}else{
 					alert("가입실패");			
 				}
