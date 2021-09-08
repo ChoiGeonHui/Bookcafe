@@ -39,7 +39,7 @@
 						href="/user/user_point_view" class="btn btn-primary col-3">충전</a>
 				</div>
 				<div class="d-flex mt-2">
-					<a href="#" class="btn btn-success mx-2">글쓰기</a> <a
+					<a href="/post/post_create_view" class="btn btn-success mx-2">글쓰기</a> <a
 						href="/user/user/log_out" class="btn btn-secondary mx-2">로그아웃</a>
 				</div>
 

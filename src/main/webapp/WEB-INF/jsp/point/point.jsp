@@ -55,7 +55,7 @@
 						alert( point+' point를 충전 하였습니다.');
 						location.href = '/user/update';
 					}else if(data.result=='fail'){
-						alert( '먼저 로그인을 하세요');
+						alert('먼저 로그인을 하세요');
 					}
 				},
 				error:function(){

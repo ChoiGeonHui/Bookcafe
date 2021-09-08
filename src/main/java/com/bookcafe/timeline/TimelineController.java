@@ -38,6 +38,7 @@ public class TimelineController {
 		model.addAttribute("userName", userName);
 		model.addAttribute("userEmail", userEmail);
 		model.addAttribute("userPoint", userPoint);
+		model.addAttribute("userClass", userClass);
 		model.addAttribute("page", "main/timeline");
 		
 		return "templete/layout";

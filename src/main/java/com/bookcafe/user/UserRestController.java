@@ -119,6 +119,7 @@ public class UserRestController {
 		userId = (Integer) session.getAttribute("userId");
 		Map<String, String> result = new HashMap<String, String>();
 		
+		//비로그인 상태인 경우
 		if(userId ==null) {
 			result.put("result", "fail");
 			return result;		
@@ -134,6 +135,14 @@ public class UserRestController {
 		return result;
 	}
 	
+	/**
+	 * 회원 정보 변경
+	 * @param password
+	 * @param name
+	 * @param email
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user_update")
 	public Map<String, String> userUpdate(
 			@RequestParam(value = "password", required = false) String password,
@@ -142,15 +151,21 @@ public class UserRestController {
 			HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
-		int userId = (int) session.getAttribute("userId");
+		Map<String, String> result = new HashMap<String, String>();
+		Integer userId =null;
+		userId= (Integer) session.getAttribute("userId");
+		
+		if(userId ==null) {
+			result.put("result", "fail");
+			return result;
+		}
 		
 		String encrytpassword = "";
 		
-		if(!password.equals("")) {
+		if(password != null) {
 			encrytpassword = EncryptUtils.md5(password);
 		}
 		int row = userBO.updateUserByColumns(userId, encrytpassword, name, email);	
-		Map<String, String> result = new HashMap<String, String>();
 		
 		if(row >0) {
 			result.put("result", "success");
