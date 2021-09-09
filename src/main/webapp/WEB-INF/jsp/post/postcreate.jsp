@@ -40,7 +40,7 @@
 		
 		
 		<div class="mt-3 input-group d-none" id="priceDiv">
-			<input type="text" id="price" class="form-control col-6" placeholder="금액을 입력하세요" value="">
+			<input type="text" id="price" class="form-control col-6" placeholder="금액을 입력하세요">
 			<span class="input-group-text input-group-prepend">point</span>
 		</div>
 		
@@ -91,10 +91,14 @@ $(document).ready(function(){
 		let	tag = $(this).val();
 		
 		if(tag == '유료'){
-			$('#priceDiv').removeClass('d-none');
+			$('#price').removeClass('d-none');
+			/* $('#price').attr('disabled', false);
+			$('#price').attr('placeholder','금액을 입력하세요.'); */
 		}else{
-			$('#priceDiv').addClass('d-none');	
-			$('#price').val('');		
+			$('#price').addClass('d-none');
+			/* $('#price').attr('disabled', true);	
+			$('#price').attr('placeholder','유료 태그만 입력 가능.'); */
+			$('#price').val('');	
 		}
 		
 	});
@@ -113,10 +117,11 @@ $(document).ready(function(){
 			return;
 		}
 		
-		if(price ==null){
-			alert('값 없다.');
-			
-		}
+		
+		
+		
+		
+		
 		
 		
 		alert(tag+" "+ title+" "+content+" "+$('input[name=file]')[0].files[0]+" "+price);
@@ -139,8 +144,8 @@ $(document).ready(function(){
 				if(data.result=='success'){
 				alert('작성 완료');
 				location.href='/user/update';
-				}else if(data.result=='tag'){
-				alert('태그 비움');		
+				}else if(data.result=='price'){
+				alert('금액 비움');		
 				} else{
 				alert('먼저 로그인을 하세요.');		
 				}

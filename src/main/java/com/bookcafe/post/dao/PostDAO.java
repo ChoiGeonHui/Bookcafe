@@ -13,7 +13,7 @@ public interface PostDAO {
 			@Param("title") String title,
 			@Param("content") String content,
 			@Param("imagePath") String imagePath,
-			@Param("price") int price
+			@Param("price") Integer price
 			);
 
 }

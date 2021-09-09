@@ -20,7 +20,7 @@ public class PostBO {
 	FileManagerSurvice fileManagerSurvice;
 	
 	public int createPost(int userId, String userName, String tag, String title, String content,
-			MultipartFile file,int price) {
+			MultipartFile file,Integer price) {
 		
 		String imagePath = "";	
 		if (file != null) {

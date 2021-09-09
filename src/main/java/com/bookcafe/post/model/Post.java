@@ -11,7 +11,7 @@ public class Post {
 	private String title;
 	private String content;
 	private String imagePath;
-	private int price;
+	private Integer price;
 	private Date createdAt;
 	private Date updatedAt;
 	public int getId() {
@@ -53,7 +53,7 @@ public class Post {
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public Date getCreatedAt() {

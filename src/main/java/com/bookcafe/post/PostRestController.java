@@ -27,7 +27,7 @@ public class PostRestController {
 	public Map<String, String> postCreate(
 			@RequestParam(value = "tag") String tag,
 			@RequestParam("title") String title,
-			@RequestParam("content") String content,
+			@RequestParam(value = "content",required = false) String content,
 			@RequestParam(value = "file", required = false)
 			MultipartFile file,
 			@RequestParam(value = "price", required = false) Integer price,
@@ -45,6 +45,7 @@ public class PostRestController {
 			result.put("result", "fail");
 			return result;		
 		}
+		
 		
 		int row= postBO.createPost(userId, userName, tag, title, content, file, price);
 		
