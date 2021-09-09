@@ -124,11 +124,11 @@
 	`user`
 	SET
 	
-	<if test="password != ''">
+	<if test="password != null">
 	`password` = #{password}
 	</if>
 	
-	<if test="password != '' and name != ''">
+	<if test="password != null and name != null">
 	,
 	</if>
 	

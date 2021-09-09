@@ -31,12 +31,12 @@
 			<input id="file" name="file" accept=".jpg,.jpeg,.png,.gif"
 				type="file" class="d-none"> <a href="#" id="fileUploadBtn"><img
 				width="35" src="/static/images/cm.jpg"></a>
-				<div id="fileName" class="ml-2 text-center"></div>
+				<div id="fileName"class="ml-2 text-center"></div>
 
 		</div>
 		
 		
-		<textarea class="mt-3" rows="5" cols="140" placeholder="내용을 입력하세요."></textarea>
+		<textarea class="mt-3" id="content" rows="5" cols="140" placeholder="내용을 입력하세요."></textarea>
 		
 		
 		<div class="mt-3 input-group d-none" id="priceDiv">
@@ -104,15 +104,45 @@ $(document).ready(function(){
 		//태그에 체크값이 없는 상황을 막기위해 자유버튼에 checked="checked"를 설정함
 		let tag = $('input[name=tag]:checked').val();
 		let title = $('#title').val().trim();
-		
+		let content =$('#content').val();
+		let price =$('#price').val();
 		
 		if(title == ''){
 			alert('제목을 입력하세요.');
 			return;
 		}
 		
-		alert(tag+" "+ title);	
 		
+		alert(tag+" "+ title+" "+content+" "+$('input[name=file]')[0].files[0]+" "+price);
+		
+		let formData = new FormData();
+		formData.append("tag",tag);
+		formData.append("title",title);
+		formData.append("content",content);
+		formData.append("file",$('input[name=file]')[0].files[0]);
+		formData.append("price",price);
+		
+		$.ajax({
+			method:'POST',
+			url:'/post/post_create',
+			data:{"tag":tag, "title":title,"content":content,"file":$('input[name=file]')[0].files[0],
+				"price":price},
+				processData:false,
+				contentType:false,
+			success:function(data){
+				if(data.result=='success'){
+				alert('작성 완료');
+				location.href='user/update';
+				}else{
+				alert('먼저 로그인을 하세요.');		
+				}
+			},
+			error:function(e){
+				alert('에러발생');
+			}
+			
+			
+		});
 		
 	});
 	
