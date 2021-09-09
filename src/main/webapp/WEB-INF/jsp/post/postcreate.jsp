@@ -40,7 +40,7 @@
 		
 		
 		<div class="mt-3 input-group d-none" id="priceDiv">
-			<input type="text" id="price" class="form-control col-6" placeholder="금액을 입력하세요">
+			<input type="text" id="price" class="form-control col-6" placeholder="금액을 입력하세요" value="">
 			<span class="input-group-text input-group-prepend">point</span>
 		</div>
 		
@@ -93,7 +93,8 @@ $(document).ready(function(){
 		if(tag == '유료'){
 			$('#priceDiv').removeClass('d-none');
 		}else{
-			$('#priceDiv').addClass('d-none');			
+			$('#priceDiv').addClass('d-none');	
+			$('#price').val('');		
 		}
 		
 	});
@@ -112,6 +113,11 @@ $(document).ready(function(){
 			return;
 		}
 		
+		if(price ==null){
+			alert('값 없다.');
+			
+		}
+		
 		
 		alert(tag+" "+ title+" "+content+" "+$('input[name=file]')[0].files[0]+" "+price);
 		
@@ -123,17 +129,19 @@ $(document).ready(function(){
 		formData.append("price",price); 
 		
 		$.ajax({
-			method:'POST',
+			type:'post',
 			url:'/post/post_create',
-			data:{formData},
+			data:formData,
 				processData:false,
 				contentType:false,
 				enctype: 'multipart/form-data', 
 			success:function(data){
 				if(data.result=='success'){
 				alert('작성 완료');
-				location.href='user/update';
-				}else{
+				location.href='/user/update';
+				}else if(data.result=='tag'){
+				alert('태그 비움');		
+				} else{
 				alert('먼저 로그인을 하세요.');		
 				}
 			},

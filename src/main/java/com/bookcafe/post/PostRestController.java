@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +23,14 @@ public class PostRestController {
 	private PostBO postBO;
 
 	
-	@RequestMapping("/post_create")
+	@PostMapping("/post_create")
 	public Map<String, String> postCreate(
-			@RequestParam("tag") String tag,
+			@RequestParam(value = "tag") String tag,
 			@RequestParam("title") String title,
 			@RequestParam("content") String content,
+			@RequestParam(value = "file", required = false)
 			MultipartFile file,
-			@RequestParam("price") int price,
+			@RequestParam(value = "price", required = false) Integer price,
 			HttpServletRequest request
 			){
 		HttpSession session = request.getSession();
@@ -38,6 +40,7 @@ public class PostRestController {
 		
 		Map<String, String> result = new HashMap<String, String>();
 		
+
 		if(userId ==null) {
 			result.put("result", "fail");
 			return result;		
