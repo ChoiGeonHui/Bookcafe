@@ -43,8 +43,7 @@ public class PostRestController {
 			return result;		
 		}
 		
-		
-		int row= postBO.createPost(userId, userName,tag,title, content, file, price);
+		int row= postBO.createPost(userId, userName, tag, title, content, file, price);
 		
 		if(row>0) {
 			result.put("result", "success");

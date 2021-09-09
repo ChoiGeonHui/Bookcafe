@@ -11,15 +11,15 @@
 
 		<div class="radio mt-3">
 		<b>태그</b>
-				<label class="radio-inline mx-2"><input type="radio" name="tag"value="자유" checked="checked">자유</label> 
-				<label class="radio-inline mx-2"><input type="radio" name="tag"value="후기">후기</label> 
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="자유" checked="checked">자유</label> 
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="후기">후기</label> 
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="질문">질문</label>
-				 <label	class="radio-inline mx-2"><input type="radio" name="tag"value="창작">창작</label>
+				 <label	class="radio-inline mx-2"><input type="radio" name="tag" value="창작">창작</label>
 				 <label class="radio-inline mx-2"><input type="radio" name="tag" value="요청">요청</label> 
 				
 				<c:if test="${userClass eq 'admin'}">				
-				<label class="radio-inline mx-2"><input type="radio" name="tag"value="공지">공지</label>
-				<label class="radio-inline mx-2"><input type="radio" name="tag"value="유료">상품(유료)</label>		
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="공지">공지</label>
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="유료">상품(유료)</label>		
 				</c:if>
 		</div>
 		<div class="mt-3 input-group">
@@ -120,15 +120,15 @@ $(document).ready(function(){
 		formData.append("title",title);
 		formData.append("content",content);
 		formData.append("file",$('input[name=file]')[0].files[0]);
-		formData.append("price",price);
+		formData.append("price",price); 
 		
 		$.ajax({
 			method:'POST',
 			url:'/post/post_create',
-			data:{"tag":tag, "title":title,"content":content,"file":$('input[name=file]')[0].files[0],
-				"price":price},
+			data:{formData},
 				processData:false,
 				contentType:false,
+				enctype: 'multipart/form-data', 
 			success:function(data){
 				if(data.result=='success'){
 				alert('작성 완료');

@@ -19,7 +19,7 @@ public class PostBO {
 	@Autowired
 	FileManagerSurvice fileManagerSurvice;
 	
-	public int createPost(int userId,String userName,String tag,String title,String content,
+	public int createPost(int userId, String userName, String tag, String title, String content,
 			MultipartFile file,int price) {
 		
 		String imagePath = "";	
@@ -32,7 +32,7 @@ public class PostBO {
 		}
 		
 		
-		return postDAO.createPost(userId,tag, title, content, imagePath, price);
+		return postDAO.createPost(userId, tag, title, content, imagePath, price);
 	}
 
 }
