@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.bookcafe.buy.dao.BuyDAO">
+ <mapper namespace="com.bookcafe.like.dao.LikeDAO">
  
+ <select id="selectlikeByPostId" parameterType="int" resultType="int">
+	SELECT
+	COUNT(1)
+	FROM
+	`like`
+	WHERE
+	postId = #{postId}
+ </select>
+ 
+ 
+ <select id="selectlikeByPostIdboolean" parameterType="int" resultType="int">
+	SELECT
+	COUNT(1)
+	FROM
+	`like`
+	WHERE
+	postId = #{postId}
+	AND
+	userId = #{userId}	
+ </select>
  </mapper>

@@ -2,6 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
- <mapper namespace="com.bookcafe.buy.dao.BuyDAO">
+ <mapper namespace="com.bookcafe.comment.dao.CommentDAO">
+ 
+ <select id="selectCommentByPostId" parameterType="int" 
+ resultType="com.bookcafe.comment.model.Comment">
+ 
+	SELECT
+	id,
+	postId,
+	userId,
+	userName,
+	content,
+	createdAt,
+	updatedAt
+	FROM
+	comment
+	WHERE
+	postId = #{postId}
+ 
+ </select>
  
  </mapper>

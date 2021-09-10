@@ -91,13 +91,9 @@ $(document).ready(function(){
 		let	tag = $(this).val();
 		
 		if(tag == '유료'){
-			$('#price').removeClass('d-none');
-			/* $('#price').attr('disabled', false);
-			$('#price').attr('placeholder','금액을 입력하세요.'); */
+			$('#priceDiv').removeClass('d-none');
 		}else{
-			$('#price').addClass('d-none');
-			/* $('#price').attr('disabled', true);	
-			$('#price').attr('placeholder','유료 태그만 입력 가능.'); */
+			$('#priceDiv').addClass('d-none');
 			$('#price').val('');	
 		}
 		

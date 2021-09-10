@@ -4,4 +4,19 @@
  
  <mapper namespace="com.bookcafe.buy.dao.BuyDAO">
  
+ <select id="selectByUserIdPostId" parameterType="map"
+  resultType="int">
+  
+  SELECT
+  COUNT(1)
+  FROM
+  `buy`
+  WHERE
+  userId =#{userId}
+  AND
+  postId = #{postId}
+ 
+ 
+ </select>
+ 
  </mapper>

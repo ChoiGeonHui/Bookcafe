@@ -5,6 +5,39 @@
  <mapper namespace="com.bookcafe.post.dao.PostDAO">
  
  
+ <select id="selectPostList" parameterType="string"
+  resultType="com.bookcafe.post.model.Post">
+
+	SELECT
+	id,
+	userId,
+	tag,
+	title,
+	content,
+	imagePath,
+	price,
+	createdAt,
+	updatedAt
+	FROM
+	post
+	
+	<if test="tag != null">
+	WHERE
+	tag = #{tag}
+	
+	</if>
+	
+	ORDER BY
+	id
+	DESC
+ 
+ 
+ </select>
+ 
+ 
+ 
+ 
+ 
  <insert id="createPost" parameterType="map">
 
 	INSERT

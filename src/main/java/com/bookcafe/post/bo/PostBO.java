@@ -1,5 +1,7 @@
 package com.bookcafe.post.bo;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bookcafe.common.FileManagerSurvice;
 import com.bookcafe.post.dao.PostDAO;
+import com.bookcafe.post.model.Post;
 
 @Service
 public class PostBO {
@@ -33,6 +36,11 @@ public class PostBO {
 		
 		
 		return postDAO.createPost(userId, tag, title, content, imagePath, price);
+	}
+	
+	
+	public List<Post> selectList(String tag){
+		return postDAO.selectPostList(tag);
 	}
 
 }
