@@ -34,10 +34,13 @@
 			<tbody>
 			<c:forEach items="${list}" var="list">
 			
-				<tr>
+				<tr class="">
 					<td class="col-1">${list.post.id}</td>
 					<td class="col-1">${list.post.tag}</td>
-					<td class="col-4">${list.post.title}</td>
+					<td class="col-4">
+					<a class="btn" href="/post/post_detail_view?postId=${list.post.id}">${list.post.title}</a>
+					
+					</td>
 					<td class="col-2">${list.user.name}</td>
 					
 					<td class="col-2">
@@ -48,6 +51,7 @@
 					<td class="col-1">${list.likeCount}</td>			
 
 				</tr>
+			
 			</c:forEach>
 
 
@@ -61,7 +65,14 @@
 	</div>
 
 </div>
-    
+
+
+<script type="text/javascript">
+
+
+
+
+</script>
     
     
     

@@ -5,6 +5,28 @@
  <mapper namespace="com.bookcafe.post.dao.PostDAO">
  
  
+ <select id="selectPostById" parameterType="int"
+ resultType="com.bookcafe.post.model.Post">
+ SELECT
+	id,
+	userId,
+	tag,
+	title,
+	content,
+	imagePath,
+	price,
+	createdAt,
+	updatedAt
+	FROM
+	post
+	WHERE
+	id = #{postId}
+ 
+ 
+ </select>
+ 
+ 
+ 
  <select id="selectPostList" parameterType="string"
   resultType="com.bookcafe.post.model.Post">
 

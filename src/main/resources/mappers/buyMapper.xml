@@ -19,4 +19,23 @@
  
  </select>
  
+ 
+ <insert id="insertBuylist" parameterType="map">
+	INSERT
+	INTO
+	`buy`
+	(
+	userId,
+	postId,
+	price
+	)
+	VALUES
+	(
+	#{userId},
+	#{postId},
+	#{price}
+	)
+ </insert>
+ 
+ 
  </mapper>

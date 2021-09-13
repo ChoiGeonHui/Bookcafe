@@ -69,9 +69,29 @@ public class ContentBO {
 		}
 		
 		
-		
-		
 		return contentlist;
 	}
+	
+	
+	public Content selectContent(int userId,int postId) {
+		
+		Content content = new Content();
+		content.setPost(postBO.selectPostById(postId));
+		content.setUser(userBO.selectUser(content.getPost().getUserId()));
+		content.setCommentList(commentBO.selectComment(postId));
+		content.setLikeCount(likeBO.likeConuntByPost(postId));
+		content.setLikefile(likeBO.likebooleanByPostUserId(postId, userId));
+		
+		boolean buyedPost = true;
+		if(content.getPost().getPrice()!=null) {
+			buyedPost = buyBO.checkBuyed(userId, postId);
+		}	
+		content.setBuyfile(buyedPost);
+		
+		
+		
+		return content;
+	}
+	
 
 }

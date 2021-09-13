@@ -89,11 +89,7 @@ public class UserRestController {
 		if(user != null) {
 			result.put("result", "success");
 			session.setAttribute("userId", user.getId());
-			session.setAttribute("userLoginId", user.getLoginId());
-			session.setAttribute("userName", user.getName());
-			session.setAttribute("userEmail", user.getEmail());
-			session.setAttribute("userPoint", user.getPoint());
-			session.setAttribute("userClass", user.getUserClass());
+			session.setAttribute("user", user);
 			
 		}else {
 			result.put("result", "fail");

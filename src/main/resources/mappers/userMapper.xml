@@ -117,6 +117,17 @@
  
  </update>
  
+ <update id="updateMinusPointByUserId" parameterType="map">
+
+	UPDATE
+	`user`
+	SET
+	`point` = point - #{point}
+	WHERE
+	`id` = #{userId}
+ 
+ </update>
+ 
  
  <update id="updateUserByColumns" parameterType="map">
 

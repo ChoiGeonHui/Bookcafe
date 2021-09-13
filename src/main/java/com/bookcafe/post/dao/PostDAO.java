@@ -20,6 +20,9 @@ public interface PostDAO {
 			@Param("price") Integer price
 			);
 	
+	public Post selectPostById(
+			int  postId);
+	
 	public List<Post> selectPostList(
 			String tag);
 

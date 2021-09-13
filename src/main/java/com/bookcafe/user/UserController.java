@@ -21,7 +21,15 @@ public class UserController {
 	
 	//회원가입
 	@RequestMapping("/user_signup_view")
-	public String sign_up(Model model) {
+	public String sign_up(Model model,
+			HttpServletRequest request) {
+		
+		HttpSession session =request.getSession();
+		
+		Integer userId =(Integer) session.getAttribute("userId");
+		if(userId!=null) {
+			return "redirect:/bookcafe/main";
+		}
 		
 		model.addAttribute("page", "user/signup");
 		return "templete/layout";
@@ -42,10 +50,9 @@ public class UserController {
 		HttpSession session = request.getSession();
 		
 		session.removeAttribute("userId");
-		session.removeAttribute("userLoginId");
 		session.removeAttribute("userName");
-		session.removeAttribute("userEmail");
-		session.removeAttribute("point");	
+		session.removeAttribute("userPoint");	
+		session.removeAttribute("userClass");	
 		
 		return "redirect:/user/user_signin_view";
 	
@@ -54,7 +61,18 @@ public class UserController {
 	
 	//포인트 충전
 	@RequestMapping("/user_point_view")
-	public String point(Model model) {
+	public String point(Model model,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		Integer userId = (Integer) session.getAttribute("userId");
+		User user = (User) session.getAttribute("user");
+		if(userId==null) {
+			return "redirect:/user/user_signin_view";
+		}
+		
+		model.addAttribute("userId", userId);
+		model.addAttribute("user", user);
 		model.addAttribute("page", "point/point");
 		return "templete/layout";
 	}
@@ -77,10 +95,8 @@ public class UserController {
 		Integer userId = (Integer) session.getAttribute("userId");
 		User user = userBO.selectUser(userId);
 		
-		session.setAttribute("userLoginId", user.getLoginId());
-		session.setAttribute("userName", user.getName());
-		session.setAttribute("userEmail", user.getEmail());
-		session.setAttribute("userPoint", user.getPoint());
+		session.setAttribute("userId", userId);
+		session.setAttribute("user", user);
 		
 		
 		return "redirect:/bookcafe/main";

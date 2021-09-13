@@ -38,6 +38,12 @@ public class UserBO {
 		return userDAO.updatePlusPointByUserId(userId, point);
 	}
 	
+	public int minusPointByUserId(int userId, int point) {
+		return userDAO.updateMinusPointByUserId(userId, point);
+	}
+	
+	
+	
 	public int updateUserByColumns(int userId, String password,String name,String email) {
 		return userDAO.updateUserByColumns(userId, password, name, email);
 	}

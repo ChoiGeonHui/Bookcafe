@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookcafe.timeline.bo.ContentBO;
 import com.bookcafe.timeline.domain.Content;
+import com.bookcafe.user.bo.UserBO;
+import com.bookcafe.user.model.User;
 
 @Controller
 @RequestMapping("/bookcafe")
 public class TimelineController {
-
+	
 	@Autowired
 	private ContentBO contentBO;
 
@@ -28,7 +30,6 @@ public class TimelineController {
 			) {
 
 		Integer userId = null;
-		int userPoint = 0;
 
 		HttpSession session = request.getSession();
 		userId = (Integer) session.getAttribute("userId");
@@ -36,21 +37,12 @@ public class TimelineController {
 		if (userId == null) {	
 			return "redirect:/user/user_signin_view";
 		}
-
-		String userloginId = (String) session.getAttribute("userloginId");
-		String userName = (String) session.getAttribute("userName");
-		String userEmail = (String) session.getAttribute("userEmail");
-		userPoint = (Integer) session.getAttribute("userPoint");
-		String userClass = (String) session.getAttribute("userClass");
-
 		List<Content> list = contentBO.contentList(userId,pageTag);
-
-		model.addAttribute("userId", userId);
-		model.addAttribute("userloginId", userloginId);
-		model.addAttribute("userName", userName);
-		model.addAttribute("userEmail", userEmail);
-		model.addAttribute("userPoint", userPoint);
-		model.addAttribute("userClass", userClass);
+		
+		User user = (User) session.getAttribute("user");
+		
+		model.addAttribute("userId", userId);		
+		model.addAttribute("user", user);
 		model.addAttribute("list", list);
 		model.addAttribute("page", "main/timeline");
 

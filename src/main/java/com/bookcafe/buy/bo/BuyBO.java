@@ -16,4 +16,10 @@ public class BuyBO {
 		
 		return row>0? true:false;
 	};
+	
+	
+	public int insertPost(int userId,int postId,int price) {
+		return buyDAO.insertBuylist(userId, postId, price);
+	}
+	
 }

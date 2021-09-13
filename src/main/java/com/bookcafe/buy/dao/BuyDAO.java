@@ -10,5 +10,11 @@ public interface BuyDAO {
 			@Param("userId") int userId,
 			@Param("postId") int postId
 			);
+	
+	public int insertBuylist(
+			@Param("userId") int userId,
+			@Param("postId") int postId,
+			@Param("price") int price
+			);
 
 }

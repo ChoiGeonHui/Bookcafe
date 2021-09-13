@@ -26,16 +26,16 @@
 	<div class="col-3">
 		<c:if test="${not empty userId}">
 			<div class="col-12">
-				<span><a href="/user/user_update_view">${userName}</a> 
-				<c:if test="${userClass eq 'admin'}">
+				<span><a href="/user/user_update_view">${user.name}</a> 
+				<c:if test="${user.userClass eq 'admin'}">
 				관리자님 어서오세요.
 				</c:if> 
-				<c:if test="${userClass eq 'normal'}">
+				<c:if test="${user.userClass eq 'normal'}">
 				회원님 안녕하세요~
 				</c:if> 
 				</span>
 				<div class="d-flex mt-2">
-					<b class="col-8 text-center">${userPoint} point</b> <a
+					<b class="col-8 text-center">${user.point} point</b> <a
 						href="/user/user_point_view" class="btn btn-primary col-3">충전</a>
 				</div>
 				<div class="d-flex mt-2">

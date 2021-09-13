@@ -39,6 +39,11 @@ public interface UserDAO {
 			@Param("userId") int userId,
 			@Param("point") int point);
 	
+	//포인트 감소
+	public int updateMinusPointByUserId(
+			@Param("userId") int userId,
+			@Param("point") int point);
+	
 	
 	//회원 정보 수정
 	public int updateUserByColumns(

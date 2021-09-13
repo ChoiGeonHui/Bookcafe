@@ -39,6 +39,11 @@ public class PostBO {
 	}
 	
 	
+	public Post selectPostById(int postId){
+		return postDAO.selectPostById(postId);
+	}
+	
+	
 	public List<Post> selectList(String tag){
 		return postDAO.selectPostList(tag);
 	}
