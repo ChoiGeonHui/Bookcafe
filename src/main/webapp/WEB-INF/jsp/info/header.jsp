@@ -43,7 +43,7 @@
 						href="/user/user/log_out" class="btn btn-secondary mx-2">로그아웃</a>
 				</div>
 
-				<c:if test="${userClass eq 'admin'}">
+				<c:if test="${user.userClass eq 'admin'}">
 					<div class="d-flex justify-content-center mt-2">
 						<a href="#" class="btn btn-dark mx-2">사용자 목록</a>
 					</div>

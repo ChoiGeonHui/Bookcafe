@@ -87,4 +87,23 @@
  
  </insert>
  
+ <update id="updatePost" parameterType="map">
+
+	UPDATE `post`
+	SET
+	tag = #{tag},
+	title = #{title},
+	content = #{content},
+	<if test="imagePath != null">
+	imagePath =#{imagePath},
+	</if>
+	price = #{price},
+	updatedAt = now()
+	WHERE 
+	id = #{postId}
+	AND
+	userId = #{userId};
+ 
+ </update>
+ 
  </mapper>

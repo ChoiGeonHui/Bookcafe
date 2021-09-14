@@ -12,7 +12,7 @@
 			<h2>[ ${content.post.title } ]</h2>
 		</div>
 
-		<div class="d-flex justify-content-between col-12 ml-3">
+		<div class="d-flex justify-content-between align-items-center col-12 ml-3">
 			<b>${content.user.name}</b>
 			<b id="createrId" class="d-none">${content.user.id}</b>
 			
@@ -22,9 +22,26 @@
 			 </b> 
 			 <span> <fmt:formatDate value="${content.post.createdAt}"
 					pattern="HH:mm:ss" /></span>
+
+
 			</div>
 
 		</div>
+		
+		<div class="bg-light d-flex justify-content-end">
+		
+				<c:if test="${content.post.userId eq userId}">
+					<a href="#" class="moreBtn" data-toggle="modal"
+						data-target="#moreSet" data-post-name="${content.user.name}"
+						data-post-id="${content.post.id}"
+						data-post-image="${content.post.imagePath}"> <img
+						height="30px" alt="더보기" src="/static/images/moreicon.jpg">
+					</a>
+				</c:if>
+		
+		
+		</div>
+		
 		
 		
 		<div class="my-5">
@@ -32,7 +49,7 @@
 			<c:choose>
 				<c:when test="${content.buyfile}">
 					<c:if test="${not empty content.post.imagePath}">
-						<img alt="이미지" src="${content.post.imagePath }">
+						<img alt="이미지" src="${content.post.imagePath }" width="100%">
 					</c:if>
 					<span> ${content.post.content} </span>
 				</c:when>
@@ -40,7 +57,7 @@
 				<c:when test="${content.user.id == userId}">
 
 					<c:if test="${not empty content.post.imagePath}">
-						<img alt="이미지" src="${content.post.imagePath}">
+						<img alt="이미지" src="${content.post.imagePath}" width="100%">
 					</c:if>
 					<span> ${content.post.content} </span>
 
@@ -82,11 +99,33 @@
 
 </div>
 
+<div class="modal" id="moreSet" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<%-- Modal 창 안에 내용 넣기 --%>
+			<div class="w-100">
+				<div class="my-3 text-center">
+					<a href="#" class="del-post d-block">삭제하기</a><%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
+				</div>
+				<div class="border-top py-3  text-center">
+					<a href="/post/post_update_view?postId=${content.post.id }" class="update-post d-block">수정하기</a><%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
+				</div>
+				<div class="border-top py-3 text-center">
+					<%-- data-dismiss: 모달창 닫힘 --%>
+					<a href="#" class="cancel d-block" data-dismiss="modal">취소</a> <%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	
 	
 	$('#payBtn').on('click',function(e){
 		e.preventDefault();

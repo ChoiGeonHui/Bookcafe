@@ -20,6 +20,16 @@ public interface PostDAO {
 			@Param("price") Integer price
 			);
 	
+	public int updatePost(
+			@Param("userId") int userId,
+			@Param("postId") int postId,
+			@Param("tag") String tag,
+			@Param("title") String title,
+			@Param("content") String content,
+			@Param("imagePath") String imagePath,
+			@Param("price") Integer price
+			);
+	
 	public Post selectPostById(
 			int  postId);
 	

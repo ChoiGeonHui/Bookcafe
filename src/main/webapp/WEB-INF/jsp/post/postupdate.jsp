@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="d-flex justify-content-start col-12">
 	
 	<div class="col-12 ml-3">
-		<h3>글쓰기</h3>
+		<h3>글 수정</h3>
 
 		<div class="radio mt-3">
+		<b id="postId" class="d-none">${content.post.id}</b>
+		<b id="selectedtag">${content.post.tag}</b>
 		<b>태그</b>
-		<b id="userName" class="d-none">${user.name}</b>
-				<label class="radio-inline mx-2"><input type="radio" name="tag" value="자유" checked="checked">자유</label> 
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="자유">자유</label> 
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="후기">후기</label> 
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="질문">질문</label>
 				 <label	class="radio-inline mx-2"><input type="radio" name="tag" value="창작">창작</label>
@@ -22,10 +22,12 @@
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="공지">공지</label>
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="유료">상품(유료)</label>		
 				</c:if>
+				
+				
 		</div>
 		<div class="mt-3 input-group">
 			<span class="input-group-text input-group-append">제목</span>
-			<input type="text" id="title" class="form-control" placeholder="제목을 입력하세요.">
+			<input type="text" id="title" class="form-control" placeholder="제목을 입력하세요." value="${content.post.title }">
 		</div>
 		<div class="d-flex mt-3">
 		<b class="mr-4">사진첨부</b>
@@ -37,17 +39,17 @@
 		</div>
 		
 		
-		<textarea class="mt-3" id="content" rows="5" cols="140" placeholder="내용을 입력하세요."></textarea>
+		<textarea class="mt-3" id="content" rows="5" cols="140" placeholder="내용을 입력하세요.">${content.post.content}</textarea>
 		
 		
 		<div class="mt-3 input-group d-none" id="priceDiv">
-			<input type="text" id="price" class="form-control col-6" placeholder="금액을 입력하세요">
+			<input type="text" id="price" class="form-control col-6" placeholder="금액을 입력하세요" value="${content.post.price }">
 			<span class="input-group-text input-group-prepend">point</span>
 		</div>
 		
 	<div class="d-flex mt-3">
 	<a href="/bookcafe/main" class="btn btn-danger mx-2 col-2">취소</a>
-	<button id="postcreateBtn" class="btn btn-info mx-2 col-2">등록</button>
+	<button id="postupdateBtn" class="btn btn-info mx-2 col-2">수정</button>
 	</div>
 
 	</div>
@@ -56,8 +58,23 @@
 
 </div>
 
-<script>
+<script type="text/javascript">
+
 $(document).ready(function(){
+	
+	let selectedtag = $('#selectedtag').text();
+	
+	$('input[name=tag]:radio[value='+selectedtag+']').prop('checked', true); 
+	
+	let	tag = $('input[name=tag]:checked').val();
+	if(tag == '유료'){
+		$('#priceDiv').removeClass('d-none');
+	}else{
+		$('#priceDiv').addClass('d-none');
+		$('#price').val('');	
+	}
+	
+	
 	$('#fileUploadBtn').on('click',function(e){
 		e.preventDefault();
 		$('#file').click();
@@ -68,7 +85,7 @@ $(document).ready(function(){
 	$('#file').on('change',function(e){
 		let fileName =e.target.files[0].name;
 		
-		//확장자
+
 		let ext = fileName.split('.');
 		
 		if(ext.length<2 || 
@@ -85,7 +102,6 @@ $(document).ready(function(){
 	});
 	
 	
-	
 	$('input[name=tag]').on('change',function(e){
 		e.preventDefault();
 		
@@ -100,32 +116,17 @@ $(document).ready(function(){
 		
 	});
 	
-	
-	$('#postcreateBtn').on('click',function(e){
+	$('#postupdateBtn').on('click',function(e){
+		e.preventDefault();
 		
-		//태그에 체크값이 없는 상황을 막기위해 자유버튼에 checked="checked"를 설정함
-		let userName =$('#userName').text();
-		let tag = $('input[name=tag]:checked').val();
+		let postId =$('#postId').text();
+		let	tag = $('input[name=tag]:checked').val();
 		let title = $('#title').val().trim();
 		let content =$('#content').val();
 		let price =$('#price').val();
 		
-		if(title == ''){
-			alert('제목을 입력하세요.');
-			return;
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		alert(tag+" "+ title+" "+content+" "+$('input[name=file]')[0].files[0]+" "+price);
-		
 		let formData = new FormData();
-		formData.append("userName",userName);
+		formData.append("postId",postId);
 		formData.append("tag",tag);
 		formData.append("title",title);
 		formData.append("content",content);
@@ -133,15 +134,16 @@ $(document).ready(function(){
 		formData.append("price",price); 
 		
 		$.ajax({
+			
 			type:'post',
-			url:'/post/post_create',
+			url:'/post/post_update',
 			data:formData,
 				processData:false,
 				contentType:false,
 				enctype: 'multipart/form-data', 
 			success:function(data){
 				if(data.result=='success'){
-				alert('작성 완료');
+				alert('수정 완료');
 				location.href='/user/update';
 				}else if(data.result=='price'){
 				alert('금액 비움');		
@@ -154,14 +156,17 @@ $(document).ready(function(){
 			}
 			
 			
+			
 		});
-		
 	});
 	
 	
 	
 	
 	
-
 });
+
 </script>
+
+
+

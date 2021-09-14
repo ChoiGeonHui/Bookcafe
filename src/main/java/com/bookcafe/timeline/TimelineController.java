@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookcafe.timeline.bo.ContentBO;
 import com.bookcafe.timeline.domain.Content;
-import com.bookcafe.user.bo.UserBO;
 import com.bookcafe.user.model.User;
 
 @Controller

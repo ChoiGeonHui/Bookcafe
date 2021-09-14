@@ -25,7 +25,7 @@ public class PostBO {
 	public int createPost(int userId, String userName, String tag, String title, String content,
 			MultipartFile file,Integer price) {
 		
-		String imagePath = "";	
+		String imagePath = null;	
 		if (file != null) {
 			try {
 				imagePath = fileManagerSurvice.saveFile(userName, file);
@@ -37,6 +37,35 @@ public class PostBO {
 		
 		return postDAO.createPost(userId, tag, title, content, imagePath, price);
 	}
+	
+	
+	
+	public int updatePost(int userId, String userName,int postId, String tag, String title, String content,
+			MultipartFile file,Integer price) {
+		
+		String imagePath = null;	
+		if (file != null) {
+			try {
+				
+				Post post = postDAO.selectPostById(postId);
+				
+				imagePath = fileManagerSurvice.saveFile(userName, file);
+				
+				String oldImagePath = post.getImagePath();
+				
+				if(oldImagePath !=null && imagePath!=null) {
+					fileManagerSurvice.deleteFile(oldImagePath);			
+				}		
+				
+			} catch (Exception e) {
+				log.error("파일 업로드 :"+e.getMessage());
+			}
+		}
+		
+		
+		return postDAO.updatePost(userId, postId, tag, title, content, imagePath, price);
+	}
+	
 	
 	
 	public Post selectPostById(int postId){
