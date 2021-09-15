@@ -18,7 +18,7 @@ import com.bookcafe.user.model.User;
 
 @RestController
 @RequestMapping("/buy")
-public class buyRestController {
+public class BuyRestController {
 	
 	@Autowired
 	private BuyBO buyBO;

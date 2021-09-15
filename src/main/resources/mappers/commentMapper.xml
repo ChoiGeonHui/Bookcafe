@@ -22,4 +22,37 @@
  
  </select>
  
+ 
+ <insert id="insertComment" parameterType="map">
+	INSERT
+	INTO
+	comment(
+	postId,
+	userId,
+	userName,
+	content
+	)
+	VALUES
+	(
+	#{postId},
+	#{userId},
+	#{userName},
+	#{content}
+	)
+ 
+ </insert>
+ 
+ 
+ <delete id="deleteComment" parameterType="map">
+	DELETE
+	FROM
+	comment
+	WHERE
+	id = #{id}
+	AND
+	postId = ${postId}
+	AND
+	userId = ${userId} 
+ </delete>
+ 
  </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -10,6 +11,7 @@
 		<div class="d-flex col-12 ml-3">
 			<h2>[ ${content.post.tag } ]</h2>
 			<h2>[ ${content.post.title } ]</h2>
+			<span class="d-none" id="postId">${content.post.id}</span>
 		</div>
 
 		<div class="d-flex justify-content-between align-items-center col-12 ml-3">
@@ -20,8 +22,7 @@
 			<b>작성일자 : <fmt:formatDate
 					value="${content.post.createdAt}" pattern="yyyy년 MM월 dd일" />
 			 </b> 
-			 <span> <fmt:formatDate value="${content.post.createdAt}"
-					pattern="HH:mm:ss" /></span>
+			 <span> <fmt:formatDate value="${content.post.createdAt}" pattern="HH:mm:ss" /></span>
 
 
 			</div>
@@ -47,21 +48,47 @@
 		<div class="my-5">
 
 			<c:choose>
-				<c:when test="${content.buyfile}">
+				<c:when test="${content.buyfile or content.user.id == userId}">
 					<c:if test="${not empty content.post.imagePath}">
 						<img alt="이미지" src="${content.post.imagePath }" width="100%">
 					</c:if>
 					<span> ${content.post.content} </span>
+					<hr>
+					<div class="bg-light my-3 d-flex">
+					<img alt="댓글" src="/static/images/tolk.jpg" height="25px" width="25px">
+						<b class="ml-2">댓글</b>
+					</div>
+					<div class="my-2">
+					
+					<c:forEach var="comment" items="${content.commentList}">
+						<div>
+							<b>${comment.userName}</b><br> <span>${comment.content }</span><br>
+							
+							 <small	class="text-secondary">
+									<fmt:formatDate value="${comment.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
+							 </small>
+
+							<c:if test="${comment.userId eq userId}">
+								<a href="#" data-comment-id="${comment.id}" id="delComment"> <small>삭제하기</small></a>
+							</c:if>
+						</div>
+					</c:forEach>
+					</div>
+					<hr>
+					<div>
+					<b>댓글 작성</b>
+					<div class="input-group">
+					<input type="text" id="content" class="form-control">
+							<div class="input-group-text input-group-prepend">
+								<button id="insertComment" class="btn">작성하기</button>
+							</div>
+						</div>
+							
+					</div>
+
 				</c:when>
 				
-				<c:when test="${content.user.id == userId}">
-
-					<c:if test="${not empty content.post.imagePath}">
-						<img alt="이미지" src="${content.post.imagePath}" width="100%">
-					</c:if>
-					<span> ${content.post.content} </span>
-
-				</c:when>
+				
 
 				<c:otherwise>
 					<div class="text-center">
@@ -86,13 +113,6 @@
 
 		</div>
 		
-		
-		
-		<div class="my-2">
-		
-		
-		
-		</div>	
 
 	</div>
 
@@ -125,6 +145,64 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	$('#insertComment').on('click',function(e){
+		e.preventDefault();
+		let postId = $('#postId').text();
+		let content = $('#content').val();
+		
+		if(content==''){
+				alert('댓글을 작성하세요.');
+				return;
+		}
+		
+		$.ajax({
+			type:'post',
+			url:'/comment/write_comment',
+			data:{'postId':postId,'content':content},
+			success:function(data){
+				if(data.result=='success'){
+					alert('작성 완료');
+					location.reload();
+				}else{
+					alert('오류가 발생하였습니다.');
+				}
+				
+			},
+			error:function(){
+				alert('에러발생.');
+			}
+		})
+	});
+	
+	
+	//댓글 삭제
+	$('#delComment').bind('click',function(e){
+		e.preventDefault();	
+		let commentId = $(this).data('comment-id');
+		let postId = $('#postId').text();
+		
+		$.ajax({
+			type:'post',
+			data:{'id':commentId,'postId':postId},
+			url:'/comment/delete_comment',
+			success:function(data){
+				if(data.result=='success'){
+					alert('삭제 완료');
+					location.reload();
+				}else{
+					alert('오류가 발생하였습니다.');
+				}
+			},
+			error:function(e){
+				alert('오류발생');
+			}
+		});
+		
+		
+		
+		
+	});
+	
 	
 	
 	$('#payBtn').on('click',function(e){
@@ -147,7 +225,7 @@ $(document).ready(function(){
 				if(data.result == 'success'){
 				alert('결제 완료');
 				location.reload();
-				
+				//새로고침
 				}else if(data.result == 'noMoney'){
 				alert('잔액이 부족합니다. 먼저 충전을 하세요.');					
 				location.href = '/user/user_point_view';

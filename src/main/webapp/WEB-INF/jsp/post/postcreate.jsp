@@ -115,15 +115,6 @@ $(document).ready(function(){
 			return;
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		alert(tag+" "+ title+" "+content+" "+$('input[name=file]')[0].files[0]+" "+price);
-		
 		let formData = new FormData();
 		formData.append("userName",userName);
 		formData.append("tag",tag);
