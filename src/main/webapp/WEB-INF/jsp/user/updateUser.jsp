@@ -26,7 +26,7 @@
 			<tr>
 				<td>이름</td>
 				<td><input type="text" id="name" class="form-control"
-					placeholder="이름을 입력하세요" value="${userName}"></td>
+					placeholder="이름을 입력하세요" value="${user.name}"></td>
 
 			</tr>
 

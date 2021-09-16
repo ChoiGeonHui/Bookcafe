@@ -170,7 +170,56 @@ public class UserRestController {
 		return result;
 	}
 	
+	/**
+	 *  유저 인증
+	 * @param loginId
+	 * @param name
+	 * @param email
+	 * @return
+	 */
+	@RequestMapping("/user_find")
+	public Map<String, String> findUser(
+			@RequestParam("loginId") String loginId,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email){
+		
+		Map<String, String> result = new HashMap<String, String>();
+		
+		Integer row =null;	
+		row = userBO.findUser(loginId, name, email);
+
+			
+		if(row !=null) {
+			result.put("result", "success");
+			result.put("userNum", ""+row+"");
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
+	}
 	
+	@PostMapping("/user_Password_update")
+	public Map<String, String> userPasswordUpdate(
+			@RequestParam("userId") int id,
+			@RequestParam("password") String password){
+		
+		Map<String, String> result = new HashMap<String, String>();
+		
+		String encrytpassword = "";
+		
+		if(password != null) {
+			encrytpassword = EncryptUtils.md5(password);
+		}
+		
+		int row = userBO.updateUserByIdSetPassword(id, encrytpassword);	
+		
+		if(row >0) {
+			result.put("result", "success");
+		}
+		
+		return result;
+	}
 	
 
 }

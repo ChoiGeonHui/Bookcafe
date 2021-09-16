@@ -54,6 +54,25 @@
 					</c:if>
 					<span> ${content.post.content} </span>
 					<hr>
+
+					<a href="#" id="likeSend">
+						<c:choose>
+							<c:when test="${content.likefile}">
+								<img alt="like" src="/static/images/heart2.jpg" height="25px"
+									width="25px">
+
+							</c:when>
+							<c:otherwise>
+								<img alt="like" src="/static/images/heart.jpg" height="25px"
+									width="25px">
+
+							</c:otherwise>
+						</c:choose>
+					</a>
+					
+					
+					추천 <span>${content.likeCount } 개</span>
+					<hr>
 					<div class="bg-light my-3 d-flex">
 					<img alt="댓글" src="/static/images/tolk.jpg" height="25px" width="25px">
 						<b class="ml-2">댓글</b>
@@ -145,6 +164,35 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	$('#likeSend').on('click',function(e){
+		e.preventDefault();
+		let postId = $('#postId').text();
+		
+		$.ajax({
+			type:'post',
+			url:'/like/like',
+			data:{'postId':postId},
+			success:function(data){
+				if(data.result=='insert'){
+					alert('추천하였습니다.');
+					location.reload();
+				}else if(data.result=='delete'){
+					alert('추천을 취소하였습니다.');
+					location.reload();
+				}else{
+					alert('오류가 발생하였습니다.');
+				}
+				
+			},
+			error:function(){
+				alert('에러발생.');
+			}
+			
+		});
+		
+	});
+	
+	
 	$('#insertComment').on('click',function(e){
 		e.preventDefault();
 		let postId = $('#postId').text();
@@ -211,10 +259,6 @@ $(document).ready(function(){
 		let createrId = $('#createrId').text();
 		let postId = $(this).val();
 		let price = $('#price').text();
-		
-		alert("price = "+price);
-		alert("createrId = "+createrId);
-		alert("postId = "+postId);
 		
 		
 		$.ajax({

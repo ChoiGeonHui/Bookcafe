@@ -17,13 +17,11 @@ public class UserBO {
 	}
 	public User selectUser(int userId) {
 		return userDAO.selectUser(userId);
-	}
-	
+	}	
 	
 	public int selectUserByloginId(String loginId) {
 		return userDAO.selectUserByloginIdCheck(loginId);
 	}
-	
 	
 	public User LoginUser(String loginId,String password) {
 		return userDAO.selectUserLogin(loginId, password);
@@ -42,10 +40,15 @@ public class UserBO {
 		return userDAO.updateMinusPointByUserId(userId, point);
 	}
 	
-	
-	
 	public int updateUserByColumns(int userId, String password,String name,String email) {
 		return userDAO.updateUserByColumns(userId, password, name, email);
 	}
+	
+	public Integer findUser(String loginId,String name,String email) {
+		return userDAO.findUserByLoginIdAndNameAndEmail(loginId, name, email);
+	}
 
+	public int updateUserByIdSetPassword(int id,String encrytpassword) {
+		return userDAO.updateUserByIdSetPassword(id, encrytpassword);
+	}
 }

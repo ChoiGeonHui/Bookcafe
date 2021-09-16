@@ -14,10 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bookcafe.post.bo.PostBO;
+import com.bookcafe.user.bo.UserBO;
+import com.bookcafe.user.model.User;
 
 @RestController
 @RequestMapping("/post")
 public class PostRestController {
+	
+	
+	@Autowired
+	private UserBO  userBO;
 	
 	@Autowired
 	private PostBO postBO;
@@ -36,12 +42,8 @@ public class PostRestController {
 			){
 		HttpSession session = request.getSession();
 		Integer userId = null;
-		userId = (Integer) session.getAttribute("userId");
-		
 		//유저 이름 넣기
-		
-		
-		
+		userId = (Integer) session.getAttribute("userId");	
 		Map<String, String> result = new HashMap<String, String>();
 		
 		if(userId ==null) {
@@ -77,10 +79,9 @@ public class PostRestController {
 			HttpServletRequest request
 			){
 		HttpSession session = request.getSession();
-		Integer userId = null;
-		userId = (Integer) session.getAttribute("userId");
-		String userName = (String) session.getAttribute("userName");
-		
+		Integer userId = null;	
+		userId = (Integer) session.getAttribute("userId");	
+		User user = userBO.selectUser(userId);
 		Map<String, String> result = new HashMap<String, String>();
 		
 		
@@ -98,7 +99,7 @@ public class PostRestController {
 		
 		
 		
-		int row= postBO.updatePost(userId, userName,postId, tag, title, content, file, price);
+		int row= postBO.updatePost(userId, user.getName(),postId, tag, title, content, file, price);
 		
 		if(row>0) {
 			result.put("result", "success");

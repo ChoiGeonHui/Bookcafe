@@ -24,4 +24,38 @@
 	AND
 	userId = #{userId}	
  </select>
+ 
+ 
+ 
+ <insert id="insertLike" parameterType="map">
+	INSERT
+	INTO
+	`like`(
+	postId,
+	userId
+	)
+	VALUES
+	(
+	#{postId},
+	#{userId}
+	)
+ 
+ 
+ </insert>
+ 
+ 
+ 
+ <delete id="deleteLike" parameterType="map">
+	DELETE
+	FROM
+	`like`
+	WHERE
+	postId = #{postId}
+	AND
+	userId = #{userId}	
+ 
+ 
+ 
+ </delete>
+ 
  </mapper>

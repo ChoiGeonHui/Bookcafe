@@ -9,8 +9,8 @@
     <div class="d-flex justify-content-start">
     
     <a href="/bookcafe/main" class="btn btn-light text-success mx-2">전체</a>
-    <a href="/bookcafe/main" class="btn btn-light text-success mx-2">공지</a>
-    <a href="/bookcafe/main" class="btn btn-light text-warning mx-2">추천글</a>
+    <a href="/bookcafe/main?tag=공지" class="btn btn-light text-success mx-2">공지</a>
+    <a href="/bookcafe/main?tag=추천글" class="btn btn-light text-warning mx-2">추천글</a>
     <a href="/bookcafe/main?tag=후기" class="btn btn-light text-success mx-2">후기</a>
     <a href="/bookcafe/main?tag=창작" class="btn btn-light text-success mx-2">창작</a>
     <a href="/bookcafe/main?tag=질문" class="btn btn-light text-success mx-2">질문</a>
@@ -34,21 +34,21 @@
 			<tbody>
 			<c:forEach items="${list}" var="list">
 			
-				<tr class="">
+				<tr>
 					<td class="col-1">${list.post.id}</td>
 					<td class="col-1">${list.post.tag}</td>
-					<td class="col-4">
+					<td class="col-5">
 					<a class="btn" href="/post/post_detail_view?postId=${list.post.id}">${list.post.title}</a>
 					
 					</td>
 					<td class="col-2">${list.user.name}</td>
 					
-					<td class="col-2">
+					<td class="col-1">
 					
 					<fmt:formatDate value="${list.post.createdAt}" pattern="yyyy-MM-dd"/>
 					
 					</td>
-					<td class="col-1">${list.likeCount}</td>			
+					<td class="col-1 text-center">${list.likeCount}</td>			
 
 				</tr>
 			

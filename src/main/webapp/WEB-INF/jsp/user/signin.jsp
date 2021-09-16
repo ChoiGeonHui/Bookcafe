@@ -38,7 +38,7 @@
 	</div>
 	
 	<div class="d-flex justify-content-center my-2">
-	<a href="#" class="btn btn-danger col-12">비밀번호 찾기</a>
+	<a href="/user/user_find_view" class="btn btn-danger col-12">비밀번호 찾기</a>
 	</div>
 
 </div>

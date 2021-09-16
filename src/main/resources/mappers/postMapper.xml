@@ -42,12 +42,16 @@
 	updatedAt
 	FROM
 	post
+	<choose>
+	<when test="tag =='추천글'">
 	
-	<if test="tag != null">
+	</when>
+	<when test="tag != null">
 	WHERE
 	tag = #{tag}
+	</when>
 	
-	</if>
+	</choose>
 	
 	ORDER BY
 	id

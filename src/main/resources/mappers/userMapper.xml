@@ -73,8 +73,20 @@
 	loginId = #{loginId}
 	AND
 	password = #{password}
+ </select>
  
  
+ <select id="findUserByLoginIdAndNameAndEmail" parameterType="map" resultType="integer">
+ SELECT
+ `id`
+ FROM
+ `user`
+WHERE
+`loginId` = #{loginId}
+AND
+`name` = #{name}
+AND 
+`email` = #{email}
  
  
  
@@ -161,6 +173,16 @@
 	`id` = #{userId}
  
  
+ </update>
+ 
+ 
+ <update id="updateUserByIdSetPassword" parameterType="map">
+	UPDATE
+	`user`
+	SET
+	`password` = #{password}
+	WHERE
+	`id` = #{id}
  </update>
  
  

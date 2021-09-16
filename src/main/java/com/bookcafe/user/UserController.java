@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookcafe.user.bo.UserBO;
 import com.bookcafe.user.model.User;
@@ -102,6 +103,23 @@ public class UserController {
 		return "redirect:/bookcafe/main";
 	}
 	
+	
+	@RequestMapping("/user_find_view")
+	public String user_find(Model model) {
+		
+		model.addAttribute("page", "user/userFind");
+		return "templete/layout";
+	}
+	
+	@RequestMapping("/user_updatePassword")
+	public String user_updatePassword(
+			@RequestParam("id") int id,
+			Model model) {
+		
+		model.addAttribute("id", id);
+		model.addAttribute("page", "user/findPassword");
+		return "templete/layout";
+	}
 
 
 }

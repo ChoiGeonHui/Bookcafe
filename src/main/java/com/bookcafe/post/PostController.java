@@ -41,8 +41,7 @@ public class PostController {
 		
 		HttpSession session = request.getSession();
 		Integer userId =(Integer) session.getAttribute("userId");
-		
-		
+			
 		if(userId==null) {
 			return "redirect:/user/user_signin_view";
 		}

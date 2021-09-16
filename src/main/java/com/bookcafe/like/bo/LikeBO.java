@@ -19,5 +19,22 @@ public class LikeBO {
 		int row= likeDAO.selectlikeByPostIdboolean(postId,userId);
 		return row>0? true:false;
 	}
+	
+	
+	public String OnOffLikeById(int postId, int userId) {
+		
+		Boolean likeLog = likebooleanByPostUserId(postId, userId);
+			
+		//이미 추전을 누른 여부에 따라 달라짐
+		if(likeLog) {
+			likeDAO.deleteLike(postId, userId);
+			return "delete";
+		}else {		
+			likeDAO.insertLike(postId, userId);
+			return "insert";
+		}
+
+		
+	}
 
 }

@@ -4,6 +4,7 @@ public class Like {
 	
 	private int postId;
 	private int userId;
+	
 	public int getPostId() {
 		return postId;
 	}

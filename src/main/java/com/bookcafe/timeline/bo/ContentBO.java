@@ -54,6 +54,11 @@ public class ContentBO {
 			int countlike = likeBO.likeConuntByPost(post.getId());
 			content.setLikeCount(countlike);
 			
+			
+			if(pagetag!=null&&pagetag.equals("추천글")&&countlike<5) {
+				continue;
+			}	
+			
 			boolean likeUser = likeBO.likebooleanByPostUserId(post.getId(), userId);
 			content.setLikefile(likeUser);
 			

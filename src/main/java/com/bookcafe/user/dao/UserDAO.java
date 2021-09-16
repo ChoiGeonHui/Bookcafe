@@ -53,4 +53,17 @@ public interface UserDAO {
 			@Param("email") String email
 			);
 	
+	//유저 인증
+	public Integer findUserByLoginIdAndNameAndEmail(
+			@Param("loginId") String loginId,
+			@Param("name") String name,
+			@Param("email") String email
+			);
+	
+	//비밀번호 변경
+	public int updateUserByIdSetPassword(
+			@Param("id") int id,
+			@Param("password") String password
+			);
+	
 }
