@@ -144,7 +144,7 @@
 			<%-- Modal 창 안에 내용 넣기 --%>
 			<div class="w-100">
 				<div class="my-3 text-center">
-					<a href="#" class="del-post d-block">삭제하기</a><%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
+					<a href="#" class="deletePost d-block">삭제하기</a><%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
 				</div>
 				<div class="border-top py-3  text-center">
 					<a href="/post/post_update_view?postId=${content.post.id }" class="update-post d-block">수정하기</a><%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
@@ -164,6 +164,41 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	//post삭제 하기
+	$('.deletePost').on('click',function(e){
+		e.preventDefault();
+		let postId = $('#postId').text();
+		
+		let waringAlert = confirm('정말 해당 게시물을 삭제하시겠습니까?');
+		
+		if(waringAlert == true){
+			alert('삭제.'+ postId);
+			
+			$.ajax({
+				type:'post',
+				url:'/post/post_delete',
+				data:{'postId':postId},
+				success:function(data){
+					if(data.result=='success'){
+						alert('삭제 하였습니다.');
+						location.href='/bookcafe/main';
+					}else{
+						alert('오류가 발생하였습니다.');
+					}
+					
+				},
+				error:function(){
+					alert('에러발생.');
+				}
+				
+			});
+		}
+		
+	});
+	
+	
+	
+	//추천 누르기
 	$('#likeSend').on('click',function(e){
 		e.preventDefault();
 		let postId = $('#postId').text();

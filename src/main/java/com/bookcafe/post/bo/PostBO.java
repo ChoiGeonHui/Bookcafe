@@ -66,6 +66,10 @@ public class PostBO {
 		return postDAO.updatePost(userId, postId, tag, title, content, imagePath, price);
 	}
 	
+	public int deletePostById(int userId, int postId) {
+		return postDAO.deletePost(userId, postId);
+	}
+	
 	
 	
 	public Post selectPostById(int postId){

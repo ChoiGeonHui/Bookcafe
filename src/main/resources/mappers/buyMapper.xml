@@ -37,5 +37,13 @@
 	)
  </insert>
  
+ <delete id="deleteBuyByPostId" parameterType="int">
+	DELETE
+	FROM
+	buy
+	WHERE
+	postId = ${postId}
+	
+ </delete>
  
  </mapper>

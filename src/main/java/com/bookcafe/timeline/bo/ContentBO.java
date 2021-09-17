@@ -1,5 +1,6 @@
 package com.bookcafe.timeline.bo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.bookcafe.buy.bo.BuyBO;
 import com.bookcafe.comment.bo.CommentBO;
 import com.bookcafe.comment.model.Comment;
+import com.bookcafe.common.FileManagerSurvice;
 import com.bookcafe.like.bo.LikeBO;
 import com.bookcafe.post.bo.PostBO;
 import com.bookcafe.post.model.Post;
@@ -34,7 +36,10 @@ public class ContentBO {
 	@Autowired
 	private BuyBO buyBO;
 	
+	@Autowired
+	FileManagerSurvice fileManagerSurvice;
 	
+	//게시글 리스트
 	public List<Content> contentList(int userId,String pagetag){
 		List<Content> contentlist = new ArrayList<>();
 		
@@ -77,7 +82,7 @@ public class ContentBO {
 		return contentlist;
 	}
 	
-	
+	//단일 게시물
 	public Content selectContent(int userId,int postId) {
 		
 		Content content = new Content();
@@ -96,6 +101,31 @@ public class ContentBO {
 		
 		
 		return content;
+	}
+	
+	//해당게시물,추천,댓글,buy 삭제
+	public String deleteContent(int userId, int postId) {
+		
+		Post post = postBO.selectPostById(postId);
+		
+		try {
+			fileManagerSurvice.deleteFile(post.getImagePath());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		likeBO.deleteLikeByPostId(postId);
+		commentBO.deleteCommetByPostId(postId);
+		buyBO.deleteBuyByPostId(postId);
+		int row = postBO.deletePostById(userId, postId);
+		
+		if(row>0) {
+			return "success";
+		}else {
+			return "fail";
+		}
 	}
 	
 

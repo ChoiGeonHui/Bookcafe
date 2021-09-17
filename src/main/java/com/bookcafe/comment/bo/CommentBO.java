@@ -25,5 +25,8 @@ public class CommentBO {
 	public int deleteCommet(int id,int postId,int userId) {
 		return commentDAO.deleteComment(id,postId, userId);
 	}
+	public void deleteCommetByPostId(int postId) {
+		commentDAO.deleteCommentByPostId(postId);
+	}
 
 }

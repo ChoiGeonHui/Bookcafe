@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bookcafe.post.bo.PostBO;
+import com.bookcafe.timeline.bo.ContentBO;
 import com.bookcafe.user.bo.UserBO;
 import com.bookcafe.user.model.User;
 
@@ -27,8 +28,11 @@ public class PostRestController {
 	
 	@Autowired
 	private PostBO postBO;
-
 	
+	@Autowired
+	private ContentBO contentBO;
+
+	//게시물 작성
 	@PostMapping("/post_create")
 	public Map<String, String> postCreate(
 			@RequestParam(value = "userName") String userName,
@@ -67,6 +71,17 @@ public class PostRestController {
 		return result;
 	}
 	
+	/**
+	 * 게시물 수정
+	 * @param postId
+	 * @param tag
+	 * @param title
+	 * @param content
+	 * @param file
+	 * @param price
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/post_update")
 	public Map<String, String> postUpdate(
 			@RequestParam("postId") int postId,
@@ -108,6 +123,33 @@ public class PostRestController {
 		return result;
 	}
 	
+	//게시물 삭제
+	@RequestMapping("/post_delete")
+	public Map<String, String> postDelete(
+			@RequestParam("postId") int postId,
+			HttpServletRequest request){
+		
+		HttpSession session = request.getSession();
+		Integer userId = null;	
+		userId = (Integer) session.getAttribute("userId");	
+		Map<String, String> result = new HashMap<String, String>();
+		
+		
+		if(userId ==null) {
+			result.put("result", "fail");
+			return result;		
+		}
+		
+		String  deleted = contentBO.deleteContent(userId, postId);
+		
+		if(deleted.equals("success")) {
+			result.put("result", "success");
+		}else {
+			result.put("result", "fail");
+			
+		}
+		return result;
+	};
 	
 
 }

@@ -54,7 +54,14 @@
 	AND
 	userId = #{userId}	
  
+ </delete>
  
+ <delete id="deleteLikeByPostId" parameterType="int">
+	DELETE
+	FROM
+	`like`
+	WHERE
+	postId = #{postId}
  
  </delete>
  

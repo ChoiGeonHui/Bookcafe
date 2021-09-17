@@ -156,9 +156,11 @@ public class UserRestController {
 			return result;
 		}
 		
-		String encrytpassword = "";
+		String encrytpassword = null;
 		
-		if(password != null) {
+		System.out.println("password+========================"+password);
+		
+		if(!password.equals("")) {
 			encrytpassword = EncryptUtils.md5(password);
 		}
 		int row = userBO.updateUserByColumns(userId, encrytpassword, name, email);	

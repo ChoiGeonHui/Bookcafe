@@ -22,4 +22,8 @@ public class BuyBO {
 		return buyDAO.insertBuylist(userId, postId, price);
 	}
 	
+	public void deleteBuyByPostId(int postId) {
+		buyDAO.deleteBuyByPostId(postId);
+	}
+	
 }

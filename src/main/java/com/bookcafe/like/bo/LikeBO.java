@@ -36,5 +36,9 @@ public class LikeBO {
 
 		
 	}
+	
+	public void deleteLikeByPostId(int postId) {
+		likeDAO.deleteLikeByPostId(postId);
+	}
 
 }
