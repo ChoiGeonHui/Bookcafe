@@ -1,5 +1,7 @@
 package com.bookcafe.user.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +15,8 @@ public interface UserDAO {
 	
 	
 	public User selectUser(int userId);
+	
+	public List<User> selectUserList();
 	
 	
 	//아이디 중복확인

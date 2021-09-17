@@ -13,11 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookcafe.timeline.bo.ContentBO;
 import com.bookcafe.timeline.domain.Content;
+import com.bookcafe.user.bo.UserBO;
 import com.bookcafe.user.model.User;
 
 @Controller
 @RequestMapping("/bookcafe")
 public class TimelineController {
+	
+	@Autowired
+	private UserBO userBO;
 	
 	@Autowired
 	private ContentBO contentBO;
@@ -46,6 +50,16 @@ public class TimelineController {
 		model.addAttribute("page", "main/timeline");
 
 		return "templete/layout";
+	}
+	
+	
+	@RequestMapping("/userlist")
+	public String userListView(Model model) {
+		List<User> userlist  = userBO.selectUserList();
+		model.addAttribute("userlist", userlist);
+		model.addAttribute("page", "main/userList");
+		return "templete/layout";
+		
 	}
 
 }

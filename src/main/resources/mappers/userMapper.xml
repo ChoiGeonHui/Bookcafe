@@ -39,6 +39,27 @@
 	
  </select>
  
+ <select id="selectUserList"
+ resultType="com.bookcafe.user.model.User">
+	SELECT
+	id,
+	loginId,
+	password,
+	name,
+	email,
+	point,
+	userClass,
+	createdAt,
+	updatedAt
+	FROM
+	`user`
+	WHERE
+	userClass = 'normal'
+	or
+	userClass = 'black'
+	
+ </select>
+ 
  
  <select id="selectUserByloginIdCheck" parameterType="string"
  resultType="int">
