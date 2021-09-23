@@ -19,18 +19,18 @@ public interface UserDAO {
 	public List<User> selectUserList();
 	
 	
-	//ì•„ì´ë”” ì¤‘ë³µí™•ì¸
+	//¾ÆÀÌµğ Áßº¹È®ÀÎ
 	public int selectUserByloginIdCheck(
 			@Param("loginId") String loginId);
 	
-	//ë¡œê·¸ì¸
+	//·Î±×ÀÎ
 	public User selectUserLogin(
 			@Param("loginId") String loginId,
 			@Param("password") String password);
 	
 	
 	
-	//íšŒì›ê°€ì…
+	//È¸¿ø°¡ÀÔ
 	public int insertUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password,
@@ -38,18 +38,18 @@ public interface UserDAO {
 			@Param("email") String email);
 	
 	
-	//ì‚¬ìš©ìí¬ì¸íŠ¸ ì¦ê°€
+	//»ç¿ëÀÚÆ÷ÀÎÆ® Áõ°¡
 	public int updatePlusPointByUserId(
 			@Param("userId") int userId,
 			@Param("point") int point);
 	
-	//í¬ì¸íŠ¸ ê°ì†Œ
+	//Æ÷ÀÎÆ® °¨¼Ò
 	public int updateMinusPointByUserId(
 			@Param("userId") int userId,
 			@Param("point") int point);
 	
 	
-	//íšŒì› ì •ë³´ ìˆ˜ì •
+	//È¸¿ø Á¤º¸ ¼öÁ¤
 	public int updateUserByColumns(
 			@Param("userId") int userId,
 			@Param("password") String password,
@@ -57,17 +57,19 @@ public interface UserDAO {
 			@Param("email") String email
 			);
 	
-	//ìœ ì € ì¸ì¦
+	//À¯Àú ÀÎÁõ
 	public Integer findUserByLoginIdAndNameAndEmail(
 			@Param("loginId") String loginId,
 			@Param("name") String name,
 			@Param("email") String email
 			);
 	
-	//ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
+	//ºñ¹Ğ¹øÈ£ º¯°æ
 	public int updateUserByIdSetPassword(
 			@Param("id") int id,
 			@Param("password") String password
 			);
+	
+	public int updateUserExceptById(@Param("id") int id);
 	
 }

@@ -54,9 +54,8 @@
 	FROM
 	`user`
 	WHERE
-	userClass = 'normal'
-	or
-	userClass = 'black'
+	NOT
+	userClass = 'admin'
 	
  </select>
  
@@ -202,6 +201,15 @@ AND
 	`user`
 	SET
 	`password` = #{password}
+	WHERE
+	`id` = #{id}
+ </update>
+ 
+ <update id="updateUserExceptById" parameterType="int">
+	UPDATE
+	`user`
+	SET
+	`userClass` = 'except'
 	WHERE
 	`id` = #{id}
  </update>

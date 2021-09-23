@@ -14,59 +14,65 @@ public class UserBO {
 	@Autowired
 	UserDAO userDAO;
 	
-	//í…ŒìŠ¤íŠ¸
+	//Å×½ºÆ®
 	public User selectTest() {
 		return userDAO.selectTest();
 	}
 	
-	//ë‹¨ì¼ìœ ì € ì„ íƒ
+	//´ÜÀÏÀ¯Àú ¼±ÅÃ
 	public User selectUser(int userId) {
 		return userDAO.selectUser(userId);
 	}
 	
-	//ìœ ì € ë¦¬ìŠ¤íŠ¸
+	//À¯Àú ¸®½ºÆ®
 	public List<User> selectUserList() {
 		return userDAO.selectUserList();
 	}
 	
 	
-	//ì•„ì´ë”” ì¤‘ë³µí™•ì¸
+	//¾ÆÀÌµğ Áßº¹È®ÀÎ
 	public int selectUserByloginId(String loginId) {
 		return userDAO.selectUserByloginIdCheck(loginId);
 	}
-	//ë¡œê·¸ì¸
+	//·Î±×ÀÎ
 	public User LoginUser(String loginId,String password) {
 		return userDAO.selectUserLogin(loginId, password);
 	}
 	
-	//íšŒì›ê°€ì…
+	//È¸¿ø°¡ÀÔ
 	public int insertUser(String loginId,String password,
 			String name,String email) {
 		return userDAO.insertUser(loginId, password, name, email);
 	}
 	
-	//í¬ì¸íŠ¸ ì¶©ì „
+	//Æ÷ÀÎÆ® ÃæÀü
 	public int plusPointByUserId(int userId, int point) {
 		return userDAO.updatePlusPointByUserId(userId, point);
 	}
 	
-	//í¬ì¸íŠ¸ ì°¨ê°
+	//Æ÷ÀÎÆ® Â÷°¨
 	public int minusPointByUserId(int userId, int point) {
 		return userDAO.updateMinusPointByUserId(userId, point);
 	}
 	
-	//ìœ ì €ì •ë³´ ìˆ˜ì •
+	//À¯ÀúÁ¤º¸ ¼öÁ¤
 	public int updateUserByColumns(int userId, String password,String name,String email) {
 		return userDAO.updateUserByColumns(userId, password, name, email);
 	}
 	
-	//ìœ ì € ì¸ì¦
+	//À¯Àú ÀÎÁõ
 	public Integer findUser(String loginId,String name,String email) {
 		return userDAO.findUserByLoginIdAndNameAndEmail(loginId, name, email);
 	}
 	
-	//ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
+	//ºñ¹Ğ¹øÈ£ º¯°æ
 	public int updateUserByIdSetPassword(int id,String encrytpassword) {
 		return userDAO.updateUserByIdSetPassword(id, encrytpassword);
 	}
+	
+	//È¸¿ø Å»Åğ
+	public int updateUserExceptById(int id) {
+		return userDAO.updateUserExceptById(id);
+	}
+	
 }

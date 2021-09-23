@@ -45,7 +45,7 @@ public class BuyRestController {
 		
 		
 		User user = userBO.selectUser(userId);	
-		//ì”ì•¡ì´ ë¶€ì¡±í• ë•Œ
+		//ÀÜ¾×ÀÌ ºÎÁ·ÇÒ¶§
 		if((user.getPoint()-price)<0) {
 			result.put("result", "noMoney");
 			return result;

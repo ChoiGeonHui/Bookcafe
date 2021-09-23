@@ -87,6 +87,8 @@ $(document).ready(function(){
 					if(data.result=='success'){
 						alert("로그인 성공");
 						location.href = '/bookcafe/main';
+					}else if(data.result=='except'){
+						alert("탈퇴된 계정입니다.");						
 					}else{
 						alert("아이디 또는 비밀번호가 틀렷습니다.");
 					}

@@ -6,7 +6,7 @@
 	
 
 	<div class="d-flex">
-
+	<span class="d-none" id="userId">${user.id}</span>
 		<table>
 			
 			<tr>
@@ -57,7 +57,7 @@
 	<div class="d-flex justify-content-center my-2">
 	<a href="/bookcafe/main" class="btn btn-secondary col-3 mx-2">취소</a>
 	<button id="updateBtn" type="button" class="btn btn-primary col-3 mx-2">변경하기</button>
-	<a href="#" class="btn btn-danger col-3 mx-2">회원 탈퇴하기</a>
+	<a id="outBtn" class="btn btn-danger col-3 mx-2">회원 탈퇴하기</a>
 	</div>
 
 </div>
@@ -119,7 +119,6 @@ $(document).ready(function(){
 				}else{
 					alert("가입실패");			
 				}
-				
 			},
 			error: function(e){
 				alert('에러발생!');
@@ -131,6 +130,49 @@ $(document).ready(function(){
 		
 		
 	});
+	
+	
+	$('#outBtn').on('click',function(e){
+		e.preventDefault();
+		let waringAlert = confirm('탈퇴시 모든 활동 중단 및 서비스 제공을 받을수 없습니다.\n'+
+				'탈퇴 하시겠습니까?');
+		
+		
+		
+		if(waringAlert == true){
+			
+			let userId = $('#userId').text();
+			
+			alert('userId : '+userId);
+			
+			
+			 $.ajax({
+				method:'post',
+				url:"/user/user_except",
+				data:{'userId':userId},
+				success:function(data){
+					if(data.result=='success'){
+						alert("탈퇴되었습니다.");	
+						alert("계정이 탈퇴 되었으므로 로그아웃이 됩니다.");	
+						location.href = "/user/user/log_out";
+					}else if(data.result=='idFail'){
+						alert("접속해있는 계정이 다릅니다.");			
+					}else{
+						alert("오류 발생.");						
+					}
+				},
+				error: function(e){
+					alert('에러발생!');
+				} 
+				
+				
+			});
+			
+		}
+		
+	});
+	
+	
 });
 
 

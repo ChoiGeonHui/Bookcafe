@@ -39,7 +39,8 @@
 						href="/user/user_point_view" class="btn btn-primary col-3">충전</a>
 				</div>
 				<div class="d-flex mt-2">
-					<a href="/post/post_create_view" class="btn btn-success mx-2">글쓰기</a> <a
+					<span id="userClass" class="d-none">${user.userClass}</span>
+					<a id="createPost" class="btn btn-success mx-2">글쓰기</a> <a
 						href="/user/user/log_out" class="btn btn-secondary mx-2">로그아웃</a>
 				</div>
 
@@ -62,3 +63,23 @@
 		</c:if>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('#createPost').on('click',function(e){
+		e.preventDefault();
+		let userClass = $('#userClass').text();
+		
+		if(userClass == 'noWrite'){
+			alert('관리자에 의해 글작성,댓글이 제한되었습니다.');
+			return;
+		}
+		alert(userClass);
+/* /post/post_create_view*/		
+	});
+});
+
+
+</script>

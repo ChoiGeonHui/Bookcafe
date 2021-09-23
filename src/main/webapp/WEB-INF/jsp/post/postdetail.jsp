@@ -187,7 +187,7 @@ $(document).ready(function(){
 					}
 					
 				},
-				error:function(){
+				error:function(e){
 					alert('에러발생.');
 				}
 				

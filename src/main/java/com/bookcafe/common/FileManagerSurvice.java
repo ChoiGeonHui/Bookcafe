@@ -15,7 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManagerSurvice {
 	private Logger logger = LoggerFactory.getLogger(FileManagerSurvice.class);
 	public final static String 	FILE_UPLOAD_PATH=
-			"G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
+			"D:\\최건희\\final_project\\images/";
+	//"G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
 	
 	public String saveFile(String userLoginId, MultipartFile file) throws IOException {
 		//파일을 컴퓨터에 저장
@@ -32,7 +33,7 @@ public class FileManagerSurvice {
 			return null;
 		};
 		
-		// 파일 업로드 = > byte 단위로 업로드한다.
+		// // 파일 업로드 = > byte 단위로 업로드한다.
 		byte[] bytes = file.getBytes();
 		Path path = Paths.get(filepath + file.getOriginalFilename());
 		//getOriginalFilename : input에서 사용자가 올린 파일명
@@ -54,7 +55,7 @@ public void deleteFile(String imagePath) throws IOException {
 		}
 		
 		
-		//디렉토리 삭제
+		//�뵒�젆�넗由� �궘�젣
 		path = path.getParent();
 		if(Files.exists(path)) {
 			logger.info("################: "+path);

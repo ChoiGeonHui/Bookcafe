@@ -55,12 +55,15 @@ public class PostRestController {
 			return result;		
 		}
 		
-		if(tag.equals("유료")) {
+		if(tag.equals("�쑀猷�")) {
 			 if(price==null) {
 				 result.put("result", "price");
 					return result;
 			 }
 		}	
+		
+		
+		System.out.println("///////////////////file===="+file);
 		
 		int row= postBO.createPost(userId, userName, tag, title, content, file, price);
 		

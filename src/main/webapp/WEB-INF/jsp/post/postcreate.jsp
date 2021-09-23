@@ -123,6 +123,7 @@ $(document).ready(function(){
 		formData.append("file",$('input[name=file]')[0].files[0]);
 		formData.append("price",price); 
 		
+		
 		$.ajax({
 			type:'post',
 			url:'/post/post_create',

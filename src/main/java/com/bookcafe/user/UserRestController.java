@@ -23,7 +23,7 @@ public class UserRestController {
 	@Autowired
 	private UserBO userBO;
 	
-	//ì•„ì´ë”” ì¤‘ë³µí™•ì¸
+	//¾ÆÀÌµğ Áßº¹È®ÀÎ
 	@PostMapping("/user_IdCheck")
 	public Map<String, String> checkId(
 			@RequestParam("loginId") String loginId){	
@@ -39,7 +39,7 @@ public class UserRestController {
 		
 	}
 	
-	//íšŒì›ê°€ì… ìœ ì €dbì¶”ê°€
+	//È¸¿ø°¡ÀÔ À¯ÀúdbÃß°¡
 	@PostMapping("/user_sign_up")
 	public Map<String, String> signup(
 			@RequestParam("loginId") String loginId,
@@ -66,7 +66,7 @@ public class UserRestController {
 	
 	
 	/**
-	 * ë¡œê·¸ì¸
+	 * ·Î±×ÀÎ
 	 * @param loginId
 	 * @param password
 	 * @param request
@@ -84,13 +84,15 @@ public class UserRestController {
 		String EncryptPassword = EncryptUtils.md5(password);
 		
 		User user = userBO.LoginUser(loginId, EncryptPassword);
+		HttpSession session = request.getSession();	
 		
-		HttpSession session = request.getSession();
-		if(user != null) {
+		if(user != null && !user.getUserClass().equals("except")) {
 			result.put("result", "success");
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("user", user);
 			
+		}else if(user.getUserClass().equals("except")){
+			result.put("result", "except");
 		}else {
 			result.put("result", "fail");
 		}
@@ -101,7 +103,7 @@ public class UserRestController {
 	
 	
 	/**
-	 * í¬ì¸íŠ¸ ì¶©ì „
+	 * Æ÷ÀÎÆ® ÃæÀü
 	 * @param point
 	 * @param request
 	 * @return
@@ -115,7 +117,7 @@ public class UserRestController {
 		userId = (Integer) session.getAttribute("userId");
 		Map<String, String> result = new HashMap<String, String>();
 		
-		//ë¹„ë¡œê·¸ì¸ ìƒíƒœì¸ ê²½ìš°
+		//ºñ·Î±×ÀÎ »óÅÂÀÎ °æ¿ì
 		if(userId ==null) {
 			result.put("result", "fail");
 			return result;		
@@ -132,7 +134,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * íšŒì› ì •ë³´ ë³€ê²½
+	 * È¸¿ø Á¤º¸ º¯°æ
 	 * @param password
 	 * @param name
 	 * @param email
@@ -173,7 +175,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 *  ìœ ì € ì¸ì¦
+	 *  À¯Àú ÀÎÁõ
 	 * @param loginId
 	 * @param name
 	 * @param email
@@ -215,6 +217,32 @@ public class UserRestController {
 		}
 		
 		int row = userBO.updateUserByIdSetPassword(id, encrytpassword);	
+		
+		if(row >0) {
+			result.put("result", "success");
+		}
+		
+		return result;
+	}
+	
+	
+	@RequestMapping("/user_except")
+	public Map<String, String> userExcept(
+			@RequestParam("userId") int id,
+			HttpServletRequest request){
+		HttpSession session = request.getSession();
+		Map<String, String> result = new HashMap<String, String>();	
+		Integer userId =null;
+		userId= (Integer) session.getAttribute("userId");
+		
+		if(id != userId) {
+			result.put("result", "idFail");
+			return result;	
+			
+		}
+		
+		
+		int row = userBO.updateUserExceptById(id);
 		
 		if(row >0) {
 			result.put("result", "success");

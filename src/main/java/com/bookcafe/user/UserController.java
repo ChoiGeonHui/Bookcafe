@@ -20,7 +20,7 @@ public class UserController {
 	@Autowired
 	UserBO userBO;
 	
-	//íšŒì›ê°€ì…
+	//È¸¿ø°¡ÀÔ
 	@RequestMapping("/user_signup_view")
 	public String sign_up(Model model,
 			HttpServletRequest request) {
@@ -36,7 +36,7 @@ public class UserController {
 		return "templete/layout";
 	}
 	
-	//ë¡œê·¸ì¸
+	//·Î±×ÀÎ
 	@RequestMapping("/user_signin_view")
 	public String sign_in(Model model) {
 		
@@ -44,7 +44,7 @@ public class UserController {
 		return "templete/layout";
 	}
 	
-	//ë¡œê·¸ì•„ì›ƒ
+	//·Î±×¾Æ¿ô
 	@RequestMapping("/user/log_out")
 	public String log_out(HttpServletRequest request) {
 		
@@ -60,7 +60,7 @@ public class UserController {
 	}
 	
 	
-	//í¬ì¸íŠ¸ ì¶©ì „
+	//Æ÷ÀÎÆ® ÃæÀü
 	@RequestMapping("/user_point_view")
 	public String point(Model model,
 			HttpServletRequest request) {
@@ -79,15 +79,23 @@ public class UserController {
 	}
 	
 	
-	//ì‚¬ìš©ì ì •ë³´ ë³€ê²½
+	//»ç¿ëÀÚ Á¤º¸ º¯°æ
 	@RequestMapping("/user_update_view")
-	public String updateUser(Model model) {
+	public String updateUser(Model model,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		Integer userId = (Integer) session.getAttribute("userId");
+		User user = (User) session.getAttribute("user");
+		if(userId==null) {
+			return "redirect:/user/user_signin_view";
+		}
 		model.addAttribute("page", "user/updateUser");
 		return "templete/layout";
 	}
 	
 	
-	//ìœ ì € ê°±ì‹ 
+	//À¯Àú °»½Å
 	@RequestMapping("/update")
 	public String update(Model model,
 			HttpServletRequest request) {
