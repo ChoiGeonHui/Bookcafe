@@ -4,4 +4,7 @@ header{background-color: orange; height: 80px;}
 tr{padding: 3px;}
 td{padding: 3px;}
 #pointpage{height: 300px;}
+.userlist{
+	border: 1px solid black;
+}
 footer{background-color: orange;}

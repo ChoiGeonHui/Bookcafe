@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <header class="d-flex align-items-center justify-content-center">
 
 	<img height="100%" alt="이미지 부착" src="/static/images/bookshop.jpg">
@@ -64,7 +66,6 @@
 	</div>
 </div>
 
-
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -76,8 +77,7 @@ $(document).ready(function(){
 			alert('관리자에 의해 글작성,댓글이 제한되었습니다.');
 			return;
 		}
-		alert(userClass);
-/* /post/post_create_view*/		
+		location.href='/post/post_create_view';
 	});
 });
 
