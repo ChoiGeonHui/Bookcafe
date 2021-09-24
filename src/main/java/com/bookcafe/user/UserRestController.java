@@ -86,13 +86,18 @@ public class UserRestController {
 		User user = userBO.LoginUser(loginId, EncryptPassword);
 		HttpSession session = request.getSession();	
 		
-		if(user != null && !user.getUserClass().equals("except")) {
+		if(user != null) {
+			
+			if(user.getUserClass().equals("except")){
+				result.put("result", "except");
+			}else if(user.getUserClass().equals("blacklist")) {
+				result.put("result", "blacklist");
+			}else {
 			result.put("result", "success");
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("user", user);
+			}
 			
-		}else if(user.getUserClass().equals("except")){
-			result.put("result", "except");
 		}else {
 			result.put("result", "fail");
 		}
@@ -225,7 +230,12 @@ public class UserRestController {
 		return result;
 	}
 	
-	
+	/**
+	 * À¯Àú Å»Åð
+	 * @param id
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user_except")
 	public Map<String, String> userExcept(
 			@RequestParam("userId") int id,
@@ -237,19 +247,31 @@ public class UserRestController {
 		
 		if(id != userId) {
 			result.put("result", "idFail");
-			return result;	
-			
-		}
-		
-		
-		int row = userBO.updateUserExceptById(id);
-		
+			return result;		
+		}	
+		int row = userBO.updateUserExceptById(id);	
 		if(row >0) {
+			result.put("result", "success");
+		}	
+		return result;
+	}
+	
+	
+	//À¯Àú ±ÇÇÑ º¯°æ
+	@RequestMapping("/userClass_update")
+	public Map<String, String> userClassUpdate(
+			@RequestParam("userId") int id,
+			@RequestParam("userClass") String userClass){
+		Map<String, String> result = new HashMap<String, String>();		
+		int row = userBO.updateUserClass(id, userClass);		
+		if(row>0) {
 			result.put("result", "success");
 		}
 		
 		return result;
 	}
+	
+	
 	
 
 }

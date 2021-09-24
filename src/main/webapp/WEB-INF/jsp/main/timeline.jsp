@@ -10,7 +10,7 @@
 
 		<a href="/bookcafe/main" class="btn btn-light text-success mx-2">전체</a>
 		<a href="/bookcafe/main?tag=공지"
-			class="btn btn-light text-success mx-2">공지</a> <a
+			class="btn btn-light text-danger mx-2">공지</a> <a
 			href="/bookcafe/main?tag=추천글" class="btn btn-light text-warning mx-2">추천글</a>
 		<a href="/bookcafe/main?tag=후기"
 			class="btn btn-light text-success mx-2">후기</a> <a
@@ -22,6 +22,15 @@
 	</div>
 	<hr>
 	<div>
+	<div class="text-center">
+	
+	
+	</div>
+	
+	
+	
+	
+	
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -40,19 +49,17 @@
 	</div>
 
 		<c:forEach items="${list}" var="list">
-			<a href="/post/post_detail_view?postId=${list.post.id}">
-				<div class="d-flex btn btn-light mb-1 userlist">
-
-					<div class="col-1">${list.post.id}</div>
-					<div class="col-1">${list.post.tag}</div>
-					<div class="col-5">${list.post.title}</div>
-						<div class="col-2">${list.user.name}</div>
-						<div class="col-2">
-							<fmt:formatDate value="${list.post.createdAt}"
-								pattern="yyyy-MM-dd" />
-						</div>
-						<div class="col-1 text-center">${list.likeCount}</div>
-					</div>
-			</a>
-			</c:forEach>
+		<a href="/post/post_detail_view?postId=${list.post.id}">
+			<div class="d-flex btn btn-light mb-1 userlist">
+				<div class="col-1">${list.post.id}</div>
+				<div class="col-1">${list.post.tag}</div>
+				<div class="col-5">${list.post.title}</div>
+				<div class="col-2">${list.user.name}</div>
+				<div class="col-2">
+					<fmt:formatDate value="${list.post.createdAt}" pattern="yyyy-MM-dd" />
+				</div>
+				<div class="col-1 text-center">${list.likeCount}</div>
+			</div>
+		</a>
+	</c:forEach>
 </div>

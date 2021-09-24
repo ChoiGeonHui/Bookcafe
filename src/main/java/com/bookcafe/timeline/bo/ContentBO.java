@@ -39,7 +39,7 @@ public class ContentBO {
 	@Autowired
 	FileManagerSurvice fileManagerSurvice;
 	
-	//게시글 리스트
+	//postlist 출력
 	public List<Content> contentList(int userId,String pagetag){
 		List<Content> contentlist = new ArrayList<>();
 		
@@ -82,7 +82,7 @@ public class ContentBO {
 		return contentlist;
 	}
 	
-	//단일 게시물
+	//게시글 보기
 	public Content selectContent(int userId,int postId) {
 		
 		Content content = new Content();
@@ -103,7 +103,7 @@ public class ContentBO {
 		return content;
 	}
 	
-	//해당게시물,추천,댓글,buy 삭제
+	//게시글 삭제
 	public String deleteContent(int userId, int postId) {
 		
 		Post post = postBO.selectPostById(postId);

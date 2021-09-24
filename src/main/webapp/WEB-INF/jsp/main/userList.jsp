@@ -28,11 +28,12 @@
 						<td>${list.email}</td>
 						<td>${list.userClass}</td>
 						<td>
-						<select name="userStatus">
+						<select name="userStatus${list.id}">
 						<option value="default" selected="selected">상태선택</option>
 						<option value="normal">일반</option>
 						<option value="blacklist">활동정지</option>
 						<option value="noWrite">채팅,글작성금지</option>
+						<option value="except">탈퇴</option>
 						</select>
 						</td>
 						<td>
@@ -62,11 +63,31 @@ $(document).ready(function(){
 	$('.updateClass').on('click',function(e){
 		e.preventDefault();
 		let id = $(this).data('user-id');
-		let userClass = $("select[name=userStatus]").val();
+		let userClass = $("select[name=userStatus"+id+"]").val();
 		
 		if(userClass=='default'){
 			alert('유저 상태를 선택하세요.');
+			return;
 		}
+		
+		
+		
+		$.ajax({
+			type:'post',
+			data:{'userId':id,'userClass':userClass},
+			url:'/user/userClass_update',
+			success:function(data){
+				if(data.result=='success'){
+					alert('해당 회원의 권한이 변경되었습니다.');
+					location.reload();
+				}else{
+					alert('오류가 발생하였습니다.');
+				}
+			},
+			error:function(){
+				alert('에러발생.');
+			}
+		});
 		
 		
 	});

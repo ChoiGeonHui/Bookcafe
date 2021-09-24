@@ -30,8 +30,8 @@ public class BuyRestController {
 	@PostMapping("/pay")
 	public Map<String, String> payPost(
 			@RequestParam("postId") int postId,
-			@RequestParam("price") int price,	
 			@RequestParam("createrId") int createrId,
+			@RequestParam("price") int price,	
 			HttpServletRequest request){
 		
 		HttpSession session = request.getSession();

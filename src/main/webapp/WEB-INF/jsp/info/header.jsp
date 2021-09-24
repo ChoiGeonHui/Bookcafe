@@ -32,7 +32,7 @@
 				<c:if test="${user.userClass eq 'admin'}">
 				관리자님 어서오세요.
 				</c:if> 
-				<c:if test="${user.userClass eq 'normal'}">
+				<c:if test="${user.userClass ne 'admin'}">
 				회원님 안녕하세요~
 				</c:if> 
 				</span>
@@ -42,13 +42,14 @@
 				</div>
 				<div class="d-flex mt-2">
 					<span id="userClass" class="d-none">${user.userClass}</span>
-					<a id="createPost" class="btn btn-success mx-2">글쓰기</a> <a
+					<a id="createPost" class="btn btn-success text-white mx-2">글쓰기</a> <a
 						href="/user/user/log_out" class="btn btn-secondary mx-2">로그아웃</a>
 				</div>
 
 				<c:if test="${user.userClass eq 'admin'}">
 					<div class="d-flex justify-content-center mt-2">
-						<a href="/bookcafe/userlist" class="btn btn-dark mx-2">사용자 목록</a>
+						<a href="/bookcafe/userlist" class="btn btn-warning mx-2">사용자 목록</a>
+						<a href="#" class="btn btn-light mx-2">고객센터함</a>
 					</div>
 				</c:if>
 

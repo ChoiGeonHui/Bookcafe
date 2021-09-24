@@ -36,13 +36,15 @@ public class TimelineController {
 
 		HttpSession session = request.getSession();
 		userId = (Integer) session.getAttribute("userId");
+		
+		
 
 		if (userId == null) {	
 			return "redirect:/user/user_signin_view";
 		}
-		List<Content> list = contentBO.contentList(userId,pageTag);
 		
-		User user = (User) session.getAttribute("user");
+		List<Content> list = contentBO.contentList(userId,pageTag);	
+		User user = userBO.selectUser(userId);
 		
 		model.addAttribute("userId", userId);		
 		model.addAttribute("user", user);
@@ -54,7 +56,25 @@ public class TimelineController {
 	
 	
 	@RequestMapping("/userlist")
-	public String userListView(Model model) {
+	public String userListView(Model model,
+			HttpServletRequest request) {
+		
+		Integer userId = null;
+
+		HttpSession session = request.getSession();
+		userId = (Integer) session.getAttribute("userId");
+		
+		User user = userBO.selectUser(userId);
+		
+		if (userId == null) {	
+			return "redirect:/user/user_signin_view";
+		}
+		
+		if(!user.getUserClass().equals("admin")) {
+			return "redirect:/bookcafe/main";
+		}
+		
+		
 		List<User> userlist  = userBO.selectUserList();
 		model.addAttribute("userlist", userlist);
 		model.addAttribute("page", "main/userList");

@@ -38,7 +38,14 @@ public class UserController {
 	
 	//·Î±×ÀÎ
 	@RequestMapping("/user_signin_view")
-	public String sign_in(Model model) {
+	public String sign_in(Model model,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		Integer userId = (Integer)session.getAttribute("userId");
+		if(userId !=null) {
+			return "redirect:/bookcafe/main";
+		}
 		
 		model.addAttribute("page", "user/signin");
 		return "templete/layout";

@@ -75,4 +75,9 @@ public class UserBO {
 		return userDAO.updateUserExceptById(id);
 	}
 	
+	//회원 권한변경
+	public int updateUserClass(int id,String userClass) {
+		return userDAO.updateUserClass(id, userClass);
+	}
+	
 }

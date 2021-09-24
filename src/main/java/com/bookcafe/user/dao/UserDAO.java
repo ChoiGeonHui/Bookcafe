@@ -70,6 +70,11 @@ public interface UserDAO {
 			@Param("password") String password
 			);
 	
+	//À¯Àú Å»Åð
 	public int updateUserExceptById(@Param("id") int id);
 	
+	public int updateUserClass(
+			@Param("id") int id,
+			@Param("userClass") String userClass
+			);
 }

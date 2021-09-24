@@ -42,6 +42,12 @@ public class CommentRestController {
 		
 		User user = userBO.selectUser(userId);
 		
+		
+		if(user.getUserClass().equals("noWrite")) {
+			result.put("result", "noWrite");
+			return result;
+		}
+		
 		int row = commentBO.insertCommet(postId, userId, user.getName(), content);
 		
 		if(row>0) {

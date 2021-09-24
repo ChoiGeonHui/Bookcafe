@@ -85,10 +85,12 @@ $(document).ready(function(){
 				data:{'loginId':loginId,'password':password},
 				success:function(data){
 					if(data.result=='success'){
-						alert("로그인 성공");
 						location.href = '/bookcafe/main';
 					}else if(data.result=='except'){
-						alert("탈퇴된 계정입니다.");						
+						alert("[알림]\n탈퇴된 계정입니다.");						
+					}else if(data.result =='blacklist'){
+						alert("[알림]\n해당유저는 누적된 신고로 인하여 활동이 정지되었습니다.\n"+
+								"문의 사항은 관리자 이메일(admin@naver.com)로 접수하시면 됩니다.");						
 					}else{
 						alert("아이디 또는 비밀번호가 틀렷습니다.");
 					}

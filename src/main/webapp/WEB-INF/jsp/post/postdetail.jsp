@@ -15,7 +15,12 @@
 		</div>
 
 		<div class="d-flex justify-content-between align-items-center col-12 ml-3">
-			<b>${content.user.name}</b>
+			<div class="d-flex align-items-center">
+				<b>${content.user.name}</b> <a href="#" class="ml-1 hateBtn" data-toggle="modal"
+						data-target="#moreHate" data-hate-id="${content.user.id}" data-hate-name="${content.user.name}"> 
+				<img alt="신고" src="/static/images/hate.jpg" height="23px" width="23px">
+				</a>
+			</div>
 			<b id="createrId" class="d-none">${content.user.id}</b>
 			
 			<div>
@@ -39,11 +44,8 @@
 						height="30px" alt="더보기" src="/static/images/moreicon.jpg">
 					</a>
 				</c:if>
-		
-		
 		</div>
-		
-		
+
 		
 		<div class="my-5">
 
@@ -138,6 +140,24 @@
 
 </div>
 
+<div class="modal" id="moreHate" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<%-- Modal 창 안에 내용 넣기 --%>
+			<div class="w-100">
+				<div class="my-3 text-center">
+					<a href="#" class="insertHate d-block">신고하기</a><%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
+				</div>
+				<div class="border-top py-3 text-center">
+					<%-- data-dismiss: 모달창 닫힘 --%>
+					<a href="#" class="cancel d-block" data-dismiss="modal">취소</a> <%-- 클릭할 수 있는 영역을 넓히기 위해 d-block --%>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <div class="modal" id="moreSet" tabindex="-1" role="dialog">
 	<div class="modal-dialog modal-sm modal-dialog-centered" role="document">
 		<div class="modal-content">
@@ -172,7 +192,6 @@ $(document).ready(function(){
 		let waringAlert = confirm('정말 해당 게시물을 삭제하시겠습니까?');
 		
 		if(waringAlert == true){
-			alert('삭제.'+ postId);
 			
 			$.ajax({
 				type:'post',
@@ -195,6 +214,23 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	
+	//신고하기
+	$('.insertHate').on('click',function(e){
+		e.preventDefault();
+		
+		let id = $('.hateBtn').data('hate-id'); 
+		let name = $('.hateBtn').data('hate-name'); 
+		
+		let waringAlert = confirm('정말 해당 유저를 신고하시겠습니까?\n'
+				+'신고시 취소할수 없으며 허위신고시 처벌을 받을수 있습니다.');
+		if(waringAlert ==true){
+			alert('신고 일련번호: '+ id +"  이름:"+name);
+		}
+	});
+	
+	
 	
 	
 	
@@ -227,7 +263,7 @@ $(document).ready(function(){
 		
 	});
 	
-	
+	//댓글 작성
 	$('#insertComment').on('click',function(e){
 		e.preventDefault();
 		let postId = $('#postId').text();
@@ -246,6 +282,10 @@ $(document).ready(function(){
 				if(data.result=='success'){
 					alert('작성 완료');
 					location.reload();
+				}else if(data.result=='noWrite'){
+					alert('관리자에 의해 댓글작성 및 글쓰기가 제한되었습니다.\n'+
+							'아름다운 활동 부탁드려요~');
+					location.reload();					
 				}else{
 					alert('오류가 발생하였습니다.');
 				}
@@ -298,7 +338,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type:'post',
-			data:{'postId':postId, 'price': price,'createrId':createrId},
+			data:{'postId':postId,'createrId':createrId,'price': price},
 			url:'/buy/pay',
 			success:function(data){
 				if(data.result == 'success'){

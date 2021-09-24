@@ -30,7 +30,7 @@ public class PostBO {
 			try {
 				imagePath = fileManagerSurvice.saveFile(userName, file);
 			} catch (Exception e) {
-				log.error("파일 업로드 :"+e.getMessage());
+				log.error("파일 에러 :"+e.getMessage());
 			}
 		}
 		
@@ -58,7 +58,7 @@ public class PostBO {
 				}		
 				
 			} catch (Exception e) {
-				log.error("파일 업로드 :"+e.getMessage());
+				log.error("파일 에러 :"+e.getMessage());
 			}
 		}
 		

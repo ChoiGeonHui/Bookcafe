@@ -214,5 +214,17 @@ AND
 	`id` = #{id}
  </update>
  
+ <update id="updateUserClass" parameterType="map">
+
+	UPDATE
+	`user`
+	SET
+	`userClass` = #{userClass}
+	WHERE
+	`id` = #{id}
+ 
+ 
+ </update>
+ 
  
  </mapper>
