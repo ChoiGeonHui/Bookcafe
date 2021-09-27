@@ -18,6 +18,18 @@
  
  </select>
  
+ <select id="selectHateBySubjectId" parameterType="int" resultType="int">
+
+	SELECT 
+	COUNT(1)
+	FROM 
+	hate 
+	WHERE
+	subjectId = #{subjectId};
+ 
+ 
+ </select>
+ 
  <insert id="insertHate" parameterType="map">
 	INSERT
 	INTO

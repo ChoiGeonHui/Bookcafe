@@ -11,9 +11,10 @@
 			<thead>
 				<tr>
 				<th class="col-1">일련번호</th>
-				<th class="col-2">아이디</th>
+				<th class="col-1">아이디</th>
 				<th class="col-2">이름</th>
 				<th class="col-2">이메일</th>
+				<th class="col-1">누적신고</th>
 				<th class="col-2">상태</th>
 				<th class="col-2">변경</th>
 				<th class="col-2">버튼</th>
@@ -22,13 +23,14 @@
 			<tbody>
 			<c:forEach items="${userlist}" var="list">
 					<tr>
-						<td>${list.id}</td>
-						<td>${list.loginId}</td>
-						<td>${list.name}</td>
-						<td>${list.email}</td>
-						<td>${list.userClass}</td>
+						<td>${list.user.id}</td>
+						<td>${list.user.loginId}</td>
+						<td>${list.user.name}</td>
+						<td>${list.user.email}</td>
+						<td>${list.hateCount}</td>
+						<td>${list.user.userClass}</td>	
 						<td>
-						<select name="userStatus${list.id}">
+						<select name="userStatus${list.user.id}">
 						<option value="default" selected="selected">상태선택</option>
 						<option value="normal">일반</option>
 						<option value="blacklist">활동정지</option>
@@ -37,7 +39,7 @@
 						</select>
 						</td>
 						<td>
-						<a class="updateClass btn btn-light" data-user-id="${list.id}">변경</a>				
+						<a class="updateClass btn btn-light" data-user-id="${list.user.id}">변경</a>				
 						</td>
 					</tr>
 				</c:forEach>

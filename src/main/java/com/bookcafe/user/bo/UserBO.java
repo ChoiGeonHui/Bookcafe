@@ -14,6 +14,7 @@ public class UserBO {
 	@Autowired
 	UserDAO userDAO;
 	
+	
 	//Å×½ºÆ®
 	public User selectTest() {
 		return userDAO.selectTest();

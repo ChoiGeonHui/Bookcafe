@@ -2,6 +2,7 @@ package com.bookcafe.timeline.bo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +12,12 @@ import com.bookcafe.buy.bo.BuyBO;
 import com.bookcafe.comment.bo.CommentBO;
 import com.bookcafe.comment.model.Comment;
 import com.bookcafe.common.FileManagerSurvice;
+import com.bookcafe.hate.bo.HateBO;
 import com.bookcafe.like.bo.LikeBO;
 import com.bookcafe.post.bo.PostBO;
 import com.bookcafe.post.model.Post;
 import com.bookcafe.timeline.domain.Content;
+import com.bookcafe.timeline.domain.User2;
 import com.bookcafe.user.bo.UserBO;
 import com.bookcafe.user.model.User;
 
@@ -38,6 +41,9 @@ public class ContentBO {
 	
 	@Autowired
 	FileManagerSurvice fileManagerSurvice;
+	
+	@Autowired
+	private HateBO hateBO;
 	
 	//postlist 출력
 	public List<Content> contentList(int userId,String pagetag){
@@ -126,6 +132,28 @@ public class ContentBO {
 		}else {
 			return "fail";
 		}
+	}
+	
+	
+	//userlist 보기
+	public List<User2> selectUser2(){
+		
+		List<User2> userlist2 = new ArrayList<>();
+		List<User> userlist  = userBO.selectUserList();
+		
+		for (User user : userlist) {
+			User2 user2 = new User2();
+			
+			user2.setUser(user);
+			int hateCount = hateBO.selectHateBySubjectId(user2.getUser().getId());			
+
+			user2.setHateCount(hateCount);
+			
+			userlist2.add(user2);
+			
+		}
+		return userlist2;
+		
 	}
 	
 

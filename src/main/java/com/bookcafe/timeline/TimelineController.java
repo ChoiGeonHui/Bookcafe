@@ -1,6 +1,7 @@
 package com.bookcafe.timeline;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bookcafe.hate.bo.HateBO;
 import com.bookcafe.timeline.bo.ContentBO;
 import com.bookcafe.timeline.domain.Content;
+import com.bookcafe.timeline.domain.User2;
 import com.bookcafe.user.bo.UserBO;
 import com.bookcafe.user.model.User;
 
@@ -25,6 +28,9 @@ public class TimelineController {
 	
 	@Autowired
 	private ContentBO contentBO;
+	
+	@Autowired
+	private HateBO hateBO;
 
 	@RequestMapping("/main")
 	public String mainpage(Model model,
@@ -72,12 +78,13 @@ public class TimelineController {
 		
 		if(!user.getUserClass().equals("admin")) {
 			return "redirect:/bookcafe/main";
-		}
+		}		
 		
-		
-		List<User> userlist  = userBO.selectUserList();
-		model.addAttribute("userlist", userlist);
+		List<User2> list = contentBO.selectUser2();
+		model.addAttribute("userId", userId);
+		model.addAttribute("user", user);
 		model.addAttribute("page", "main/userList");
+		model.addAttribute("userlist", list);
 		return "templete/layout";
 		
 	}

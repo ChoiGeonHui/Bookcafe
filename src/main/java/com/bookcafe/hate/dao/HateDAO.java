@@ -10,6 +10,8 @@ public interface HateDAO {
 			@Param("userId") int userId, 
 			@Param("subjectId") int subjectId);
 	
+	public int selectHateBySubjectId(@Param("subjectId") int subjectId);
+	
 	public int insertHate(
 			@Param("userId") int userId,
 			@Param("subjectId") int subjectId);
