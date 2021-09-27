@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.bookcafe.hate.dao.HateDAO">
+ 
+ <select id="selectHateList" parameterType="map" resultType="int">
+
+	SELECT
+	COUNT(1)
+	FROM
+	`hate`
+	WHERE
+	userId = #{userId}
+	AND
+	subjectId = #{subjectId}
+ 
+ 
+ </select>
+ 
+ <insert id="insertHate" parameterType="map">
+	INSERT
+	INTO
+	`hate`(
+	userId,
+	subjectId
+	)
+	VALUES
+	(
+	#{userId},
+	#{subjectId}
+	)
+ </insert>
+ 
+ 
+ 
+ </mapper>

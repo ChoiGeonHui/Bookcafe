@@ -15,12 +15,19 @@
 		</div>
 
 		<div class="d-flex justify-content-between align-items-center col-12 ml-3">
+			
 			<div class="d-flex align-items-center">
-				<b>${content.user.name}</b> <a href="#" class="ml-1 hateBtn" data-toggle="modal"
+				<b>${content.user.name}</b> 
+			
+			<c:if test="${content.user.id ne userId}">	
+				<a href="#" class="ml-1 hateBtn" data-toggle="modal"
 						data-target="#moreHate" data-hate-id="${content.user.id}" data-hate-name="${content.user.name}"> 
 				<img alt="신고" src="/static/images/hate.jpg" height="23px" width="23px">
-				</a>
+				</a>		
+			</c:if>
+			
 			</div>
+			
 			<b id="createrId" class="d-none">${content.user.id}</b>
 			
 			<div>
@@ -83,7 +90,17 @@
 					
 					<c:forEach var="comment" items="${content.commentList}">
 						<div>
-							<b>${comment.userName}</b><br> <span>${comment.content }</span><br>
+							<b>${comment.userName}</b>
+
+								<c:if test="${comment.userId ne userId}">
+									<a href="#" class="ml-1 hateBtn" data-toggle="modal"
+										data-target="#moreHate" data-hate-id="${content.user.id}"
+										data-hate-name="${content.user.name}"> <img alt="신고"
+										src="/static/images/hate.jpg" height="23px" width="23px">
+									</a>
+								</c:if>
+
+								<br> <span>${comment.content }</span><br>
 							
 							 <small	class="text-secondary">
 									<fmt:formatDate value="${comment.createdAt}" pattern="yyyy-MM-dd HH:mm:ss"/>
@@ -220,14 +237,41 @@ $(document).ready(function(){
 	$('.insertHate').on('click',function(e){
 		e.preventDefault();
 		
-		let id = $('.hateBtn').data('hate-id'); 
+		let subjectId = $('.hateBtn').data('hate-id'); 
 		let name = $('.hateBtn').data('hate-name'); 
 		
 		let waringAlert = confirm('정말 해당 유저를 신고하시겠습니까?\n'
-				+'신고시 취소할수 없으며 허위신고시 처벌을 받을수 있습니다.');
+				+'신고시 취소할수 없으며 허위신고는 처벌받을수 있습니다.');
 		if(waringAlert ==true){
-			alert('신고 일련번호: '+ id +"  이름:"+name);
+			alert('신고 일련번호: '+ subjectId +"  이름:"+name);
+		
+			
+			$.ajax({
+				type:'post',
+				url:'/hate/hate',
+				data:{'subjectId':subjectId},
+				success:function(data){	
+					if(data.result == 'getId'){
+						alert('먼저 로그인을 하세요.');
+					}else if(data.result == 'hated'){
+						alert('이미 해당유저를 신고하였습니다.');
+						location.reload();
+					}else if(data.result == 'success'){
+						alert('해당유저를 신고하였습니다.');
+						location.reload();
+					}else{
+						alert('오류가 발생하였습니다.');
+					}
+				},error:function(e){
+						alert('에러 발생.');				
+				}
+				
+			});
 		}
+		
+		
+		
+		
 	});
 	
 	
@@ -254,8 +298,7 @@ $(document).ready(function(){
 					alert('오류가 발생하였습니다.');
 				}
 				
-			},
-			error:function(){
+			},error:function(e){
 				alert('에러발생.');
 			}
 			
@@ -290,8 +333,7 @@ $(document).ready(function(){
 					alert('오류가 발생하였습니다.');
 				}
 				
-			},
-			error:function(){
+			},error:function(e){
 				alert('에러발생.');
 			}
 		})

@@ -97,6 +97,8 @@ public class UserController {
 		if(userId==null) {
 			return "redirect:/user/user_signin_view";
 		}
+		model.addAttribute("userId", userId);
+		model.addAttribute("user", user);
 		model.addAttribute("page", "user/updateUser");
 		return "templete/layout";
 	}
