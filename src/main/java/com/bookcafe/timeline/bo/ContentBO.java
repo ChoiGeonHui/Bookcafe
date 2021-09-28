@@ -46,10 +46,10 @@ public class ContentBO {
 	private HateBO hateBO;
 	
 	//postlist 출력
-	public List<Content> contentList(int userId,String pagetag){
+	public List<Content> contentList(int userId,String pagetag,String serch){
 		List<Content> contentlist = new ArrayList<>();
 		
-		List<Post> postlist = postBO.selectList(pagetag);
+		List<Post> postlist = postBO.selectList(pagetag,serch);
 		
 		for (Post post : postlist) {
 			Content content = new Content();
@@ -114,13 +114,15 @@ public class ContentBO {
 		
 		Post post = postBO.selectPostById(postId);
 		
-		try {
-			fileManagerSurvice.deleteFile(post.getImagePath());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//파일이 있을경우 파일 삭제
+		if (post.getImagePath() != null) {
+			try {
+				fileManagerSurvice.deleteFile(post.getImagePath());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
 		
 		likeBO.deleteLikeByPostId(postId);
 		commentBO.deleteCommetByPostId(postId);

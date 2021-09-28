@@ -123,13 +123,14 @@ $(document).ready(function(){
 		let	tag = $('input[name=tag]:checked').val();
 		let title = $('#title').val().trim();
 		let content =$('#content').val();
+		let content2 = content.replace(/(\n|\r\n)/g, '<br>');
 		let price =$('#price').val();
 		
 		let formData = new FormData();
 		formData.append("postId",postId);
 		formData.append("tag",tag);
 		formData.append("title",title);
-		formData.append("content",content);
+		formData.append("content",content2);
 		formData.append("file",$('input[name=file]')[0].files[0]);
 		formData.append("price",price); 
 		

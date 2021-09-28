@@ -10,7 +10,7 @@ import com.bookcafe.post.model.Post;
 @Repository
 public interface PostDAO {
 	
-	//작성
+	//�옉�꽦
 	public int createPost(
 			@Param("userId") int userId,
 			@Param("tag") String tag,
@@ -20,7 +20,7 @@ public interface PostDAO {
 			@Param("price") Integer price
 			);
 	
-	//수정
+	//�닔�젙
 	public int updatePost(
 			@Param("userId") int userId,
 			@Param("postId") int postId,
@@ -31,7 +31,7 @@ public interface PostDAO {
 			@Param("price") Integer price
 			);
 	
-	//삭제
+	//�궘�젣
 	public int deletePost(
 			@Param("userId") int userId,
 			@Param("postId") int postId
@@ -42,6 +42,7 @@ public interface PostDAO {
 			int  postId);
 	
 	public List<Post> selectPostList(
-			String tag);
+			@Param("tag") String tag,
+			@Param("search") String serch);
 
 }

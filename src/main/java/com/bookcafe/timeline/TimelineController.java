@@ -35,6 +35,7 @@ public class TimelineController {
 	@RequestMapping("/main")
 	public String mainpage(Model model,
 			HttpServletRequest request,
+			@RequestParam(value = "search",required = false) String search,
 			@RequestParam(value = "tag",required = false) String pageTag
 			) {
 
@@ -49,7 +50,7 @@ public class TimelineController {
 			return "redirect:/user/user_signin_view";
 		}
 		
-		List<Content> list = contentBO.contentList(userId,pageTag);	
+		List<Content> list = contentBO.contentList(userId,pageTag,search);	
 		User user = userBO.selectUser(userId);
 		
 		model.addAttribute("userId", userId);		

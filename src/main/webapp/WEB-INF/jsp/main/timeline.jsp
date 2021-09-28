@@ -6,8 +6,8 @@
 
 <div class="col-12">
 
-	<div class="d-flex justify-content-start">
-
+	<div class="d-flex justify-content-between">
+	<div class="pull-life">
 		<a href="/bookcafe/main" class="btn btn-light text-success mx-2">전체</a>
 		<a href="/bookcafe/main?tag=공지"
 			class="btn btn-light text-danger mx-2">공지</a> <a
@@ -20,17 +20,22 @@
 			href="/bookcafe/main?tag=요청" class="btn btn-light text-success mx-2">요청</a>
 		<a href="/bookcafe/main?tag=유료" class="btn btn-primary mx-2">책(유료)</a>
 	</div>
+
+		<div class="pull-right">
+			<div class="input-group">
+
+				<img alt="검색" class="bg-light" src="/static/images/serch1.jpg"
+					height="35px" width="35px"> <input type="text" id="search"
+					class="from-control" placeholder="제목키워드 입력">
+				<button id="btnSearch" class="btn input-group-text input-group-append">검색</button>
+			</div>
+		</div>
+
+	</div>
 	<hr>
 	<div>
 	<div class="text-center">
-	
-	
 	</div>
-	
-	
-	
-	
-	
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -63,3 +68,39 @@
 		</a>
 	</c:forEach>
 </div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#btnSearch').on('click',function(e){
+		e.preventDefault();
+		let search = $('#search').val();
+		
+		if(search==''){
+			alert('단어를 입력하세요.');
+			return;
+		}
+		
+		alert('검색함='+search);
+		$.ajax({
+			type:'post',
+			url:'/bookcafe/main',
+			data:{'search':search},
+			success:function(data){
+				location.reload();
+			},
+			error:function(){
+			alert('에러 발생.');
+				
+			}
+		});
+		
+		
+		
+	});
+	
+});
+
+
+</script>

@@ -77,8 +77,8 @@ public class PostBO {
 	}
 	
 	
-	public List<Post> selectList(String tag){
-		return postDAO.selectPostList(tag);
+	public List<Post> selectList(String tag, String serch){
+		return postDAO.selectPostList(tag,serch);
 	}
 
 }

@@ -6,8 +6,10 @@ import com.bookcafe.comment.model.Comment;
 import com.bookcafe.post.model.Post;
 import com.bookcafe.user.model.User;
 
-public class Content {
 
+//게시물에 들어가는 항목들
+public class Content {
+	
 	private Post post;
 	
 	private User user;

@@ -27,7 +27,7 @@
  
  
  
- <select id="selectPostList" parameterType="string"
+ <select id="selectPostList" parameterType="map"
   resultType="com.bookcafe.post.model.Post">
 
 	SELECT
@@ -52,6 +52,23 @@
 	</when>
 	
 	</choose>
+	
+	<choose>
+	
+	<when test="tag !=null and search != null">
+	AND
+	title like CONCAT('%',#{search},'%')
+	</when>
+	
+	<when test="tag == null and search != null">
+	WHERE
+	title like CONCAT('%',#{search},'%')
+	</when>
+	
+	</choose>
+	
+	
+	
 	
 	ORDER BY
 	id

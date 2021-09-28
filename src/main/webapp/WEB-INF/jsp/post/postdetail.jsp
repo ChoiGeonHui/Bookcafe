@@ -210,6 +210,8 @@ $(document).ready(function(){
 		
 		if(waringAlert == true){
 			
+			alert(postId);
+			
 			$.ajax({
 				type:'post',
 				url:'/post/post_delete',

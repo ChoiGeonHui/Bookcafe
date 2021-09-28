@@ -50,19 +50,15 @@ public void deleteFile(String imagePath) throws IOException {
 		//파일 삭제
 		if(Files.exists(path)) {
 			logger.info("%%%%%%%%%%%%%%%%%%: "+path);
-			Files.delete(path);
-			
-		}
+			Files.delete(path);		
+		}		
 		
-		
-		//�뵒�젆�넗由� �궘�젣
+		//디렉토리 삭제
 		path = path.getParent();
 		if(Files.exists(path)) {
 			logger.info("################: "+path);
 			Files.delete(path);
-		}
-		
-		
+		}			
 		
 		
 	}

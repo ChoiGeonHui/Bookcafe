@@ -100,15 +100,17 @@ $(document).ready(function(){
 		
 	});
 	
-	
+	//글작성
 	$('#postcreateBtn').on('click',function(e){
 		
 		//태그에 체크값이 없는 상황을 막기위해 자유버튼에 checked="checked"를 설정함
 		let userName =$('#userName').text();
 		let tag = $('input[name=tag]:checked').val();
-		let title = $('#title').val().trim();
+		let title = $('#title').val();
 		let content =$('#content').val();
 		let price =$('#price').val();
+		let content2 = content.replace(/(\n|\r\n)/g, '<br>');
+		
 		
 		if(title == ''){
 			alert('제목을 입력하세요.');
@@ -119,7 +121,7 @@ $(document).ready(function(){
 		formData.append("userName",userName);
 		formData.append("tag",tag);
 		formData.append("title",title);
-		formData.append("content",content);
+		formData.append("content",content2);
 		formData.append("file",$('input[name=file]')[0].files[0]);
 		formData.append("price",price); 
 		
