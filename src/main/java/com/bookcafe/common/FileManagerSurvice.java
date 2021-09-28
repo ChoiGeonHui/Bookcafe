@@ -15,8 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManagerSurvice {
 	private Logger logger = LoggerFactory.getLogger(FileManagerSurvice.class);
 	public final static String 	FILE_UPLOAD_PATH=
-			//"D:\\최건희\\final_project\\images/";
-	"G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
+			"D:\\최건희\\final_project\\images/";
+	//"G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
 	
 	public String saveFile(String userLoginId, MultipartFile file) throws IOException {
 		//파일을 컴퓨터에 저장

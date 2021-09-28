@@ -26,7 +26,7 @@ public class BuyRestController {
 	@Autowired
 	private UserBO userBO;
 	
-	
+	//±¸¸Å
 	@PostMapping("/pay")
 	public Map<String, String> payPost(
 			@RequestParam("postId") int postId,

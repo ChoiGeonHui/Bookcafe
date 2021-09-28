@@ -70,10 +70,6 @@
 				return;
 			}
 			
-			alert(id+" : "+ password);
-			
-			
-			
 			$.ajax({
 				type:'post',
 				url:"/user/user_Password_update",

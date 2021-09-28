@@ -49,7 +49,6 @@
 				<c:if test="${user.userClass eq 'admin'}">
 					<div class="d-flex justify-content-center mt-2">
 						<a href="/bookcafe/userlist" class="btn btn-warning mx-2">사용자 목록</a>
-						<a href="#" class="btn btn-light mx-2">고객센터함</a>
 					</div>
 				</c:if>
 

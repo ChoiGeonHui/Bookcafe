@@ -13,10 +13,10 @@
 
 
 
-	<div class="d-flex col-12">
+	<div class="d-flex col-12 justify-content-center">
 
-		<table class="col-12">
-			<tr>
+		<table class="col-8">
+			<tr ">
 				<td>아이디</td>
 				<td><input type="text" id="id" name="id"
 					placeholder="Login ID" class="form-control"></td>
@@ -30,15 +30,15 @@
 
 	</div>
 	<div class="d-flex justify-content-center my-2">
-	<button id="loginBtn" type="button" class="btn btn-primary col-12">로그인</button>
+	<button id="loginBtn" type="button" class="btn btn-primary col-8">로그인</button>
 	</div>
 	
 	<div class="d-flex justify-content-center my-2">
-	<a href="/user/user_signup_view" class="btn btn-dark text-white col-12">회원가입</a>
+	<a href="/user/user_signup_view" class="btn btn-dark text-white col-8">회원가입</a>
 	</div>
 	
 	<div class="d-flex justify-content-center my-2">
-	<a href="/user/user_find_view" class="btn btn-danger col-12">비밀번호 찾기</a>
+	<a href="/user/user_find_view" class="btn btn-danger col-8">비밀번호 찾기</a>
 	</div>
 
 </div>

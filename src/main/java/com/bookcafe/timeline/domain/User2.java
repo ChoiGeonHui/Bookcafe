@@ -2,6 +2,8 @@ package com.bookcafe.timeline.domain;
 
 import com.bookcafe.user.model.User;
 
+
+//누적 신고수를 포함한 user테이블
 public class User2 {
 	
 	private User user;

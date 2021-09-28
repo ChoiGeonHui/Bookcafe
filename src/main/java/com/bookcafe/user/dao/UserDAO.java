@@ -13,9 +13,10 @@ public interface UserDAO {
 	public User selectTest();
 	
 	
-	
+	//유저 선택
 	public User selectUser(int userId);
 	
+	//유저 리스트 가져오기
 	public List<User> selectUserList();
 	
 	
@@ -57,7 +58,7 @@ public interface UserDAO {
 			@Param("email") String email
 			);
 	
-	//유저 인증
+	//비밀번호를 찾기위한 유저 인증
 	public Integer findUserByLoginIdAndNameAndEmail(
 			@Param("loginId") String loginId,
 			@Param("name") String name,
@@ -73,6 +74,7 @@ public interface UserDAO {
 	//유저 탈퇴
 	public int updateUserExceptById(@Param("id") int id);
 	
+	//유저 등급 조정
 	public int updateUserClass(
 			@Param("id") int id,
 			@Param("userClass") String userClass

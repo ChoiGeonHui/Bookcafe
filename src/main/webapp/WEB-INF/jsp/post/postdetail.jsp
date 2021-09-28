@@ -289,10 +289,8 @@ $(document).ready(function(){
 			data:{'postId':postId},
 			success:function(data){
 				if(data.result=='insert'){
-					alert('추천하였습니다.');
 					location.reload();
 				}else if(data.result=='delete'){
-					alert('추천을 취소하였습니다.');
 					location.reload();
 				}else{
 					alert('오류가 발생하였습니다.');
@@ -323,7 +321,6 @@ $(document).ready(function(){
 			data:{'postId':postId,'content':content},
 			success:function(data){
 				if(data.result=='success'){
-					alert('작성 완료');
 					location.reload();
 				}else if(data.result=='noWrite'){
 					alert('관리자에 의해 댓글작성 및 글쓰기가 제한되었습니다.\n'+
