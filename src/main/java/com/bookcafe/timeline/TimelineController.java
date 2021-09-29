@@ -1,7 +1,6 @@
 package com.bookcafe.timeline;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -40,7 +39,8 @@ public class TimelineController {
 			) {
 
 		Integer userId = null;
-
+		System.out.println("search======="+search);
+		
 		HttpSession session = request.getSession();
 		userId = (Integer) session.getAttribute("userId");
 		
@@ -53,6 +53,10 @@ public class TimelineController {
 		List<Content> list = contentBO.contentList(userId,pageTag,search);	
 		User user = userBO.selectUser(userId);
 		
+		
+		
+		model.addAttribute("tag", pageTag);		
+		model.addAttribute("search", search);		
 		model.addAttribute("userId", userId);		
 		model.addAttribute("user", user);
 		model.addAttribute("list", list);

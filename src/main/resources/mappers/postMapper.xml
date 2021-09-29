@@ -19,7 +19,7 @@
 	updatedAt
 	FROM
 	post
-	WHERE
+ WHERE
 	id = #{postId}
  
  
@@ -31,39 +31,40 @@
   resultType="com.bookcafe.post.model.Post">
 
 	SELECT
-	id,
-	userId,
-	tag,
-	title,
-	content,
-	imagePath,
-	price,
-	createdAt,
-	updatedAt
+		id,
+		userId,
+		tag,
+		title,
+		content,
+		imagePath,
+		price,
+		createdAt,
+		updatedAt
 	FROM
-	post
-	<choose>
-	<when test="tag =='추천글'">
+		post
 	
-	</when>
-	<when test="tag != null">
-	WHERE
-	tag = #{tag}
-	</when>
+	<choose>
+	
+		<when test="tag =='추천글'">
+		
+		</when>
+		<when test="tag != null">
+		WHERE
+			tag = #{tag}
+		</when>
 	
 	</choose>
 	
 	<choose>
-	
-	<when test="tag !=null and search != null">
-	AND
-	title like CONCAT('%',#{search},'%')
-	</when>
-	
-	<when test="tag == null and search != null">
-	WHERE
-	title like CONCAT('%',#{search},'%')
-	</when>
+		<when test="tag !=null and search != null">
+		AND
+			title like CONCAT(#{search},'%')
+		</when>
+		
+		<when test="tag == null and search != null">
+		WHERE
+			title like CONCAT(#{search},'%')
+		</when>
 	
 	</choose>
 	
@@ -71,7 +72,7 @@
 	
 	
 	ORDER BY
-	id
+		id
 	DESC
  
  
@@ -85,23 +86,23 @@
 
 	INSERT
 	INTO
-	`post`
+		`post`
 	(
-	userId,
-	tag,
-	title,
-	content,
-	imagePath,
-	price
+		userId,
+		tag,
+		title,
+		content,
+		imagePath,
+		price
 	)
 	VALUES
 	(
-	#{userId},
-	#{tag},
-	#{title},
-	#{content},
-	#{imagePath},
-	#{price}
+		#{userId},
+		#{tag},
+		#{title},
+		#{content},
+		#{imagePath},
+		#{price}
 
 	)
  
@@ -112,18 +113,18 @@
 
 	UPDATE `post`
 	SET
-	tag = #{tag},
-	title = #{title},
-	content = #{content},
+		tag = #{tag},
+		title = #{title},
+		content = #{content},
 	<if test="imagePath != null">
-	imagePath =#{imagePath},
+		imagePath =#{imagePath},
 	</if>
-	price = #{price},
-	updatedAt = now()
+		price = #{price},
+		updatedAt = now()
 	WHERE 
-	id = #{postId}
+		id = #{postId}
 	AND
-	userId = #{userId};
+		userId = #{userId};
  
  </update>
  
@@ -131,11 +132,11 @@
 
 	DELETE
 	FROM
-	`post`
+		`post`
 	WHERE
-	`id` = #{postId}
+		`id` = #{postId}
 	AND
-	userId = #{userId}
+		userId = #{userId}
  
  
  </delete>

@@ -5,29 +5,27 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <div class="col-12">
-
+<input type="text" id="tag" hidden="true" value="${tag}">
+<input type="text" id="search" hidden="true" value="${search}">
 	<div class="d-flex justify-content-between">
 	<div class="pull-life">
 		<a href="/bookcafe/main" class="btn btn-light text-success mx-2">전체</a>
-		<a href="/bookcafe/main?tag=공지"
-			class="btn btn-light text-danger mx-2">공지</a> <a
-			href="/bookcafe/main?tag=추천글" class="btn btn-light text-warning mx-2">추천글</a>
-		<a href="/bookcafe/main?tag=후기"
-			class="btn btn-light text-success mx-2">후기</a> <a
-			href="/bookcafe/main?tag=창작" class="btn btn-light text-success mx-2">창작</a>
-		<a href="/bookcafe/main?tag=질문"
-			class="btn btn-light text-success mx-2">질문</a> <a
-			href="/bookcafe/main?tag=요청" class="btn btn-light text-success mx-2">요청</a>
-		<a href="/bookcafe/main?tag=유료" class="btn btn-primary mx-2">책(유료)</a>
+		<a href="#" class="tagBtn btn btn-light text-danger mx-2" data-tag="공지">공지</a> 
+		<a href="#" class="tagBtn btn btn-light text-warning mx-2" data-tag="추천글">추천글</a>
+		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="후기">후기</a> 
+		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="창작">창작</a>
+		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="질문">질문</a> 
+		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="요청">요청</a>
+		<a href="#" class="tagBtn btn btn-primary mx-2">책(유료)</a>
 	</div>
 
 		<div class="pull-right">
 			<div class="input-group">
 
 				<img alt="검색" class="bg-light" src="/static/images/serch1.jpg"
-					height="35px" width="35px"> <input type="text" id="search"
+					height="35px" width="35px"> <input type="text" id="searchVal"
 					class="from-control" placeholder="제목키워드 입력">
-				<button id="btnSearch" class="btn input-group-text input-group-append">검색</button>
+				<a href="#" id="btnSearch" class="btn input-group-text input-group-append">검색</a>
 			</div>
 		</div>
 
@@ -73,30 +71,41 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	
+	$('.tagBtn').on('click',function(e){
+		e.preventDefault();
+		let tag = $(this).data('tag');
+		let search =  $('#search').val();
+		
+		//검색값이 들어있을경우
+		if(search!=''){
+			location.href='/bookcafe/main?tag='+tag+'&search='+search;
+		}else{	
+			location.href='/bookcafe/main?tag='+tag;
+		}
+		
+		
+	});
+	
+	
 	$('#btnSearch').on('click',function(e){
 		e.preventDefault();
-		let search = $('#search').val();
+		
+		let search = $('#searchVal').val();	
+		let tag = $('#tag').val();
 		
 		if(search==''){
 			alert('단어를 입력하세요.');
 			return;
 		}
 		
-		alert('검색함='+search);
-		$.ajax({
-			type:'post',
-			url:'/bookcafe/main',
-			data:{'search':search},
-			success:function(data){
-				location.reload();
-			},
-			error:function(){
-			alert('에러 발생.');
-				
+		//이미 태그가 입력된 경우
+		if(tag!=''){
+		location.href='/bookcafe/main?tag='+tag+'&search='+search;		
+			}else{	
+				location.href='/bookcafe/main?search='+search;
 			}
-		});
-		
-		
+			
 		
 	});
 	
