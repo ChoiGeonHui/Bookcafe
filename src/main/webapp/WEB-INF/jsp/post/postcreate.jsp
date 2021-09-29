@@ -76,9 +76,9 @@ $(document).ready(function(){
 				&&ext[ext.length -1] != 'png'
 				&&ext[ext.length -1] != 'jpg'
 				&&ext[ext.length -1] != 'jpeg')){
-			alert('부적절한 파일입니다');
-			$(this).val("");
-			return;
+				alert('부적절한 파일입니다');
+				$(this).val("");
+				return;
 		}
 		
 		$('#fileName').text(fileName);
@@ -135,12 +135,12 @@ $(document).ready(function(){
 				enctype: 'multipart/form-data', 
 			success:function(data){
 				if(data.result=='success'){
-				alert('작성 완료');
-				location.href='/user/update';
+					alert('작성 완료');
+					location.href='/user/update';
 				}else if(data.result=='price'){
-				alert('금액 비움');		
+					alert('금액 비움');		
 				} else{
-				alert('먼저 로그인을 하세요.');		
+					alert('먼저 로그인을 하세요.');		
 				}
 			},
 			error:function(e){

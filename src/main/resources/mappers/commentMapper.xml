@@ -8,17 +8,17 @@
  resultType="com.bookcafe.comment.model.Comment">
  
 	SELECT
-	id,
-	postId,
-	userId,
-	userName,
-	content,
-	createdAt,
-	updatedAt
+		id,
+		postId,
+		userId,
+		userName,
+		content,
+		createdAt,
+		updatedAt
 	FROM
-	comment
+		comment
 	WHERE
-	postId = #{postId}
+		postId = #{postId}
  
  </select>
  
@@ -26,18 +26,19 @@
  <insert id="insertComment" parameterType="map">
 	INSERT
 	INTO
-	comment(
-	postId,
-	userId,
-	userName,
-	content
+		comment
+	(
+		postId,
+		userId,
+		userName,
+		content
 	)
 	VALUES
 	(
-	#{postId},
-	#{userId},
-	#{userName},
-	#{content}
+		#{postId},
+		#{userId},
+		#{userName},
+		#{content}
 	)
  
  </insert>
@@ -46,21 +47,21 @@
  <delete id="deleteComment" parameterType="map">
 	DELETE
 	FROM
-	comment
+		comment
 	WHERE
-	id = #{id}
+		id = #{id}
 	AND
-	postId = ${postId}
+		postId = ${postId}
 	AND
-	userId = ${userId} 
+		userId = ${userId} 
  </delete>
  
  <delete id="deleteCommentByPostId" parameterType="int">
 	DELETE
 	FROM
-	comment
+		comment
 	WHERE
-	postId = ${postId}
+		postId = ${postId}
 	
  </delete>
  

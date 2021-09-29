@@ -7,7 +7,7 @@
 <div class="col-12">
 <input type="text" id="tag" hidden="true" value="${tag}">
 <input type="text" id="search" hidden="true" value="${search}">
-	<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between">
 	<div class="pull-life">
 		<a href="/bookcafe/main" class="btn btn-light text-success mx-2">전체</a>
 		<a href="#" class="tagBtn btn btn-light text-danger mx-2" data-tag="공지">공지</a> 
@@ -16,7 +16,7 @@
 		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="창작">창작</a>
 		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="질문">질문</a> 
 		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="요청">요청</a>
-		<a href="#" class="tagBtn btn btn-primary mx-2">책(유료)</a>
+		<a href="#" class="tagBtn btn btn-primary mx-2" data-tag="유료">책(유료)</a>
 	</div>
 
 		<div class="pull-right">
@@ -32,8 +32,6 @@
 	</div>
 	<hr>
 	<div>
-	<div class="text-center">
-	</div>
 		<table class="table text-center">
 			<thead>
 				<tr>
@@ -43,15 +41,12 @@
 					<th class="col-2">작성자</th>
 					<th class="col-2">작성일</th>
 					<th class="col-1">추천수</th>
-
 				</tr>
 			</thead>
-			<tbody>
-			</tbody>
 		</table>
 	</div>
 
-		<c:forEach items="${list}" var="list">
+	<c:forEach items="${list}" var="list">
 		<a href="/post/post_detail_view?postId=${list.post.id}">
 			<div class="d-flex btn btn-light mb-1 userlist">
 				<div class="col-1">${list.post.id}</div>

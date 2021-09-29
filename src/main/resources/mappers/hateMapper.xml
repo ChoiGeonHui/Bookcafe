@@ -9,11 +9,11 @@
 	SELECT
 	COUNT(1)
 	FROM
-	`hate`
+		`hate`
 	WHERE
-	userId = #{userId}
+		userId = #{userId}
 	AND
-	subjectId = #{subjectId}
+		subjectId = #{subjectId}
  
  
  </select>
@@ -23,24 +23,23 @@
 	SELECT 
 	COUNT(1)
 	FROM 
-	hate 
+		hate 
 	WHERE
-	subjectId = #{subjectId};
- 
- 
+		subjectId = #{subjectId};
  </select>
  
  <insert id="insertHate" parameterType="map">
 	INSERT
 	INTO
-	`hate`(
-	userId,
-	subjectId
+	`hate`
+	(
+		userId,
+		subjectId
 	)
 	VALUES
 	(
-	#{userId},
-	#{subjectId}
+		#{userId},
+		#{subjectId}
 	)
  </insert>
  

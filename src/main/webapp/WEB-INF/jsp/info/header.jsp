@@ -5,26 +5,19 @@
 
 
 <header class="d-flex align-items-center justify-content-center">
-
 	<img height="100%" alt="이미지 부착" src="/static/images/bookshop.jpg">
 	<div class="text-white ml-3">
 		<h1>
-		<a href="/bookcafe/main" class="text-white">Book Cafe</a> 
+			<a href="/bookcafe/main" class="text-white">Book Cafe</a> 
 		</h1>
 	</div>
 </header>
 
-
-
 <div class="mr-3 mt-2 d-flex justify-content-end" id="usernav">
-
 <div class="col-9">
-
 <img alt="책사진" src="/static/images/book4.jpg" class="w-100" height="190px">
 
 </div>
-
-
 	<div class="col-3">
 		<c:if test="${not empty userId}">
 			<div class="col-12">
@@ -41,7 +34,7 @@
 						href="/user/user_point_view" class="btn btn-primary col-3">충전</a>
 				</div>
 				<div class="d-flex mt-2">
-					<span id="userClass" class="d-none">${user.userClass}</span>
+					<input id="userClass" hidden="true" value="${user.userClass}">
 					<a id="createPost" class="btn btn-success text-white mx-2">글쓰기</a> <a
 						href="/user/user/log_out" class="btn btn-secondary mx-2">로그아웃</a>
 				</div>
@@ -67,19 +60,18 @@
 </div>
 
 <script type="text/javascript">
-
 $(document).ready(function(){
 	$('#createPost').on('click',function(e){
 		e.preventDefault();
-		let userClass = $('#userClass').text();
+		let userClass = $('#userClass').val();
 		
 		if(userClass == 'noWrite'){
 			alert('관리자에 의해 글작성,댓글이 제한되었습니다.');
 			return;
 		}
+		
 		location.href='/post/post_create_view';
 	});
 });
-
 
 </script>

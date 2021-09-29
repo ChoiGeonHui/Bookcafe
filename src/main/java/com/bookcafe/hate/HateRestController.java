@@ -20,6 +20,13 @@ public class HateRestController {
 	@Autowired
 	private HateBO hateBO;
 	
+	
+	/**
+	 * 신고하기
+	 * @param subjectId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/hate")
 	public Map<String, String> insertHate(
 			@RequestParam("subjectId") int subjectId,

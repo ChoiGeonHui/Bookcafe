@@ -46,15 +46,11 @@
 				
 			</tbody>
 
-
-
 		</table>
 
 	</div>
     <hr>
-    
-    
-    
+ 
     
 </div>
 <script type="text/javascript">
@@ -71,8 +67,6 @@ $(document).ready(function(){
 			alert('유저 상태를 선택하세요.');
 			return;
 		}
-		
-		
 		
 		$.ajax({
 			type:'post',

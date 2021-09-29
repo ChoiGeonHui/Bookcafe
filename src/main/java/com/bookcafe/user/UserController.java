@@ -20,7 +20,12 @@ public class UserController {
 	@Autowired
 	UserBO userBO;
 	
-	//회원가입
+	/**
+	 * 회원가입
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user_signup_view")
 	public String sign_up(Model model,
 			HttpServletRequest request) {
@@ -36,7 +41,12 @@ public class UserController {
 		return "templete/layout";
 	}
 	
-	//로그인
+	/**
+	 * 로그인
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user_signin_view")
 	public String sign_in(Model model,
 			HttpServletRequest request) {
@@ -51,7 +61,11 @@ public class UserController {
 		return "templete/layout";
 	}
 	
-	//로그아웃
+	/**
+	 * 로그아웃
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user/log_out")
 	public String log_out(HttpServletRequest request) {
 		
@@ -67,7 +81,12 @@ public class UserController {
 	}
 	
 	
-	//포인트 충전
+	/**
+	 * 포인트 충전
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user_point_view")
 	public String point(Model model,
 			HttpServletRequest request) {
@@ -86,7 +105,12 @@ public class UserController {
 	}
 	
 	
-	//사용자 정보 변경
+	/**
+	 * 사용자 정보 변경
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/user_update_view")
 	public String updateUser(Model model,
 			HttpServletRequest request) {
@@ -104,7 +128,12 @@ public class UserController {
 	}
 	
 	
-	//유저 갱신
+	/**
+	 * 유저 갱신
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/update")
 	public String update(Model model,
 			HttpServletRequest request) {
@@ -115,15 +144,13 @@ public class UserController {
 		
 		session.setAttribute("userId", userId);
 		session.setAttribute("user", user);
-		
-		
+			
 		return "redirect:/bookcafe/main";
 	}
 	
 	
 	@RequestMapping("/user_find_view")
-	public String user_find(Model model) {
-		
+	public String user_find(Model model) {	
 		model.addAttribute("page", "user/userFind");
 		return "templete/layout";
 	}

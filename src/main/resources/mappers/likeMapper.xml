@@ -8,9 +8,9 @@
 	SELECT
 	COUNT(1)
 	FROM
-	`like`
+		`like`
 	WHERE
-	postId = #{postId}
+		postId = #{postId}
  </select>
  
  
@@ -18,11 +18,11 @@
 	SELECT
 	COUNT(1)
 	FROM
-	`like`
+		`like`
 	WHERE
-	postId = #{postId}
+		postId = #{postId}
 	AND
-	userId = #{userId}	
+		userId = #{userId}	
  </select>
  
  
@@ -30,14 +30,15 @@
  <insert id="insertLike" parameterType="map">
 	INSERT
 	INTO
-	`like`(
-	postId,
-	userId
+		`like`
+	(
+		postId,
+		userId
 	)
 	VALUES
 	(
-	#{postId},
-	#{userId}
+		#{postId},
+		#{userId}
 	)
  
  
@@ -48,20 +49,20 @@
  <delete id="deleteLike" parameterType="map">
 	DELETE
 	FROM
-	`like`
+		`like`
 	WHERE
-	postId = #{postId}
+		postId = #{postId}
 	AND
-	userId = #{userId}	
+		userId = #{userId}	
  
  </delete>
  
  <delete id="deleteLikeByPostId" parameterType="int">
 	DELETE
 	FROM
-	`like`
+		`like`
 	WHERE
-	postId = #{postId}
+		postId = #{postId}
  
  </delete>
  

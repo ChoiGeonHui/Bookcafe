@@ -6,56 +6,56 @@
  
  <select id="selectTest" resultType="com.bookcafe.user.model.User">
 	select
-	id,
-	loginId,
-	password,
-	name,
-	email,
-	point,
-	userClass,
-	createdAt,
-	updatedAt
+		id,
+		loginId,
+		password,
+		name,
+		email,
+		point,
+		userClass,
+		createdAt,
+		updatedAt
 	from
-	user
+		user
 	limit 1
  </select>
  
  <select id="selectUser" parameterType="int" 
  resultType="com.bookcafe.user.model.User">
 	SELECT
-	id,
-	loginId,
-	password,
-	name,
-	email,
-	point,
-	userClass,
-	createdAt,
-	updatedAt
+		id,
+		loginId,
+		password,
+		name,
+		email,
+		point,
+		userClass,
+		createdAt,
+		updatedAt
 	FROM
-	`user`
+		`user`
 	WHERE
-	id = #{userId}
+		id = #{userId}
 	
  </select>
  
  <select id="selectUserList"
  resultType="com.bookcafe.user.model.User">
 	SELECT
-	id,
-	loginId,
-	password,
-	name,
-	email,
-	point,
-	userClass,
-	createdAt,
-	updatedAt
+		id,
+		loginId,
+		password,
+		name,
+		email,
+		point,
+		userClass,
+		createdAt,
+		updatedAt
 	FROM
-	`user`
+		`user`
 	WHERE
 	NOT
-	userClass = 'admin'
+		userClass = 'admin'
 	
  </select>
  
@@ -65,9 +65,9 @@
 	SELECT
 	count(1) 
 	FROM
-	`user`
+		`user`
 	WHERE 
-	loginId = #{loginId};
+		loginId = #{loginId};
  
  
  
@@ -78,19 +78,19 @@
  resultType="com.bookcafe.user.model.User">
 
 	SELECT
-	id,
-	loginId,
-	password,
-	name,
-	email,
-	point,
-	userClass,
-	createdAt,
-	updatedAt
+		id,
+		loginId,
+		password,
+		name,
+		email,
+		point,
+		userClass,
+		createdAt,
+		updatedAt
 	FROM
-	user
+		user
 	WHERE
-	loginId = #{loginId}
+		loginId = #{loginId}
 	AND
 	password = #{password}
  </select>
@@ -98,15 +98,15 @@
  
  <select id="findUserByLoginIdAndNameAndEmail" parameterType="map" resultType="integer">
  SELECT
- `id`
+ 	`id`
  FROM
- `user`
-WHERE
-`loginId` = #{loginId}
-AND
-`name` = #{name}
-AND 
-`email` = #{email}
+ 	`user`
+ WHERE
+	`loginId` = #{loginId}
+ AND
+	`name` = #{name}
+ AND 
+	`email` = #{email}
  
  
  
@@ -120,19 +120,19 @@ AND
  
  <insert id="insertUser" parameterType="map">
 	INSERT INTO
-	`user`
+		`user`
 	(
-	loginId,
-	password,
-	name,
-	email
+		loginId,
+		password,
+		name,
+		email
 	)
 	VALUES
 	(
-	#{loginId},
-	#{password},
-	#{name},
-	#{email}
+		#{loginId},
+		#{password},
+		#{name},
+		#{email}
 	)
  
  </insert>
@@ -141,11 +141,11 @@ AND
  <update id="updatePlusPointByUserId" parameterType="map">
 
 	UPDATE
-	`user`
+		`user`
 	SET
-	`point` = point + #{point}
+		`point` = point + #{point}
 	WHERE
-	`id` = #{userId}
+		`id` = #{userId}
  
  </update>
  
@@ -164,33 +164,31 @@ AND
  <update id="updateUserByColumns" parameterType="map">
 
 	UPDATE
-	`user`
+		`user`
 	SET
 	
 	<if test="password != null ">
-	`password` = #{password}
+		`password` = #{password}
 	</if>
 	
 	<if test="password != null and name != null">
-	,
+		,
 	</if>
 	
 	<if test="name != null">
-	`name` = #{name}
+		`name` = #{name}
 	</if>
 	
 	<if test="email != '' and name != ''">
-	,
+		,
 	</if>
 	
 	<if test="email != ''">
-	`email` = #{email}
+		`email` = #{email}
 	</if>
 	
-	
-	
 	WHERE
-	`id` = #{userId}
+		`id` = #{userId}
  
  
  </update>
@@ -198,30 +196,30 @@ AND
  
  <update id="updateUserByIdSetPassword" parameterType="map">
 	UPDATE
-	`user`
+		`user`
 	SET
-	`password` = #{password}
+		`password` = #{password}
 	WHERE
-	`id` = #{id}
+		`id` = #{id}
  </update>
  
  <update id="updateUserExceptById" parameterType="int">
 	UPDATE
-	`user`
+		`user`
 	SET
-	`userClass` = 'except'
+		`userClass` = 'except'
 	WHERE
-	`id` = #{id}
+		`id` = #{id}
  </update>
  
  <update id="updateUserClass" parameterType="map">
 
 	UPDATE
-	`user`
+		`user`
 	SET
-	`userClass` = #{userClass}
+		`userClass` = #{userClass}
 	WHERE
-	`id` = #{id}
+		`id` = #{id}
  
  
  </update>

@@ -5,6 +5,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class EncryptUtils {
 
+	//비밀번호 암호화
 	public static String md5(String message) {
 		String encData = "";
 		try {
@@ -15,7 +16,7 @@ public class EncryptUtils {
 			byte[] digest = md.digest();
 
 			for (int i = 0; i < digest.length; i++) {
-				encData += Integer.toHexString(digest[i] & 0xff); // 16진수로 변환하는 과정
+				encData += Integer.toHexString(digest[i] & 0xff); // 16吏꾩닔濡� 蹂��솚�븯�뒗 怨쇱젙
 			}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();

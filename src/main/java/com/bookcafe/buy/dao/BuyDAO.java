@@ -19,5 +19,6 @@ public interface BuyDAO {
 			@Param("price") int price
 			);
 	
+	//ªË¡¶
 	public void deleteBuyByPostId(int postId);
 }

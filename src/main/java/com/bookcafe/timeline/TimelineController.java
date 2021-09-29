@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookcafe.hate.bo.HateBO;
+import com.bookcafe.post.bo.PostBO;
 import com.bookcafe.timeline.bo.ContentBO;
 import com.bookcafe.timeline.domain.Content;
 import com.bookcafe.timeline.domain.User2;
@@ -26,11 +27,21 @@ public class TimelineController {
 	private UserBO userBO;
 	
 	@Autowired
-	private ContentBO contentBO;
+	private PostBO postBO;
 	
 	@Autowired
-	private HateBO hateBO;
+	private ContentBO contentBO;
 
+	/**메인 페이지
+	 * 
+	 * @param model
+	 * @param request
+	 * @param search
+	 * @param pageTag
+	 * @param prevIdParm
+	 * @param nextIdParm
+	 * @return
+	 */
 	@RequestMapping("/main")
 	public String mainpage(Model model,
 			HttpServletRequest request,
@@ -39,21 +50,15 @@ public class TimelineController {
 			) {
 
 		Integer userId = null;
-		System.out.println("search======="+search);
-		
 		HttpSession session = request.getSession();
-		userId = (Integer) session.getAttribute("userId");
-		
-		
+		userId = (Integer) session.getAttribute("userId");	
 
 		if (userId == null) {	
 			return "redirect:/user/user_signin_view";
 		}
 		
-		List<Content> list = contentBO.contentList(userId,pageTag,search);	
+		List<Content> list = contentBO.contentList(userId,pageTag,search);		
 		User user = userBO.selectUser(userId);
-		
-		
 		
 		model.addAttribute("tag", pageTag);		
 		model.addAttribute("search", search);		
@@ -61,11 +66,15 @@ public class TimelineController {
 		model.addAttribute("user", user);
 		model.addAttribute("list", list);
 		model.addAttribute("page", "main/timeline");
-
 		return "templete/layout";
 	}
 	
-	
+	/**
+	 * 관리자가 보는 유저리스트 페이지
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/userlist")
 	public String userListView(Model model,
 			HttpServletRequest request) {

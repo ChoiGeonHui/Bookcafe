@@ -25,6 +25,13 @@ public class CommentRestController {
 	@Autowired
 	CommentBO commentBO;
 	
+	/**
+	 * 댓글 작성
+	 * @param postId
+	 * @param content
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/write_comment")
 	public Map<String, String> writeComment(
 			@RequestParam("postId") int postId,
@@ -39,9 +46,7 @@ public class CommentRestController {
 			result.put("result", "fail");
 			return result;
 		}
-		
-		User user = userBO.selectUser(userId);
-		
+		User user = userBO.selectUser(userId);	
 		
 		if(user.getUserClass().equals("noWrite")) {
 			result.put("result", "noWrite");
@@ -57,6 +62,14 @@ public class CommentRestController {
 		return result;
 		
 	}
+	
+	/**
+	 * 댓글 삭제
+	 * @param id
+	 * @param postId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/delete_comment")
 	public Map<String, String> deleteComment(
 			@RequestParam("id") int id,
@@ -67,6 +80,8 @@ public class CommentRestController {
 		Integer userId = null;
 		
 		userId = (Integer) session.getAttribute("userId");
+		
+		//로그인 상태만 작성할수 있다.
 		if(userId == null) {
 			result.put("result", "fail");
 			return result;
@@ -76,8 +91,7 @@ public class CommentRestController {
 		
 		if(row==1) {
 			result.put("result", "success");
-		}
-		
+		}	
 		return result;
 		
 	}

@@ -19,8 +19,13 @@ public class LikeRestController {
 	
 	@Autowired
 	LikeBO likeBO;
-
 	
+	/**
+	 * 추천 누르기
+	 * @param postId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/like")
 	public Map<String, String> likeOnOff(
 			@RequestParam("postId") int postId,
@@ -42,9 +47,6 @@ public class LikeRestController {
 		}else {
 			result.put("result", "delete");	
 		}
-		
-		
-		
 		
 		return result;
 	}

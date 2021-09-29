@@ -32,9 +32,7 @@ public class PostBO {
 			} catch (Exception e) {
 				log.error("파일 에러 :"+e.getMessage());
 			}
-		}
-		
-		
+		}	
 		return postDAO.createPost(userId, tag, title, content, imagePath, price);
 	}
 	
@@ -77,8 +75,9 @@ public class PostBO {
 	}
 	
 	
-	public List<Post> selectList(String tag, String serch){
-		return postDAO.selectPostList(tag,serch);
+	public List<Post> selectList(String tag, String search){
+		return postDAO.selectPostList(tag,search);
 	}
+	
 
 }

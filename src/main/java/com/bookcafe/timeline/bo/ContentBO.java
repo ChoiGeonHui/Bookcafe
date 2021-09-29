@@ -2,7 +2,6 @@ package com.bookcafe.timeline.bo;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +44,14 @@ public class ContentBO {
 	@Autowired
 	private HateBO hateBO;
 	
+	private static final int POST_MAX_SIZE =5;
+	
 	//postlist 출력
-	public List<Content> contentList(int userId,String pagetag,String serch){
+	public List<Content> contentList(int userId,String pagetag,String search){
+		
 		List<Content> contentlist = new ArrayList<>();
 		
-		List<Post> postlist = postBO.selectList(pagetag,serch);
+		List<Post> postlist = postBO.selectList(pagetag, search);
 		
 		for (Post post : postlist) {
 			Content content = new Content();
@@ -64,7 +66,6 @@ public class ContentBO {
 			
 			int countlike = likeBO.likeConuntByPost(post.getId());
 			content.setLikeCount(countlike);
-			
 			
 			if(pagetag!=null&&pagetag.equals("추천글")&&countlike<5) {
 				continue;

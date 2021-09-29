@@ -23,7 +23,11 @@ public class UserRestController {
 	@Autowired
 	private UserBO userBO;
 	
-	//아이디 중복확인
+	/**
+	 * 아이디 중복확인
+	 * @param loginId
+	 * @return
+	 */
 	@PostMapping("/user_IdCheck")
 	public Map<String, String> checkId(
 			@RequestParam("loginId") String loginId){	
@@ -39,7 +43,14 @@ public class UserRestController {
 		
 	}
 	
-	//회원가입 유저db추가
+	/**
+	 * 회원가입 유저db추가
+	 * @param loginId
+	 * @param password
+	 * @param name
+	 * @param email
+	 * @return
+	 */
 	@PostMapping("/user_sign_up")
 	public Map<String, String> signup(
 			@RequestParam("loginId") String loginId,
@@ -127,14 +138,12 @@ public class UserRestController {
 			result.put("result", "fail");
 			return result;		
 		}
-		
-		
+			
 		int row = userBO.plusPointByUserId(userId, point);
 		
 		if(row>0) {
 			result.put("result", "success");
-		}
-		
+		}	
 		return result;
 	}
 	

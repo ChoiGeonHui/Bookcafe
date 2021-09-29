@@ -26,7 +26,14 @@ public class BuyRestController {
 	@Autowired
 	private UserBO userBO;
 	
-	//구매
+	/**
+	 * 게시물 구매
+	 * @param postId
+	 * @param createrId
+	 * @param price
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/pay")
 	public Map<String, String> payPost(
 			@RequestParam("postId") int postId,
@@ -55,6 +62,7 @@ public class BuyRestController {
 		int row2 = userBO.plusPointByUserId(createrId,price);
 		int row3 = userBO.minusPointByUserId(userId,price);
 		
+		//모든 함수가 실행됐을 때
 		if((row+row2+row3) ==3 ) {
 			result.put("result", "success");		
 		}		

@@ -10,11 +10,11 @@
   SELECT
   COUNT(1)
   FROM
-  `buy`
+  	`buy`
   WHERE
-  userId =#{userId}
+  	userId =#{userId}
   AND
-  postId = #{postId}
+ 	 postId = #{postId}
  
  
  </select>
@@ -23,17 +23,17 @@
  <insert id="insertBuylist" parameterType="map">
 	INSERT
 	INTO
-	`buy`
+		`buy`
 	(
-	userId,
-	postId,
-	price
+		userId,
+		postId,
+		price
 	)
 	VALUES
 	(
-	#{userId},
-	#{postId},
-	#{price}
+		#{userId},
+		#{postId},
+		#{price}
 	)
  </insert>
  
