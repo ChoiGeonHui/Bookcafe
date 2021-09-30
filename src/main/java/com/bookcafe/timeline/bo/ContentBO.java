@@ -44,8 +44,6 @@ public class ContentBO {
 	@Autowired
 	private HateBO hateBO;
 	
-	private static final int POST_MAX_SIZE =5;
-	
 	//postlist 출력
 	public List<Content> contentList(int userId,String pagetag,String search){
 		
