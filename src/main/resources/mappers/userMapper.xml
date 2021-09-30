@@ -119,8 +119,7 @@
 		name,
 		email
 		<if test="userClass == 'admin'">
-		,
-		userClass	
+		,userClass	
 		</if>
 		
 	)
@@ -130,9 +129,11 @@
 		#{password},
 		#{name},
 		#{email}
+		
 		<if test="userClass == 'admin'">
-		#{userClass}	
+		,#{userClass}	
 		</if>
+		
 		
 	)
  
