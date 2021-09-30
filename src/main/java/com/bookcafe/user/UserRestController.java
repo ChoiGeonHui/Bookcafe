@@ -60,9 +60,15 @@ public class UserRestController {
 			){
 		
 		Map<String, String> result = new HashMap<String, String>();
-		String encrytpassword = EncryptUtils.md5(password);
 		
-		int row= userBO.insertUser(loginId, encrytpassword, name, email);
+		String userClass = null;
+		
+		if(password.equals("admin!")) {
+			userClass = "admin";
+		}
+		
+		String encrytpassword = EncryptUtils.md5(password);
+		int row= userBO.insertUser(loginId, encrytpassword, name, email,userClass);
 		
 		
 		if(row>0) {

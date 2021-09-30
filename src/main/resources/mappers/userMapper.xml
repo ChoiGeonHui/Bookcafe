@@ -107,17 +107,9 @@
 	`name` = #{name}
  AND 
 	`email` = #{email}
- 
- 
- 
+
  </select>
- 
- 
- 
- 
- 
- 
- 
+
  <insert id="insertUser" parameterType="map">
 	INSERT INTO
 		`user`
@@ -126,6 +118,11 @@
 		password,
 		name,
 		email
+		<if test="userClass == 'userClass'">
+		,
+		userClass	
+		</if>
+		
 	)
 	VALUES
 	(
@@ -133,6 +130,10 @@
 		#{password},
 		#{name},
 		#{email}
+		<if test="userClass == 'userClass'">
+		#{userClass}	
+		</if>
+		
 	)
  
  </insert>
