@@ -56,16 +56,16 @@
 	</choose>
 	
 	<choose>
+		<when test="(tag == '추천글' or tag == null) and search != null">
+		WHERE
+			title like CONCAT(#{search},'%')
+		</when>
+	
 		<when test="tag !=null and search != null">
 		AND
 			title like CONCAT(#{search},'%')
 		</when>
 		
-		<when test="tag == null and search != null">
-		WHERE
-			title like CONCAT(#{search},'%')
-		</when>
-	
 	</choose>
 	
 	ORDER BY
