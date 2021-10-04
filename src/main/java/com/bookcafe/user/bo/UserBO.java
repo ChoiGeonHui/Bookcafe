@@ -42,8 +42,8 @@ public class UserBO {
 	
 	//회원가입
 	public int insertUser(String loginId,String password,
-			String name,String email) {
-		return userDAO.insertUser(loginId, password, name, email);
+			String name,String email,String userClass) {
+		return userDAO.insertUser(loginId, password, name, email,userClass);
 	}
 	
 	//포인트 충전

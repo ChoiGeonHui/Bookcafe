@@ -16,8 +16,8 @@ public class FileManagerSurvice {
 	private Logger logger = LoggerFactory.getLogger(FileManagerSurvice.class);
 	
 	//주의 - 파일 위치에 따라 변경됨. DB imagePath에 영향
-	public final static String 	FILE_UPLOAD_PATH=
-			"D:\\최건희\\final_project\\images/";
+	public final static String 	FILE_UPLOAD_PATH= "/home/ec2-user/upload_images/";
+		//	"D:\\최건희\\final_project\\images/";
 	//"G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
 	
 	public String saveFile(String userLoginId, MultipartFile file) throws IOException {
