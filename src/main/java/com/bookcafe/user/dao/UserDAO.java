@@ -36,7 +36,9 @@ public interface UserDAO {
 			@Param("loginId") String loginId,
 			@Param("password") String password,
 			@Param("name") String name,
-			@Param("email") String email);
+			@Param("email") String email,
+			@Param("userClass") String userClass
+			);
 	
 	
 	//사용자포인트 증가

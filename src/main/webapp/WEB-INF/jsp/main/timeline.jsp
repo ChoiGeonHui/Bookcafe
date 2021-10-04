@@ -10,6 +10,7 @@
 <div class="d-flex justify-content-between">
 	<div class="pull-life">
 		<a href="/bookcafe/main" class="btn btn-light text-success mx-2">전체</a>
+		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="자유">자유</a> 
 		<a href="#" class="tagBtn btn btn-light text-danger mx-2" data-tag="공지">공지</a> 
 		<a href="#" class="tagBtn btn btn-light text-warning mx-2" data-tag="추천글">추천글</a>
 		<a href="#" class="tagBtn btn btn-light text-success mx-2" data-tag="후기">후기</a> 
