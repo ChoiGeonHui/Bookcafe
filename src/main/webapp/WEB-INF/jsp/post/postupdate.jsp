@@ -18,9 +18,12 @@
 				 <label	class="radio-inline mx-2"><input type="radio" name="tag" value="창작">창작</label>
 				 <label class="radio-inline mx-2"><input type="radio" name="tag" value="요청">요청</label> 
 				
-				<c:if test="${user.userClass eq 'admin'}">				
-				<label class="radio-inline mx-2"><input type="radio" name="tag" value="공지">공지</label>
+				<c:if test="${user.userClass ne 'noPrice'}">				
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="유료">상품(유료)</label>		
+				</c:if>
+				
+				<c:if test="${user.userClass eq 'admin'}">				
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="공지">공지</label>	
 				</c:if>
 				
 				

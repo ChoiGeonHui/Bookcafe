@@ -147,7 +147,7 @@ public class PostRestController {
 			return result;		
 		}
 		
-		String  deleted = contentBO.deleteContent(userId, postId);
+		String deleted = contentBO.deleteContent(userId, postId);
 		
 		if(deleted.equals("success")) {
 			result.put("result", "success");
