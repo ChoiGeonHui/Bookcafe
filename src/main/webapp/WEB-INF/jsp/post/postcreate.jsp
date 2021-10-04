@@ -16,12 +16,14 @@
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="후기">후기</label> 
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="질문">질문</label>
 				 <label	class="radio-inline mx-2"><input type="radio" name="tag" value="창작">창작</label>
-				 <label class="radio-inline mx-2"><input type="radio" name="tag" value="요청">요청</label> 
-				
-				<c:if test="${user.userClass eq 'admin'}">				
+				 <label class="radio-inline mx-2"><input type="radio" name="tag" value="요청">요청</label>
+
+			<c:if test="${user.userClass ne 'noPrice'}">
+				<label class="radio-inline mx-2"><input type="radio" name="tag" value="유료">상품(유료)</label>
+			</c:if>
+			<c:if test="${user.userClass eq 'admin'}">
 				<label class="radio-inline mx-2"><input type="radio" name="tag" value="공지">공지</label>
-				<label class="radio-inline mx-2"><input type="radio" name="tag" value="유료">상품(유료)</label>		
-				</c:if>
+			</c:if>
 		</div>
 		<div class="mt-3 input-group">
 			<span class="input-group-text input-group-append">제목</span>

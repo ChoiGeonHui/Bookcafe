@@ -33,8 +33,9 @@
 						<select name="userStatus${list.user.id}">
 						<option value="default" selected="selected">상태선택</option>
 						<option value="normal">일반</option>
-						<option value="blacklist">활동정지</option>
+						<option value="noPrice">상품 판매금지</option>
 						<option value="noWrite">채팅,글작성금지</option>
+						<option value="blacklist">활동정지</option>
 						<option value="except">탈퇴</option>
 						</select>
 						</td>
