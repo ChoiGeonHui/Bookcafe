@@ -11,18 +11,18 @@ public class BuyBO {
 	@Autowired
 	private BuyDAO buyDAO;
 	
-	//ÇØ´ç°Ô½Ã¹° ±¸ÀÔ¿©ºÎ
+	//í•´ë‹¹ê²Œì‹œë¬¼ êµ¬ìž…ì—¬ë¶€
 	public boolean checkBuyed(int userId,int postId) {
 		int row = buyDAO.selectByUserIdPostId(userId,postId);	
 		return row>0? true:false;
 	};
 	
-	//°Ô½Ã¹° ±¸ÀÔ
+	//ê²Œì‹œë¬¼ êµ¬ìž…
 	public int insertPost(int userId,int postId,int price) {
 		return buyDAO.insertBuylist(userId, postId, price);
 	}
 	
-	//°Ô½Ã¹° »èÁ¦
+	//ê²Œì‹œë¬¼ ì‚­ì œ
 	public void deleteBuyByPostId(int postId) {
 		buyDAO.deleteBuyByPostId(postId);
 	}

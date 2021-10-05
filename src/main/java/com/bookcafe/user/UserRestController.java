@@ -24,7 +24,7 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	/**
-	 * ¾ÆÀÌµğ Áßº¹È®ÀÎ
+	 * ì•„ì´ë”” ì¤‘ë³µí™•ì¸
 	 * @param loginId
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * È¸¿ø°¡ÀÔ À¯ÀúdbÃß°¡
+	 * íšŒì›ê°€ì…
 	 * @param loginId
 	 * @param password
 	 * @param name
@@ -78,7 +78,7 @@ public class UserRestController {
 	
 	
 	/**
-	 * ·Î±×ÀÎ
+	 * ë¡œê·¸ì¸
 	 * @param loginId
 	 * @param password
 	 * @param request
@@ -115,7 +115,7 @@ public class UserRestController {
 	
 	
 	/**
-	 * Æ÷ÀÎÆ® ÃæÀü
+	 * í¬ì¸íŠ¸ ì¶©ì „
 	 * @param point
 	 * @param request
 	 * @return
@@ -129,7 +129,7 @@ public class UserRestController {
 		userId = (Integer) session.getAttribute("userId");
 		Map<String, String> result = new HashMap<String, String>();
 		
-		//ºñ·Î±×ÀÎ »óÅÂÀÎ °æ¿ì
+		//ë¹„ë¡œê·¸ì¸ ìƒíƒœì¸ ê²½ìš°
 		if(userId ==null) {
 			result.put("result", "fail");
 			return result;		
@@ -144,7 +144,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * È¸¿ø Á¤º¸ º¯°æ
+	 * íšŒì› ì •ë³´ ë³€ê²½
 	 * @param password
 	 * @param name
 	 * @param email
@@ -182,7 +182,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 *  À¯Àú ÀÎÁõ
+	 *  ìœ ì € ì¸ì¦
 	 * @param loginId
 	 * @param name
 	 * @param email
@@ -200,6 +200,7 @@ public class UserRestController {
 			
 		if(row !=null) {
 			result.put("result", "success");
+			result.put("userNum", ""+row);
 		}else {
 			result.put("result", "fail");
 		}	
@@ -229,7 +230,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * À¯Àú Å»Åğ
+	 * ìœ ì € íƒˆí‡´
 	 * @param id
 	 * @param request
 	 * @return
@@ -256,7 +257,7 @@ public class UserRestController {
 	
 	
 	/**
-	 * È¸¿ø ±ÇÇÑ º¯°æ
+	 * íšŒì› ê¶Œí•œ ë³€ê²½
 	 * @param id
 	 * @param userClass
 	 * @return

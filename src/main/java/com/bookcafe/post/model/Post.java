@@ -5,23 +5,23 @@ import java.util.Date;
 public class Post {
 	
 	
-	private int id; 	//°Ô½Ã¹° ¹øÈ£
+	private int id; 	//ê²Œì‹œë¬¼ ë²ˆí˜¸
 	
-	private int userId;	//°Ô½Ã¹° ÀÛ¼ºÀÚ ¹øÈ£
+	private int userId;	//ê²Œì‹œë¬¼ ì‘ì„±ì ë²ˆí˜¸
 	
-	private String tag;	//ÅÂ±×
+	private String tag;	//íƒœê·¸
 	
-	private String title;	//Á¦¸ñ
+	private String title;	//ì œëª©
 	
-	private String content;	//³»¿ë
+	private String content;	//ë‚´ìš©
 	
-	private String imagePath;	//ÀÌ¹ÌÁö °æ·Î
+	private String imagePath;	//ì´ë¯¸ì§€ ê²½ë¡œ
 	
-	private Integer price;	//°¡°İ
+	private Integer price;	//ê°€ê²©
 	
-	private Date createdAt;	//»ı¼ºÀÏ
+	private Date createdAt;	//ìƒì„±ì¼
 	
-	private Date updatedAt;	// ¼öÁ¤ÀÏ
+	private Date updatedAt;	// ìˆ˜ì •ì¼
 	public int getId() {
 		return id;
 	}

@@ -35,7 +35,7 @@
 					value="${content.post.createdAt}" pattern="yyyy년 MM월 dd일" />
 			 </b> 
 			 <span> <fmt:formatDate value="${content.post.createdAt}" pattern="HH:mm:ss" /></span>
-
+			 
 
 			</div>
 
@@ -140,14 +140,8 @@
 						</div>
 
 					</div>
-
-
 				</c:otherwise>
-
-
 			</c:choose>
-
-
 
 		</div>
 		
@@ -269,16 +263,11 @@ $(document).ready(function(){
 				}
 				
 			});
-		}
-		
-		
-		
+		}	
 		
 	});
 	
-	
-	
-	
+
 	
 	//추천 누르기
 	$('#likeSend').on('click',function(e){
@@ -361,10 +350,6 @@ $(document).ready(function(){
 				alert('오류발생');
 			}
 		});
-		
-		
-		
-		
 	});
 	
 	
@@ -375,8 +360,7 @@ $(document).ready(function(){
 		let createrId = $('#createrId').text();
 		let postId = $(this).val();
 		let price = $('#price').text();
-		
-		
+			
 		$.ajax({
 			type:'post',
 			data:{'postId':postId,'createrId':createrId,'price': price},

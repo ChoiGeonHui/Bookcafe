@@ -21,7 +21,7 @@ public class UserController {
 	UserBO userBO;
 	
 	/**
-	 * È¸¿ø°¡ÀÔ
+	 * íšŒì› ê°€ì…
 	 * @param model
 	 * @param request
 	 * @return
@@ -42,7 +42,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ·Î±×ÀÎ
+	 * ë¡œê·¸ì¸
 	 * @param model
 	 * @param request
 	 * @return
@@ -62,7 +62,7 @@ public class UserController {
 	}
 	
 	/**
-	 * ·Î±×¾Æ¿ô
+	 * ë¡œê·¸ì•„ì›ƒ
 	 * @param request
 	 * @return
 	 */
@@ -82,7 +82,7 @@ public class UserController {
 	
 	
 	/**
-	 * Æ÷ÀÎÆ® ÃæÀü
+	 * í¬ì¸íŠ¸ ì¶©ì „
 	 * @param model
 	 * @param request
 	 * @return
@@ -93,7 +93,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		
 		Integer userId = (Integer) session.getAttribute("userId");
-		User user = (User) session.getAttribute("user");
+		User user = userBO.selectUser(userId);
 		if(userId==null) {
 			return "redirect:/user/user_signin_view";
 		}
@@ -106,7 +106,7 @@ public class UserController {
 	
 	
 	/**
-	 * »ç¿ëÀÚ Á¤º¸ º¯°æ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param model
 	 * @param request
 	 * @return
@@ -129,7 +129,7 @@ public class UserController {
 	
 	
 	/**
-	 * À¯Àú °»½Å
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param model
 	 * @param request
 	 * @return

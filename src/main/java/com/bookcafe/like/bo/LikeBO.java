@@ -21,10 +21,10 @@ public class LikeBO {
 	}
 	
 	public String OnOffLikeById(int postId, int userId) {
-		//ÇØ´ç °Ô½Ã±Û ÁÁ¾Æ¿ä ¿©ºÎ
+		//í•´ë‹¹ ê²Œì‹œê¸€ ì¢‹ì•„ìš” ì—¬ë¶€
 		Boolean likeLog = likebooleanByPostUserId(postId, userId);
 			
-		//ÁÁ¾Æ¿ä µî·Ï,Ãë¼ÒÇÏ±â
+		//ì¢‹ì•„ìš” ë“±ë¡, ì·¨ì†Œí•˜ê¸°
 		if(likeLog) {
 			likeDAO.deleteLike(postId, userId);
 			return "delete";
@@ -34,6 +34,7 @@ public class LikeBO {
 		}
 	}
 	
+	//ì‚­ì œëœ ê²Œì‹œë¬¼ ì¶”ì²œ ì§€ìš°ê¸°
 	public void deleteLikeByPostId(int postId) {
 		likeDAO.deleteLikeByPostId(postId);
 	}

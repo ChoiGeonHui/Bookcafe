@@ -26,7 +26,7 @@ public class CommentRestController {
 	CommentBO commentBO;
 	
 	/**
-	 * ´ñ±Û ÀÛ¼º
+	 * ëŒ“ê¸€ ì‘ì„±
 	 * @param postId
 	 * @param content
 	 * @param request
@@ -64,7 +64,7 @@ public class CommentRestController {
 	}
 	
 	/**
-	 * ´ñ±Û »èÁ¦
+	 * ëŒ“ê¸€ ì‚­ì œ
 	 * @param id
 	 * @param postId
 	 * @param request
@@ -81,7 +81,7 @@ public class CommentRestController {
 		
 		userId = (Integer) session.getAttribute("userId");
 		
-		//·Î±×ÀÎ »óÅÂ¸¸ ÀÛ¼ºÇÒ¼ö ÀÖ´Ù.
+		//ë¡œê·¸ì¸ ìƒíƒœë§Œ ì‘ì„±í• ìˆ˜ ìˆë‹¤.
 		if(userId == null) {
 			result.put("result", "fail");
 			return result;

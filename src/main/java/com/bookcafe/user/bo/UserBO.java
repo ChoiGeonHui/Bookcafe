@@ -15,68 +15,68 @@ public class UserBO {
 	UserDAO userDAO;
 	
 	
-	//Å×½ºÆ®
+	//í…ŒìŠ¤íŠ¸
 	public User selectTest() {
 		return userDAO.selectTest();
 	}
 	
-	//´ÜÀÏÀ¯Àú ¼±ÅÃ
+	//ë‹¨ì¼ ìœ ì € ì„ íƒ
 	public User selectUser(int userId) {
 		return userDAO.selectUser(userId);
 	}
 	
-	//À¯Àú ¸®½ºÆ®
+	//ìœ ì € ë¦¬ìŠ¤íŠ¸
 	public List<User> selectUserList() {
 		return userDAO.selectUserList();
 	}
 	
 	
-	//¾ÆÀÌµğ Áßº¹È®ÀÎ
+	//ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 	public int selectUserByloginId(String loginId) {
 		return userDAO.selectUserByloginIdCheck(loginId);
 	}
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public User LoginUser(String loginId,String password) {
 		return userDAO.selectUserLogin(loginId, password);
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì› ê°€ì…
 	public int insertUser(String loginId,String password,
 			String name,String email,String userClass) {
 		return userDAO.insertUser(loginId, password, name, email,userClass);
 	}
 	
-	//Æ÷ÀÎÆ® ÃæÀü
+	//í¬ì¸íŠ¸ ì¶©ì „
 	public int plusPointByUserId(int userId, int point) {
 		return userDAO.updatePlusPointByUserId(userId, point);
 	}
 	
-	//Æ÷ÀÎÆ® Â÷°¨
+	//í¬ì¸íŠ¸ ì°¨ê°
 	public int minusPointByUserId(int userId, int point) {
 		return userDAO.updateMinusPointByUserId(userId, point);
 	}
 	
-	//À¯ÀúÁ¤º¸ ¼öÁ¤
+	//ìœ ì €ì •ë³´ ìˆ˜ì •
 	public int updateUserByColumns(int userId, String password,String name,String email) {
 		return userDAO.updateUserByColumns(userId, password, name, email);
 	}
 	
-	//À¯Àú ÀÎÁõ
+	//ìœ ì € ì¸ì¦
 	public Integer findUser(String loginId,String name,String email) {
 		return userDAO.findUserByLoginIdAndNameAndEmail(loginId, name, email);
 	}
 	
-	//ºñ¹Ğ¹øÈ£ º¯°æ
+	//ë¹„ë°€ë²ˆí˜¸ ë³€ê²½
 	public int updateUserByIdSetPassword(int id,String encrytpassword) {
 		return userDAO.updateUserByIdSetPassword(id, encrytpassword);
 	}
 	
-	//È¸¿ø Å»Åğ
+	//íšŒì› íƒˆí‡´
 	public int updateUserExceptById(int id) {
 		return userDAO.updateUserExceptById(id);
 	}
 	
-	//È¸¿ø ±ÇÇÑº¯°æ
+	//íšŒì› ê¶Œí•œ ë³€ê²½
 	public int updateUserClass(int id,String userClass) {
 		return userDAO.updateUserClass(id, userClass);
 	}

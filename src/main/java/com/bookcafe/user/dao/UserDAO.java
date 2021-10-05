@@ -13,25 +13,25 @@ public interface UserDAO {
 	public User selectTest();
 	
 	
-	//유저 선택
+	
 	public User selectUser(int userId);
 	
-	//유저 리스트 가져오기
+	
 	public List<User> selectUserList();
 	
 	
-	//아이디 중복확인
+	
 	public int selectUserByloginIdCheck(
 			@Param("loginId") String loginId);
 	
-	//로그인
+	
 	public User selectUserLogin(
 			@Param("loginId") String loginId,
 			@Param("password") String password);
 	
 	
 	
-	//회원가입
+	
 	public int insertUser(
 			@Param("loginId") String loginId,
 			@Param("password") String password,
@@ -41,18 +41,18 @@ public interface UserDAO {
 			);
 	
 	
-	//사용자포인트 증가
+	
 	public int updatePlusPointByUserId(
 			@Param("userId") int userId,
 			@Param("point") int point);
 	
-	//포인트 감소
+	
 	public int updateMinusPointByUserId(
 			@Param("userId") int userId,
 			@Param("point") int point);
 	
 	
-	//회원 정보 수정
+	
 	public int updateUserByColumns(
 			@Param("userId") int userId,
 			@Param("password") String password,
@@ -60,23 +60,22 @@ public interface UserDAO {
 			@Param("email") String email
 			);
 	
-	//비밀번호를 찾기위한 유저 인증
+	
 	public Integer findUserByLoginIdAndNameAndEmail(
 			@Param("loginId") String loginId,
 			@Param("name") String name,
 			@Param("email") String email
 			);
 	
-	//비밀번호 변경
 	public int updateUserByIdSetPassword(
 			@Param("id") int id,
 			@Param("password") String password
 			);
 	
-	//유저 탈퇴
+	
 	public int updateUserExceptById(@Param("id") int id);
 	
-	//유저 등급 조정
+	
 	public int updateUserClass(
 			@Param("id") int id,
 			@Param("userClass") String userClass

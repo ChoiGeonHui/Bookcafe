@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class User {
 	
-	private int id;
-	private String loginId;
-	private String password;
-	private String name;
-	private String email;
-	private int point;
-	private String userClass;
-	private Date createdAt;
-	private Date updatedAt;
+	private int id; //회원 일련번호
+	private String loginId; // 회원 아이디
+	private String password; //비밀번호
+	private String name;  //이름
+	private String email; //이메일
+	private int point;   //보유한 포인트
+	private String userClass; //등급
+	private Date createdAt; //생성일
+	private Date updatedAt;  //수정일
 	
 	public int getId() {
 		return id;

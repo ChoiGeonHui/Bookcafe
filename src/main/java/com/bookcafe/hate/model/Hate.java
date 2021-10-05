@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Hate {
 	
-	private int userId; //½Å°íÀÚ ¹øÈ£
-	private int subjectId; //½Å°í ´ë»óÀÚ ¹øÈ£
+	private int userId; //ì‹ ê³ ì ë²ˆí˜¸
+	private int subjectId; //ëŒ€ìƒì ë²ˆí˜¸
 	private Date createdAt;
 	
 	public int getUserId() {

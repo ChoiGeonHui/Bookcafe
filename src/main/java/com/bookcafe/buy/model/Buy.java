@@ -5,9 +5,9 @@ import java.util.Date;
 public class Buy {
 	
 	private int id;
-	private int userId;//±¸¸ÅÀÚ ¹øÈ£
-	private int postId;// ±¸¸Å °Ô½Ã¹° ¹øÈ£
-	private int price;// °¡°İ
+	private int userId;//êµ¬ë§¤ì ë²ˆí˜¸
+	private int postId;// êµ¬ë§¤ ê²Œì‹œë¬¼ ë²ˆí˜¸
+	private int price;// ê°€ê²©
 	private Date createdAt;
 	
 	public int getId() {

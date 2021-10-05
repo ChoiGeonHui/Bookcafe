@@ -27,7 +27,7 @@ public class BuyRestController {
 	private UserBO userBO;
 	
 	/**
-	 * °Ô½Ã¹° ±¸¸Å
+	 * ê²Œì‹œë¬¼ êµ¬ë§¤
 	 * @param postId
 	 * @param createrId
 	 * @param price
@@ -43,7 +43,7 @@ public class BuyRestController {
 		
 		HttpSession session = request.getSession();
 		Map<String, String> result = new HashMap<String, String>();	
-		Integer userId =(Integer) session.getAttribute("userId");
+		Integer userId = (Integer) session.getAttribute("userId");
 		
 		if(userId == null) {
 			result.put("result", "fail");
@@ -52,7 +52,7 @@ public class BuyRestController {
 		
 		
 		User user = userBO.selectUser(userId);	
-		//ÀÜ¾×ÀÌ ºÎÁ·ÇÒ¶§
+		//ì”ì•¡ì´ ë¶€ì¡±í•  ê²½ìš°
 		if((user.getPoint()-price)<0) {
 			result.put("result", "noMoney");
 			return result;
@@ -62,8 +62,8 @@ public class BuyRestController {
 		int row2 = userBO.plusPointByUserId(createrId,price);
 		int row3 = userBO.minusPointByUserId(userId,price);
 		
-		//¸ğµç ÇÔ¼ö°¡ ½ÇÇàµÆÀ» ¶§
-		if((row+row2+row3) ==3 ) {
+		//ëª¨ë“  ì½”íŠ¸ê°€ ì „ë¶€ ì‹¤í–‰ ëì„ê²½ìš°
+		if(row>0 && row2>0 && row3>0 ) {
 			result.put("result", "success");		
 		}		
 		return result;

@@ -69,7 +69,6 @@ public class PostBO {
 	}
 	
 	
-	
 	public Post selectPostById(int postId){
 		return postDAO.selectPostById(postId);
 	}

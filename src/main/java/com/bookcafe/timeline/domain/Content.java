@@ -7,24 +7,24 @@ import com.bookcafe.post.model.Post;
 import com.bookcafe.user.model.User;
 
 
-//°Ô½Ã¹°¿¡ µé¾î°¡´Â Ç×¸ñµé
+//ê²Œì‹œë¬¼ì— ë“¤ì–´ê°€ëŠ” í•­ëª©ë“¤
 public class Content {
 	
-	private Post post; //°Ô½Ã¹°
+	private Post post; //ê²Œì‹œë¬¼
 	
-	private User user; //°Ô½Ã¹° ÀÛ¼ºÀÚ
+	private User user; //ê²Œì‹œë¬¼ ì‘ì„±ì
 	
 	private List<Comment> commentList;  
-	//°Ô½Ã¹° ´ñ±Û ¸®½ºÆ®
+	//ê²Œì‹œë¬¼ ëŒ“ê¸€ ë¦¬ìŠ¤íŠ¸
 	
 	private int likeCount;
-	//°Ô½Ã¹° ÃßÃµ¼ö 
+	//ê²Œì‹œë¬¼ ì¶”ì²œìˆ˜
 	
 	private boolean likefile;
-	//³»°¡ ÀÌ °Ô½Ã¹° ÃßÃµ ¿©ºÎ
+	//ë‚´ê°€ ì´ ê²Œì‹œë¬¼ ì¶”ì²œ ì—¬ë¶€
 	
 	private boolean buyfile;
-	//³»°¡ ÀÌ °Ô½Ã¹° ±¸¸Å ¿©ºÎ
+	//ë‚´ê°€ ì´ ê²Œì‹œë¬¼ êµ¬ë§¤ ì—¬ë¶€
 
 	public Post getPost() {
 		return post;

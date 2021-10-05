@@ -10,11 +10,11 @@ import com.bookcafe.comment.model.Comment;
 @Repository
 public interface CommentDAO {
 	
-	//ÇØ´ç °Ô½Ã¹° ´ñ±ÛÃâ·Â
+	//í•´ë‹¹ ê²Œì‹œë¬¼ ëŒ“ê¸€ ì¶œë ¥
 	public List<Comment> selectCommentByPostId(
 			@Param("postId") int postId);
 	
-	//´ñ±Û ÀÛ¼º
+	//ëŒ“ê¸€ ì‘ì„±
 	public int insertComment(
 			@Param("postId") int postId,
 			@Param("userId") int userId,
@@ -22,14 +22,14 @@ public interface CommentDAO {
 			@Param("content") String content
 			); 
 	
-	//´ñ±Û »èÁ¦
+	//ëŒ“ê¸€ ì‚­ì œ
 	public int deleteComment(
 			@Param("id") int id,
 			@Param("postId") int postId,
 			@Param("userId") int userId
 			);
 	
-	//»èÁ¦µÈ °Ô½Ã¹° ´ñ±Û »èÁ¦
+	//ì‚­ì œëœ ê²Œì‹œë¬¼ ëŒ“ê¸€ ì‚­ì œ
 	public void deleteCommentByPostId(
 			@Param("postId") int postId
 			);
