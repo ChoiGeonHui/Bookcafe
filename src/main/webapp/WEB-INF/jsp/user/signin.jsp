@@ -2,16 +2,10 @@
     pageEncoding="UTF-8"%>
     
     <div class="col-6">
-    <img id="imageControl" alt="책사진" src="/static/images/book3.jpg" class="w-100" height="330px">
-    
-    </div>
-    
-    
-    
+    	<img id="imageControl" alt="책사진" src="/static/images/book3.jpg" class="w-100" height="330px">
+    </div>  
     <div class="col-6">
 	<h1 class="text-center text-weight-bold">로그인</h1>
-
-
 
 	<div class="d-flex col-12 justify-content-center">
 
@@ -46,7 +40,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	
 	let bannerSrcArr = ['/static/images/book1.jpg', '/static/images/book2.jpg',
 		 '/static/images/book3.jpg'];
            var currentIndex = 0;
@@ -59,27 +52,22 @@ $(document).ready(function(){
                }
            }, 3000); 
 	
-	
+	//로그인 버튼
 	$('#loginBtn').on('click', function(e) {
-			e.preventDefault();
-
+			e.preventDefault();	
 			let loginId = $('#id').val();
 			let password = $('#password').val();
 
 			if (loginId == '') {
 				alert("아이디를 입력하세요.");
 				return;
-			}
-			
+			}		
 			if (password == '') {
 				alert("비밀번호를 입력하세요.");
 				return;
 			}
-
 			
-			
-			$.ajax({
-				
+			$.ajax({	
 				method:'post',
 				url:'/user/user_sign_in',
 				data:{'loginId':loginId,'password':password},
@@ -95,9 +83,7 @@ $(document).ready(function(){
 						alert("아이디 또는 비밀번호가 틀렷습니다.");
 					}
 				},
-				error:function(e){
-					alert('에러발생!');
-				}
+				error:function(e){ alert('에러발생!'); }
 				
 			});
 

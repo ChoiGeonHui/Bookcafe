@@ -7,7 +7,7 @@ import com.bookcafe.user.model.User;
 public class User2 {
 	
 	private User user;
-	private int hateCount;
+	private int hateCount;//내가 신고당한 횟수
 	
 	public User getUser() {
 		return user;

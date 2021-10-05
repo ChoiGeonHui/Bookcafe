@@ -27,29 +27,21 @@
 				<td id="idDuc" class="text-danger d-none text-center" colspan="2">중복된 아이디 입니다</td>
 				<td id="idChk" class="text-success d-none text-center" colspan="2">사용가능한 아이디입니다</td>
 			</tr>
-
-
 			<tr>
 				<td>비밀번호</td>
 				<td><input type="password" id="password" class="form-control"
 					placeholder="비밀번호를 입력하세요 (4자이상)"></td>
-
 			</tr>
-
 			<tr>
 				<td>비밀번호 확인</td>
 				<td><input type="password" id="passwordChk" class="form-control"
 					placeholder="비밀번호를 입력하세요"></td>
-
 			</tr>
-
 			<tr>
 				<td>이름</td>
 				<td><input type="text" id="name" class="form-control"
 					placeholder="이름을 입력하세요"></td>
-
 			</tr>
-
 			<tr>
 				<td>이메일</td>
 				<td>
@@ -115,46 +107,31 @@ $(document).ready(function(){
 			},
 			error: function(e){
 				alert('에러발생!');
-			}
-			
-			
+			}	
 		});
-		
-		
-		
+	
 	});
-	
-	
-	
-	
 	
 	
 	$('#inputBtn').on('click',function(e){
 		e.preventDefault();
-		
-		
 		let id= $('#id').val().trim();
 		let password= $('#password').val().trim();
 		let passwordChk= $('#passwordChk').val().trim();
 		let name= $('#name').val().trim();
 		let email= $('#email').val().trim();
-		let emailhost= $('#emailhost').val().trim();
-		
-		
+		let emailhost= $('#emailhost').val().trim();	
 		if(id==''){
 			alert('아이디를 입력하세요.');
 			return;
 		}else if(id.length<4){
 			alert('아이디를 4자이상 입력하세요.');
 			return;
-		}
-		
+		}	
 		if($('#idChk').hasClass('d-none')){
 			alert('아이디중복 체크를 해주세요.');
 			return;
 		}
-		
-		
 		
 		if(password==''){
 			alert('비밀번호를 입력하세요.');
@@ -170,26 +147,20 @@ $(document).ready(function(){
 		}
 		
 		//비밀번호 특수문자열
-		let regExpEn = /[!@#$%?]/;
-		
+		let regExpEn = /[!@#$%?]/;	
 		if(!regExpEn.test(password)){
 			alert("비밀번호에 특수문자(!@#$%?)가 포함되어야 합니다.");
 			return;
-		}
-		
-		
+		}		
 		if(name==''){
 			alert('이름을 입력하세요.');
 			return;
 		}
-		
 		if(email==''){
 			alert('이메일을 입력하세요.');
 			return;
 		}
-		
-		email = email+"@"+emailhost;
-		
+		email = email+"@"+emailhost;	
 		
 		$.ajax({
 			method:'post',

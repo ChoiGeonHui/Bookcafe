@@ -68,9 +68,6 @@
 		`user`
 	WHERE 
 		loginId = #{loginId};
- 
- 
- 
  </select>
  
  
@@ -92,7 +89,7 @@
 	WHERE
 		loginId = #{loginId}
 	AND
-	password = #{password}
+		password = #{password}
  </select>
  
  
@@ -168,8 +165,7 @@
 	UPDATE
 		`user`
 	SET
-	
-	<if test="password != null ">
+	<if test="password != null">
 		`password` = #{password}
 	</if>
 	
@@ -181,18 +177,16 @@
 		`name` = #{name}
 	</if>
 	
-	<if test="email != '' and name != ''">
+	<if test="email != null and name != null">
 		,
 	</if>
 	
-	<if test="email != ''">
+	<if test="email != null">
 		`email` = #{email}
 	</if>
 	
 	WHERE
 		`id` = #{userId}
- 
- 
  </update>
  
  

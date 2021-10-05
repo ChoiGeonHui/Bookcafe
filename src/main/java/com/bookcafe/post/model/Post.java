@@ -5,15 +5,23 @@ import java.util.Date;
 public class Post {
 	
 	
-	private int id;
-	private int userId;
-	private String tag;
-	private String title;
-	private String content;
-	private String imagePath;
-	private Integer price;
-	private Date createdAt;
-	private Date updatedAt;
+	private int id; 	//게시물 번호
+	
+	private int userId;	//게시물 작성자 번호
+	
+	private String tag;	//태그
+	
+	private String title;	//제목
+	
+	private String content;	//내용
+	
+	private String imagePath;	//이미지 경로
+	
+	private Integer price;	//가격
+	
+	private Date createdAt;	//생성일
+	
+	private Date updatedAt;	// 수정일
 	public int getId() {
 		return id;
 	}

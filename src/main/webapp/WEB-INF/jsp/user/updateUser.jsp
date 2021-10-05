@@ -13,21 +13,18 @@
 				<td>변경할 비밀번호</td>
 				<td><input type="password" id="password" class="form-control"
 					placeholder="비밀번호를 입력하세요 (4자이상)"></td>
-
 			</tr>
 
 			<tr>
 				<td>비밀번호 확인</td>
 				<td><input type="password" id="passwordChk" class="form-control"
 					placeholder="비밀번호를 입력하세요"></td>
-
 			</tr>
 
 			<tr>
 				<td>이름</td>
 				<td><input type="text" id="name" class="form-control"
 					placeholder="이름을 입력하세요" value="${user.name}"></td>
-
 			</tr>
 
 			<tr>
@@ -43,13 +40,10 @@
 							<option value="gmail.com">gmail.com</option>
 							<option value="hanmail.net">hanmail.net</option>
 							<option value="kakao.com">kakao.com</option>
-						</select>
-							
+						</select>					
 					</div>
 				</td>
-
 			</tr>
-
 
 		</table>
 
@@ -65,7 +59,6 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
-	
 
 	$('#updateBtn').on('click',function(e){
 		e.preventDefault();
@@ -80,8 +73,7 @@ $(document).ready(function(){
 		if(password==''&&passwordChk==''&&name==''&&email==''){
 			alert('최소 한개 이상의 항목을 입력하세요.');
 			return;
-		}
-		
+		}	
 		
 		if(password!=''&&passwordChk!=''&&password != passwordChk){
 			alert("입력한 비밀번호가 서로 다릅니다.");
@@ -92,16 +84,13 @@ $(document).ready(function(){
 			alert("비밀번호를 4자이상 입력하세요.");
 			return;
 			
-		}
-		
+		}	
 		//비밀번호 특수문자열
 		let regExpEn = /[!@#$%?]/;
-		
 		if(password!=''&&!regExpEn.test(password)){
 			alert("비밀번호에 특수문자(!@#$%?)가 포함되어야 합니다.");
 			return;
 		}
-		
 		if(email !=''){
 			email = email+"@"+emailhost;
 		}

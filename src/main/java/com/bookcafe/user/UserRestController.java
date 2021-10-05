@@ -57,19 +57,14 @@ public class UserRestController {
 			@RequestParam("password") String password,
 			@RequestParam("name") String name,
 			@RequestParam("email") String email
-			){
-		
-		Map<String, String> result = new HashMap<String, String>();
-		
-		String userClass = null;
-		
+			){	
+		Map<String, String> result = new HashMap<String, String>();	
+		String userClass = null;	
 		if(password.equals("admin!")) {
 			userClass = "admin";
-		}
-		
+		}	
 		String encrytpassword = EncryptUtils.md5(password);
 		int row= userBO.insertUser(loginId, encrytpassword, name, email,userClass);
-		
 		
 		if(row>0) {
 			result.put("result", "success");
@@ -97,14 +92,11 @@ public class UserRestController {
 			){
 		
 		Map<String, String> result = new HashMap<String, String>();
-
-		String EncryptPassword = EncryptUtils.md5(password);
-		
+		String EncryptPassword = EncryptUtils.md5(password);	
 		User user = userBO.LoginUser(loginId, EncryptPassword);
 		HttpSession session = request.getSession();	
 		
-		if(user != null) {
-			
+		if(user != null) {		
 			if(user.getUserClass().equals("except")){
 				result.put("result", "except");
 			}else if(user.getUserClass().equals("blacklist")) {
@@ -118,8 +110,6 @@ public class UserRestController {
 		}else {
 			result.put("result", "fail");
 		}
-		
-		
 		return result;
 	}
 	
@@ -177,16 +167,13 @@ public class UserRestController {
 			result.put("result", "fail");
 			return result;
 		}
-		
 		String encrytpassword = null;
-		
 		System.out.println("password+========================"+password);
 		
 		if(!password.equals("")) {
 			encrytpassword = EncryptUtils.md5(password);
 		}
-		int row = userBO.updateUserByColumns(userId, encrytpassword, name, email);	
-		
+		int row = userBO.updateUserByColumns(userId, encrytpassword, name, email);		
 		if(row >0) {
 			result.put("result", "success");
 		}
@@ -207,19 +194,15 @@ public class UserRestController {
 			@RequestParam("name") String name,
 			@RequestParam("email") String email){
 		
-		Map<String, String> result = new HashMap<String, String>();
-		
+		Map<String, String> result = new HashMap<String, String>();	
 		Integer row =null;	
 		row = userBO.findUser(loginId, name, email);
-
 			
 		if(row !=null) {
 			result.put("result", "success");
-			result.put("userNum", ""+row+"");
 		}else {
 			result.put("result", "fail");
-		}
-		
+		}	
 		return result;
 	}
 	
@@ -272,7 +255,12 @@ public class UserRestController {
 	}
 	
 	
-	//유저 권한 변경
+	/**
+	 * 회원 권한 변경
+	 * @param id
+	 * @param userClass
+	 * @return
+	 */
 	@RequestMapping("/userClass_update")
 	public Map<String, String> userClassUpdate(
 			@RequestParam("userId") int id,

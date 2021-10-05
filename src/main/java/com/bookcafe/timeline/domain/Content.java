@@ -10,17 +10,21 @@ import com.bookcafe.user.model.User;
 //게시물에 들어가는 항목들
 public class Content {
 	
-	private Post post;
+	private Post post; //게시물
 	
-	private User user;
+	private User user; //게시물 작성자
 	
-	private List<Comment> commentList;
+	private List<Comment> commentList;  
+	//게시물 댓글 리스트
 	
 	private int likeCount;
+	//게시물 추천수 
 	
 	private boolean likefile;
+	//내가 이 게시물 추천 여부
 	
 	private boolean buyfile;
+	//내가 이 게시물 구매 여부
 
 	public Post getPost() {
 		return post;

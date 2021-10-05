@@ -10,14 +10,11 @@
 				<td><input type="text" id="userId" class="form-control"
 					placeholder="가입한 아이디를 입력하세요"></td>
 			</tr>
-
 			<tr>
 				<td>이름</td>
 				<td><input type="text" id="name" class="form-control"
 					placeholder="회원이름을 입력하세요"></td>
-
 			</tr>
-
 			<tr>
 				<td>이메일</td>
 				<td>
@@ -51,9 +48,10 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		
 		$('#findBtn').on('click',function(e){
-			e.preventDefault();
-			
+			e.preventDefault();	
 			let userId = $('#userId').val();
 			let name = $('#name').val();
 			let email = $('#email').val();
@@ -61,12 +59,8 @@
 			
 			if(userId==''||name==''||email==''){
 				alert('전부 입력하세요.');
-			}
-			
-			email = email+'@'+emailhost;
-			
-			
-			
+			}	
+			email = email+'@'+emailhost;	
 			$.ajax({
 				type:'post',
 				url:"/user/user_find",
