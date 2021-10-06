@@ -3,6 +3,7 @@
 # Bookcafe
 
 ## _version 1.03_
+  <h1><a  href="http://3.142.122.253:8080/user/user_signin_view">프로젝트 페이지 보기</a></h1>
 
 
 ## _Skill_
@@ -20,15 +21,42 @@
 ## _Tool_
 <img src="https://img.shields.io/badge/Eclipse IDE-2C2255?style=flat-square&logo=Eclipse IDE&logoColor=white"/> <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=flat-square&logo=Spring Boot&logoColor=white"/>
 <br>
-
-## _회원가입_
-
-
-
-  <h3>시연영상 </h3>
+  
+<h1>시연영상 </h1>
 <a href="https://www.youtube.com/watch?v=NiOyOKQV50M">
 <img src="https://img.shields.io/badge/YouTube-FF0000?style=flat-square&logo=YouTube&logoColor=white"/>
 </a>
+  
+
+## _1.1로그인_
+  <div>
+    <image alt="로그인" src="https://user-images.githubusercontent.com/86405195/136156750-d09cab93-244f-4e2d-bbf9-4d21401e1028.jpg">
+      <b>BookCafe 첫화면, 로그인 페이지로 아이디와 비밀번호를 입력해야 메인 페이지로 이동 할 수 있다.</b> 
+  </div>
+    <br>
+    
+## _1.2회원가입_
+   <div>
+    <image alt="회원가입" src="https://user-images.githubusercontent.com/86405195/136157257-b4626932-7f16-4049-807f-db9bd9e1f6d5.jpg">
+      <b>아이디는 중복이 되지 말아야 하며, 비밀번호는 특수기호(!@#$%)를 포함해야 한다. </b><br>
+      <b>또한 모든 정보는 반드시 입력해야 하며 공란이 있을경우 회원가입이 불가능 하다. </b>
+   </div>
+     <br>
+     
+## _1.3비밀번호 찾기_
+   <div>
+    <image alt="비밀번호 찿기" src="https://user-images.githubusercontent.com/86405195/136163835-a0d9b796-ea23-48ba-b5da-b5d8b11a8096.jpg">
+      <b>사진에 보이는 것 같이 아이디, 이름, 이메일을 입력하여 회원 인증을 해야한다. </b><br>
+      <b>인증성공시 비밀번호를 변경할 기회를 준다. </b>
+   </div> 
+     <br>
+
+## _메인 페이지_
+   <div>
+    <image alt="정보 수정" src="https://user-images.githubusercontent.com/86405195/136170479-637a8ec5-6ea0-45df-bf75-4e5e24586f8a.jpg">
+   </div> 
+     <br>
+     
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChoiGeonHui&show_icons=true&theme=radical)
   
