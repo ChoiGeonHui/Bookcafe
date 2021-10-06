@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <div>
 	<h1 class="text-center text-weight-bold">정보 수정</h1>
-	
-	
-
 	<div class="d-flex">
 	<span class="d-none" id="userId">${user.id}</span>
 		<table>
@@ -112,11 +109,9 @@ $(document).ready(function(){
 			error: function(e){
 				alert('에러발생!');
 			} 
-			
-			
+
 		});
-		
-		
+
 		
 	});
 	
@@ -126,14 +121,9 @@ $(document).ready(function(){
 		let waringAlert = confirm('탈퇴시 모든 활동 중단 및 서비스 제공을 받을수 없습니다.\n'+
 				'탈퇴 하시겠습니까?');
 		
-		
-		
 		if(waringAlert == true){
 			
 			let userId = $('#userId').text();
-			
-			alert('userId : '+userId);
-			
 			
 			 $.ajax({
 				method:'post',
