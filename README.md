@@ -1,9 +1,10 @@
 
 <div align="center">
+  
 # Bookcafe
 
 ## _version 1.03_
-  <h1><a  href="http://3.142.122.253:8080/user/user_signin_view">프로젝트 페이지 보기</a></h1>
+  <h1><a  href="http://3.142.122.253:8080/user/user_signin_view">Bookcafe 페이지 보기</a></h1>
 
 
 ## _Skill_
@@ -28,14 +29,14 @@
 </a>
   
 
-## _1.1로그인_
+## _로그인_
   <div>
     <image alt="로그인" src="https://user-images.githubusercontent.com/86405195/136156750-d09cab93-244f-4e2d-bbf9-4d21401e1028.jpg">
       <b>BookCafe 첫화면, 로그인 페이지로 아이디와 비밀번호를 입력해야 메인 페이지로 이동 할 수 있다.</b> 
   </div>
     <br>
     
-## _1.2회원가입_
+## _회원가입_
    <div>
     <image alt="회원가입" src="https://user-images.githubusercontent.com/86405195/136157257-b4626932-7f16-4049-807f-db9bd9e1f6d5.jpg">
       <b>아이디는 중복이 되지 말아야 하며, 비밀번호는 특수기호(!@#$%)를 포함해야 한다. </b><br>
@@ -43,7 +44,7 @@
    </div>
      <br>
      
-## _1.3비밀번호 찾기_
+## _비밀번호 찾기_
    <div>
     <image alt="비밀번호 찿기" src="https://user-images.githubusercontent.com/86405195/136163835-a0d9b796-ea23-48ba-b5da-b5d8b11a8096.jpg">
       <b>사진에 보이는 것 같이 아이디, 이름, 이메일을 입력하여 회원 인증을 해야한다. </b><br>
@@ -53,10 +54,36 @@
 
 ## _메인 페이지_
    <div>
-    <image alt="정보 수정" src="https://user-images.githubusercontent.com/86405195/136170479-637a8ec5-6ea0-45df-bf75-4e5e24586f8a.jpg">
+    <image alt="메인페이지" src="https://user-images.githubusercontent.com/86405195/136170479-637a8ec5-6ea0-45df-bf75-4e5e24586f8a.jpg">
    </div> 
      <br>
      
+## _회원 정보 수정_
+   <div>
+    <image alt="정보 수정" src="https://user-images.githubusercontent.com/86405195/136343601-66cd49d8-b396-48f6-a47b-243b0fd9c48c.jpg">
+      <b>자신이 변경하고 싶은 것만 입력하고 변경하기 버튼을 누른다.</b><br>
+      <b>회원 탈퇴시 더 이상 사이트 이용이 불가능 하지만 그동안 작성 했던 게시물 댓글은 삭제 되지 않는다. </b>
+   </div> 
+     <br>
+     
+## _게시글 작성_
+   <div>
+    <image alt="글 작성" src="https://user-images.githubusercontent.com/86405195/136347361-e454bb6f-eaf5-4f8a-82cf-e1d3f06ceb1c.jpg">
+      <b>태그와 제목은 필수적으로 입력해야 하고 유료 태그 선택시 금액또한 필수로 입력해야한다.</b><br>
+      <b>위 사항은 게시글을 수정할 때도 공통 사항이다.</b>
+   </div> 
+     <br>
+     
+     
+## _게시글 상세보기_
+   <div>
+    <image alt="게시물보기" src="https://user-images.githubusercontent.com/86405195/136350545-5ba30583-6c73-478d-aee1-118f82348133.jpg">
+      <image alt="유료게시물" src="https://user-images.githubusercontent.com/86405195/136348743-2b9cb2b6-2f08-4660-92f8-f8d4991bd1e2.jpg">
+      <b>메인 페이지에서 원하는 게시물 선택시 상세하게 볼 수 있다.</b><br>
+      <b>만약 유료게시물일 경우 구매를 해야 열람이 가능하니 포인트를 미리 충전을 해야한다.</b>
+   </div> 
+     <br>
+     <br>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChoiGeonHui&show_icons=true&theme=radical)
   
