@@ -67,7 +67,7 @@
      
 ## _게시글 작성_
    <div>
-    <image alt="글 작성src="https://user-images.githubusercontent.com/86405195/136347361-e454bb6f-eaf5-4f8a-82cf-e1d3f06ceb1c.jpg">
+    <image alt="글 작성" src="https://user-images.githubusercontent.com/86405195/136347361-e454bb6f-eaf5-4f8a-82cf-e1d3f06ceb1c.jpg">
       <b>자신이 변경하고 싶은 것만 입력하고 변경하기 버튼을 누른다.</b><br>
       <b>회원 탈퇴시 더 이상 사이트 이용이 불가능 하지만 그동안 작성 했던 게시물 댓글은 삭제 되지 않는다. </b>
    </div> 
