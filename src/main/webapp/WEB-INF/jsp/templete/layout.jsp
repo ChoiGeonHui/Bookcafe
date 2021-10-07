@@ -28,14 +28,6 @@
 		</section>
 		<jsp:include page="../info/footer.jsp" />
 
-
-
-
-
-
-
-
-
 	</div>
 
 </body>
