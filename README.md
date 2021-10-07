@@ -3,7 +3,7 @@
 # Bookcafe
 
 ## _version 1.03_
-  <h1><a  href="http://3.142.122.253:8080/user/user_signin_view">프로젝트 페이지 보기</a></h1>
+  <h1><a  href="http://3.142.122.253:8080/user/user_signin_view">Bookcafe 페이지 보기</a></h1>
 
 
 ## _Skill_
