@@ -83,6 +83,7 @@
       <b>만약 유료게시물일 경우 구매를 해야 열람이 가능하니 포인트를 미리 충전을 해야한다.</b>
    </div> 
      <br>
+     <br>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChoiGeonHui&show_icons=true&theme=radical)
   
