@@ -53,9 +53,17 @@
 
 ## _메인 페이지_
    <div>
-    <image alt="정보 수정" src="https://user-images.githubusercontent.com/86405195/136170479-637a8ec5-6ea0-45df-bf75-4e5e24586f8a.jpg">
+    <image alt="메인페이지" src="https://user-images.githubusercontent.com/86405195/136170479-637a8ec5-6ea0-45df-bf75-4e5e24586f8a.jpg">
    </div> 
      <br>
+     
+## _회원 정보 _
+   <div>
+    <image alt="메인페이지" src="https://user-images.githubusercontent.com/86405195/136343601-66cd49d8-b396-48f6-a47b-243b0fd9c48c.jpg">
+      <b>자신이 변경하고 싶은 것만 입력하고 변경하기 버튼을 누른다.</b><br>
+      <b>회원 탈퇴시 더 이상 사이트 이용이 불가능 하지만 그동안 작성 했던 게시물 댓글은 삭제 되지 않는다. </b>
+   </div> 
+     <br>     
      
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChoiGeonHui&show_icons=true&theme=radical)
