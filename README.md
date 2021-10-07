@@ -68,11 +68,20 @@
 ## _게시글 작성_
    <div>
     <image alt="글 작성" src="https://user-images.githubusercontent.com/86405195/136347361-e454bb6f-eaf5-4f8a-82cf-e1d3f06ceb1c.jpg">
-      <b>자신이 변경하고 싶은 것만 입력하고 변경하기 버튼을 누른다.</b><br>
-      <b>회원 탈퇴시 더 이상 사이트 이용이 불가능 하지만 그동안 작성 했던 게시물 댓글은 삭제 되지 않는다. </b>
+      <b>태그와 제목은 필수적으로 입력해야 하고 유료 태그 선택시 금액또한 필수로 입력해야한다.</b><br>
+      <b>위 사항은 게시글을 수정할 때도 공통 사항이다.</b>
    </div> 
      <br>
      
+     
+     ## _게시글 작성_
+   <div>
+    <image alt="게시물보기" src="https://user-images.githubusercontent.com/86405195/136348808-3e65f898-9536-43be-8a64-0d5c2cf68d18.jpg">
+      <image alt="게시물보기" src="https://user-images.githubusercontent.com/86405195/136348743-2b9cb2b6-2f08-4660-92f8-f8d4991bd1e2.jpg">
+      <b>메인 페이지에서 원하는 게시물 선택시 상세하게 볼 수 있다.</b><br>
+      <b>만약 유료게시물일 경우 구매를 해야 열람이 가능하니 포인트를 미리 충전을 해야한다.</b>
+   </div> 
+     <br>
 
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ChoiGeonHui&show_icons=true&theme=radical)
   
