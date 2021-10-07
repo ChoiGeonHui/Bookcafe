@@ -28,14 +28,14 @@
 </a>
   
 
-## _1.1로그인_
+## _로그인_
   <div>
     <image alt="로그인" src="https://user-images.githubusercontent.com/86405195/136156750-d09cab93-244f-4e2d-bbf9-4d21401e1028.jpg">
       <b>BookCafe 첫화면, 로그인 페이지로 아이디와 비밀번호를 입력해야 메인 페이지로 이동 할 수 있다.</b> 
   </div>
     <br>
     
-## _1.2회원가입_
+## _회원가입_
    <div>
     <image alt="회원가입" src="https://user-images.githubusercontent.com/86405195/136157257-b4626932-7f16-4049-807f-db9bd9e1f6d5.jpg">
       <b>아이디는 중복이 되지 말아야 하며, 비밀번호는 특수기호(!@#$%)를 포함해야 한다. </b><br>
@@ -43,7 +43,7 @@
    </div>
      <br>
      
-## _1.3비밀번호 찾기_
+## _비밀번호 찾기_
    <div>
     <image alt="비밀번호 찿기" src="https://user-images.githubusercontent.com/86405195/136163835-a0d9b796-ea23-48ba-b5da-b5d8b11a8096.jpg">
       <b>사진에 보이는 것 같이 아이디, 이름, 이메일을 입력하여 회원 인증을 해야한다. </b><br>
