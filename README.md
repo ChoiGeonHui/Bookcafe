@@ -74,7 +74,7 @@
      <br>
      
      
-     ## _게시글 작성_
+## _게시글 작성_
    <div>
     <image alt="게시물보기" src="https://user-images.githubusercontent.com/86405195/136348808-3e65f898-9536-43be-8a64-0d5c2cf68d18.jpg">
       <image alt="게시물보기" src="https://user-images.githubusercontent.com/86405195/136348743-2b9cb2b6-2f08-4660-92f8-f8d4991bd1e2.jpg">
