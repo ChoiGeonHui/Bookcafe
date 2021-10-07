@@ -81,7 +81,6 @@
       <image alt="유료게시물" src="https://user-images.githubusercontent.com/86405195/136348743-2b9cb2b6-2f08-4660-92f8-f8d4991bd1e2.jpg">
       <b>메인 페이지에서 원하는 게시물 선택시 상세하게 볼 수 있다.</b><br>
       <b>만약 유료게시물일 경우 구매를 해야 열람이 가능하니 포인트를 미리 충전을 해야한다.</b>
-       <b>댓글은 </b>
    </div> 
      <br>
      <br>
