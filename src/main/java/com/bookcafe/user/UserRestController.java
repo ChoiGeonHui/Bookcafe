@@ -207,6 +207,13 @@ public class UserRestController {
 		return result;
 	}
 	
+	
+	/**
+	 * 비밀번호 찾기 후 변경
+	 * @param id
+	 * @param password
+	 * @return
+	 */
 	@PostMapping("/user_Password_update")
 	public Map<String, String> userPasswordUpdate(
 			@RequestParam("userId") int id,

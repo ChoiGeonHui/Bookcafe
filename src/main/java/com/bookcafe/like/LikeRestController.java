@@ -21,7 +21,7 @@ public class LikeRestController {
 	LikeBO likeBO;
 	
 	/**
-	 * ÃßÃµ ´©¸£±â
+	 * ì¢‹ì•„ìš” ë“±ë¡, ì·¨ì†Œ
 	 * @param postId
 	 * @param request
 	 * @return

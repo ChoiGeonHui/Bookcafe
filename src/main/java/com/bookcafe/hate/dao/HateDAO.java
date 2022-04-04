@@ -6,15 +6,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface HateDAO {
 	
-	//À¯Àú ½Å°í È®ÀÎ
+	//ì‹ ê³  í™•ì¸ ì—¬ë¶€(ì¤‘ë³µ ì‹ ê³  ë°©ì§€)
 	public int selectHateList(
 			@Param("userId") int userId, 
 			@Param("subjectId") int subjectId);
 	
-	//À¯Àúº° ´©Àû½Å°í¼ö
+	//ëˆ„ì  í”¼ì‹ ê³  íšŸìˆ˜
 	public int selectHateBySubjectId(@Param("subjectId") int subjectId);
 	
-	//½Å°í µî·Ï
+	//ì‹ ê³  ë“±ë¡
 	public int insertHate(
 			@Param("userId") int userId,
 			@Param("subjectId") int subjectId);

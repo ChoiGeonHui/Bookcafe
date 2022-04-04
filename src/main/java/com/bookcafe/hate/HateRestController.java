@@ -22,7 +22,7 @@ public class HateRestController {
 	
 	
 	/**
-	 * �Ű��ϱ�
+	 * 사용자 신고하기
 	 * @param subjectId
 	 * @param request
 	 * @return

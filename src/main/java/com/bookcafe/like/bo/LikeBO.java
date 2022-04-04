@@ -15,6 +15,7 @@ public class LikeBO {
 		return likeDAO.selectlikeByPostId(postId);
 	}
 	
+	// 좋아요 등록 여부
 	public boolean likebooleanByPostUserId(int postId,int userId) {
 		int row= likeDAO.selectlikeByPostIdboolean(postId,userId);
 		return row>0? true:false;

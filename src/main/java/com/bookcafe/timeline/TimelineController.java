@@ -32,7 +32,7 @@ public class TimelineController {
 	@Autowired
 	private ContentBO contentBO;
 
-	/**皋牢 其捞瘤
+	/**氅旍澑 韼橃澊歆�
 	 * 
 	 * @param model
 	 * @param request
@@ -70,7 +70,7 @@ public class TimelineController {
 	}
 	
 	/**
-	 * 包府磊啊 焊绰 蜡历府胶飘 其捞瘤
+	 *鞙犾爛 頃
 	 * @param model
 	 * @param request
 	 * @return

@@ -15,10 +15,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileManagerSurvice {
 	private Logger logger = LoggerFactory.getLogger(FileManagerSurvice.class);
 	
-	//주의 - 파일 위치에 따라 변경됨. DB imagePath에 영향
-	public final static String 	FILE_UPLOAD_PATH= "/home/ec2-user/upload_images/";
-		//	"D:\\최건희\\final_project\\images/";
-	//"G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
+	//파일 위치에 따라 변경됨. DB imagePath에 영향
+	public final static String 	FILE_UPLOAD_PATH= "G:\\workspace\\Myproject\\Bookcafe\\Bookcafe\\src\\main\\resources\\static\\images/";
 	
 	public String saveFile(String userLoginId, MultipartFile file) throws IOException {
 		//파일을 컴퓨터에 저장
@@ -51,16 +49,12 @@ public void deleteFile(String imagePath) throws IOException {
 		Path path = Paths.get(FILE_UPLOAD_PATH+imagePath.replace("/images/", ""));
 		//파일 삭제
 		if(Files.exists(path)) {
-			//확인
-			//logger.info("%%%%%%%%%%%%%%%%%%: "+path);
 			Files.delete(path);		
 		}		
 		
 		//디렉토리 삭제
 		path = path.getParent();
 		if(Files.exists(path)) {
-			//확인
-			//logger.info("################: "+path);
 			Files.delete(path);
 		}			
 		
