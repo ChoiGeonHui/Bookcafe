@@ -16,7 +16,7 @@ public class EncryptUtils {
 			byte[] digest = md.digest();
 
 			for (int i = 0; i < digest.length; i++) {
-				encData += Integer.toHexString(digest[i] & 0xff); // 16吏꾩닔濡� 蹂��솚�븯�뒗 怨쇱젙
+				encData += Integer.toHexString(digest[i] & 0xff); // 16비트로 암호화
 			}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
